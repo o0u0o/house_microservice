@@ -1,6 +1,5 @@
-package com.o0u0o.house.api.config;
+package com.o0u0o.house.user.config;
 
-import com.o0u0o.house.api.config.HttpClientProperties;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.impl.client.HttpClientBuilder;
@@ -41,13 +40,13 @@ public class HttpClientAutoConfiguration {
 	public HttpClient httpClient() {
 		RequestConfig requestConfig = RequestConfig.custom()
 				.setConnectTimeout(properties.getConnectTimeOut())
-				.setSocketTimeout(properties.getSocketTimeOut()).build();	// 构建requestConfig
+				.setSocketTimeout(properties.getSocketTimeOut()).build();// 构建requestConfig
 		HttpClient client = HttpClientBuilder.create().setDefaultRequestConfig(requestConfig)
 				.setUserAgent(properties.getAgent())
 				.setMaxConnPerRoute(properties.getMaxConnPerRoute())
-				.setMaxConnTotal(properties.getMaxConnTotal())		//最大链接数
-				.addInterceptorFirst(logbookHttpRequestInterceptor)	//打印请求日志
-				.addInterceptorFirst(logbookHttpResponseInterceptor)
+				.setMaxConnTotal(properties.getMaxConnTotal())			//最大链接数
+				.addInterceptorFirst(logbookHttpRequestInterceptor)		//打印请求日志
+				.addInterceptorFirst(logbookHttpResponseInterceptor)	//打印响应日志
 				.build();
 		return client;
 	}

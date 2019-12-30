@@ -1,0 +1,18 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-geteway
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8666/eureka
+    register-with-eureka: false                         # api不需要注册到注册中心
+
+logbook:
+  write:
+    level: info
+  format:
+    style: curl
