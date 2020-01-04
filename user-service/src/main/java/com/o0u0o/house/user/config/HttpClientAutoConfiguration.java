@@ -40,7 +40,7 @@ public class HttpClientAutoConfiguration {
 	public HttpClient httpClient() {
 		RequestConfig requestConfig = RequestConfig.custom()
 				.setConnectTimeout(properties.getConnectTimeOut())
-				.setSocketTimeout(properties.getSocketTimeOut()).build();// 构建requestConfig
+				.setSocketTimeout(properties.getSocketTimeOut()).build();	// 构建requestConfig
 		HttpClient client = HttpClientBuilder.create().setDefaultRequestConfig(requestConfig)
 				.setUserAgent(properties.getAgent())
 				.setMaxConnPerRoute(properties.getMaxConnPerRoute())

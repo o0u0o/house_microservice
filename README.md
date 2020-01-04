@@ -11,6 +11,8 @@ mvn spring-boot:run
 2、再启动
 mvn spring-boot:run -Dspring.profiles.active=peer
 
+ mvn spring-boot:run -Dspring.profiles.active=usercopy 
+
 ## Spring Cloud Eureka
 ### Eureka 的高可用
 - 创建两个application.properties 配置
@@ -32,4 +34,19 @@ mvn spring-boot:run -Dspring.profiles.active=peer
 ### Spring RestTemplate 介绍
 - 访问Rest服务的客户端组件 
 
- 
+
+## Spring Cloud Ribbon
+- Ribbon介绍：
+    - 是Netflix公司发布的客户端负载均衡器
+    - 已集成在SpringCloud Neflix 套件中
+### 自定义Ribbon
+- 创建客户端配置类
+- 通过@RibbonClient指定客户端配置类
+
+## 微服务代码脚手架搭建
+- 服务注册发现组件 - Eureka
+- 负载均衡组件
+- 服务通信组件
+- 数据访问层代码
+- 异常统一处理
+- HTTP日志组件，JSON解析器

@@ -3,7 +3,9 @@ server:
 
 spring:
   application:
-    name: eureka-server
+    name: eureka-server # 应用名eureka-server
+
+# eureka 配置
 eureka:
   instance:
     hostname: 127.0.0.1

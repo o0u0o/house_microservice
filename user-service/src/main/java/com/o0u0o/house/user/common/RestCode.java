@@ -16,12 +16,12 @@ public enum RestCode {
     ;
 
     //响应码
-    public final int code;
+    public final Integer code;
 
     //消息
     public final String msg;
 
-    RestCode(int code, String msg) {
+    RestCode(Integer code, String msg) {
         this.code = code;
         this.msg = msg;
     }

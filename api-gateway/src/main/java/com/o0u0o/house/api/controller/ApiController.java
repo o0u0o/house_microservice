@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
  * @Descripton:
  **/
 @RestController
-public class ApiUserController {
+public class ApiController {
 
     @Autowired
     private UserService userService;
 
-    @RequestMapping("test/getusrname")
+    @RequestMapping("getusrname")
     public RestResponse<String> getusername(Long id){
         return RestResponse.success(userService.getusername(id));
     }

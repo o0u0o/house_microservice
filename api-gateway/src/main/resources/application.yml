@@ -11,8 +11,14 @@ eureka:
       defaultZone: http://127.0.0.1:8666/eureka
     register-with-eureka: false                         # api不需要注册到注册中心
 
+# Ribbon 客户端负载均衡配置
+#user:
+#life-base:
+#  ribbon:
+#    listOfServer: 127.0.0.1:8083,127.0.0.1:8084
+
 logbook:
   write:
     level: info
   format:
-    style: curl
+    style: http
