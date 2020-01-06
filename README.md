@@ -50,3 +50,13 @@ mvn spring-boot:run -Dspring.profiles.active=peer
 - 数据访问层代码
 - 异常统一处理
 - HTTP日志组件，JSON解析器
+
+
+## Spring cloud Feign
+- 介绍
+
+    - 声明式HTTP客户端，方便构建HTTP请求
+    - 与Ribbon、Eureka 无缝集成
+    - 支持Spring mvc 注解
+   
+  
