@@ -38,16 +38,53 @@ public class UserController {
     private UserService userService;
 
     //--------------------- 用户查询 ---------------------
-    @RequestMapping("getById")
+
+    /**
+     * 根据用户ID获取用户信息
+     * @param id
+     * @return
+     */
+    //@RequestMapping("getById")
+    @RequestMapping("user/info")
     public RestResponse<User> getUserById(Long id){
         User user = userService.getUserById(id);
         return RestResponse.success(user);
     }
 
+    /**
+     * 根据用户属性获取用户信息
+     * @param user
+     * @return
+     */
     @RequestMapping("getList")
     public RestResponse<List<User>> getList(@RequestBody User user){
         List<User> users = userService.getUserByQuery(user);
         return RestResponse.success(users);
     }
+
+    //--------------------- 用户注册 ---------------------
+
+    /**
+     * 注册接口
+     * @param user
+     * @return
+     */
+    @RequestMapping("add")
+    public RestResponse<User> add(@RequestBody User user){
+        userService.addAccount(user, user.getEnableUrl());
+        return RestResponse.success();
+    }
+
+    /**
+     * 激活账号
+     * @param key
+     * @return
+     */
+    @RequestMapping("enable")
+    public RestResponse<User> enable(String key){
+        userService.enable(key);
+        return RestResponse.success();
+    }
+
 
 }

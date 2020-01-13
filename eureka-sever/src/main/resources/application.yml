@@ -17,8 +17,3 @@ eureka:
     register-with-eureka: true        # 是否注册eureka
     service-url:
       defaultZone: http://127.0.0.1:8666/eureka/    # 注册和查询都需要依赖该地址，多个以都好分隔
-
-
-#eureka.client.service-url.defaultZone=http://127.0.0.1:8777/eureka/
-
-

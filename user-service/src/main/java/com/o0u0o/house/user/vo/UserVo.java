@@ -1,6 +1,5 @@
-package com.o0u0o.house.user.model;
+package com.o0u0o.house.user.vo;
 
-import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -8,11 +7,12 @@ import java.util.Date;
 
 /**
  * @Author aiuiot
- * @Date 2020/1/6 9:56 下午
- * @Descripton: 用户实体
+ * @Date 2020/1/7 10:27 上午
+ * @Descripton: 用户vo
  **/
 @Data
-public class User {
+public class UserVo {
+
     private Long id; // 用户ID
 
     private String name; // 姓名
@@ -21,7 +21,7 @@ public class User {
 
     private String phone; // 手机
 
-    private String password; // 密码
+    private String passwd; // 密码
 
     private String confirmPasswd; // 确认密码
 
@@ -33,7 +33,6 @@ public class User {
 
     private String avatar; // 头像 url地址
 
-    @JSONField(deserialize = false, serialize = false)
     private MultipartFile avatarFile; // 接收用户上传的文件(用户头像)
 
     private String newPassword; // 新密码 用于修改密码使用
@@ -43,8 +42,6 @@ public class User {
     private Long agencyId; // 经纪机构的ID
 
     private String aboutme; // 关于我
-
-    private String enableUrl;
 
     private String agencyName; // 经纪人姓名
 }
