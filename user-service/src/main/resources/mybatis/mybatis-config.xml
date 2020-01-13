@@ -17,6 +17,7 @@
 	<!-- 定义别名 -->
 	<typeAliases>
 		<typeAlias type="com.o0u0o.house.user.model.User" alias="user"/>
+		<typeAlias type="com.o0u0o.house.user.model.Agency" alias="agency"/>
 <!--		<typeAlias type="com.aiuiot.house.common.model.House" alias="house"/>-->
 <!--		<typeAlias type="com.aiuiot.house.common.model.City" alias="city"/>-->
 <!--		<typeAlias type="com.aiuiot.house.common.model.Community" alias="community"/>-->
@@ -27,9 +28,10 @@
 	<!-- 映射 -->
 	<mappers>
 		<mapper resource="mapper/user.xml"/>
+		<mapper resource="mapper/agency.xml"/>
 <!--		<mapper resource="mapper/house.xml"/>-->
 <!--		<mapper resource="mapper/city.xml"/>-->
-<!--		<mapper resource="mapper/agency.xml"/>-->
+
 	</mappers>
 	
 	
