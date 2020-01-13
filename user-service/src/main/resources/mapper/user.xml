@@ -29,7 +29,7 @@
                 and email = #{email}
             </if>
             <if test="password != null and password != ''">
-                and password = #{passwd}
+                and password = #{password}
             </if>
             <if test="enable != null and enable != ''">
                 and enable = #{enable}

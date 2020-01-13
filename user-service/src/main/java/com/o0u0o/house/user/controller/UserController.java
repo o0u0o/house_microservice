@@ -86,5 +86,36 @@ public class UserController {
         return RestResponse.success();
     }
 
+    //--------------------- 登录/鉴权 ---------------------
+
+    /**
+     * 登录
+     * @param user
+     * @return
+     */
+    @RequestMapping("auth")
+    public RestResponse<User> login(@RequestBody User user){
+        User finalUser = userService.auth(user.getEmail(), user.getPassword());
+        return RestResponse.success(finalUser);
+    }
+
+    /**
+     * 鉴权
+     * @param user
+     * @return
+     */
+    @RequestMapping("get")
+    public RestResponse<User> getUser(String token){
+        User finalUser = userService.getLoginedUserByToken(token);
+        return RestResponse.success(finalUser);
+    }
+
+    //登出操作
+    @RequestMapping("logout")
+    public RestResponse<Object> logout(String token){
+        userService.invalidate(token);
+        return RestResponse.success();
+    }
+
 
 }

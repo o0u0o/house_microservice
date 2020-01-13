@@ -11,6 +11,10 @@ public enum RestCode {
 
     UNKOWN_RROR(1, "服务异常"),
 
+    TOKEN_INVALID(2, "Token失效"),
+
+    USER_NOT_EXIST(3, "用户不存在"),
+
     WRONG_PAGE(10100, "页码不存在")
 
     ;

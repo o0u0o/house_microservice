@@ -42,6 +42,8 @@ public class User {
 
     private Long agencyId; // 经纪机构的ID
 
+    private String token;   //Token
+
     private String aboutme; // 关于我
 
     private String enableUrl;

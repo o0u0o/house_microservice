@@ -9,13 +9,15 @@ import org.apache.commons.lang.reflect.FieldUtils;
 /**
  * @Author aiuiot
  * @Date 2020/1/4 10:22 上午
- * @Descripton: 异常转为code
+ * @Descripton:  异常映射 异常转为code
  **/
 public class Exception2CodeRepo {
 
     private static final ImmutableMap<Object, RestCode> MAP = ImmutableMap.<Object, RestCode>builder()
             .put(IllegalParamsException.Type.WRONG_PAGE_NUM, RestCode.WRONG_PAGE)
-            .put(IllegalStateException.class, RestCode.UNKOWN_RROR).build();
+            .put(UserException.Type.USER_NOT_LOGIN, RestCode.TOKEN_INVALID)
+            .put(IllegalStateException.class, RestCode.UNKOWN_RROR)
+            .build();
 
     //利用反射机制 读取
     private static Object getType(Throwable throwable){
