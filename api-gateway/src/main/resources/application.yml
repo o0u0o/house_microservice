@@ -4,7 +4,22 @@ server:
 spring:
   application:
     name: api-geteway
-
+  freemarker:
+    cache: true
+    charset: UTF-8
+    content-type: text/html;charset=UTF-8
+    expose-request-attributes: true
+    expose-session-attributes: true
+    expose-spring-macro-helpers: true
+    allow-session-override: true
+    suffix: .ftl
+    settings:
+      datetime_format: yyyy-MM-dd HH:mm:ss
+      default_encoding: UTF-8
+      number_format: 0.##########
+      auto_import: common/common.ftl as common
+      template_exception_handler: ignore
+      template_update_delay: 0
 eureka:
   client:
     service-url:
@@ -22,3 +37,22 @@ logbook:
     level: info
   format:
     style: http
+
+
+file:
+  path: /Users/duxuetech/opt/imgs
+  prefix: http://127.0.0.1:8080/images
+  #  http://127.0.0.1:8082/static/imgs
+domain:
+  name: 127.0.0.1:8080
+
+
+user:
+  service:
+    name: user
+house:
+  service:
+    name: house
+comment:
+    service:
+      name: comment

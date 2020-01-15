@@ -29,7 +29,7 @@ public class ApiGatewayApplication {
     @Autowired
     private DiscoveryClient discoveryClient;
 
-    @RequestMapping("index")
+    @RequestMapping("index1")
     @ResponseBody
     public List<ServiceInstance> getRegister(){
         return discoveryClient.getInstances("user");

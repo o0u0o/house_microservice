@@ -15,8 +15,8 @@ public class UserService {
     @Autowired
     private UserDao userDao;
 
-    public String getusername(Long id){
-        return userDao.getusername(id);
-    }
+//    public String getusername(Long id){
+//        return userDao.getusername(id);
+//    }
 
 }
