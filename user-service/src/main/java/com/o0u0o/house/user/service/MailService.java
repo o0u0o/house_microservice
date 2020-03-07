@@ -19,8 +19,8 @@ public class MailService {
 
     //创建 发送邮件的来源 (在配置文件中)
     @Value("${spring.mail.username}")
-    private String from;	//邮件来源
-
+    //邮件来源
+    private String from;
 
     public void sendSimpleMail(String subject,String content,String toEmail){
         SimpleMailMessage message = new SimpleMailMessage();

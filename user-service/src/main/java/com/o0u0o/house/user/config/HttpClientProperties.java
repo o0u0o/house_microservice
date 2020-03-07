@@ -12,8 +12,10 @@ public class HttpClientProperties {
 	private Integer socketTimeOut = 10000;
 	
 	private String agent = "agent";
-	private Integer maxConnPerRoute = 10;	// 每个IP的自带连接数
-	private Integer maxConnTotal = 50;		// 总连接数
+	// 每个IP的自带连接数
+	private Integer maxConnPerRoute = 10;
+	// 总连接数
+	private Integer maxConnTotal = 50;
 	public Integer getConnectTimeOut() {
 		return connectTimeOut;
 	}

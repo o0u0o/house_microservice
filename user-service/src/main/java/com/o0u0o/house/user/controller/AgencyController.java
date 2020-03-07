@@ -35,7 +35,7 @@ public class AgencyController {
         PageParams pageParams = new PageParams();
         pageParams.setLimit(limit);
         pageParams.setOffset(offset);
-        Pair<List<User>, Long> pair =agencyService.getAllAgent(pageParams);
+        Pair<List<User>, Long> pair = agencyService.getAllAgent(pageParams);
         ListResponse<User> response = ListResponse.build(pair.getKey(), pair.getValue());
         return RestResponse.success(response);
     }

@@ -21,7 +21,8 @@ public class NewRuleConfig {
 
     @Bean
     public IPing ribbonPing(IClientConfig config){
-        return new PingUrl(false, "/health");   //指定一个url路径，每次进行健康检查时发送这个url请求
+        //指定一个url路径，每次进行健康检查时发送这个url请求
+        return new PingUrl(false, "/health");
     }
 
 

@@ -1,9 +1,11 @@
+#端口号
 server:
   port: 8666
 
 spring:
   application:
-    name: eureka-server # 应用名eureka-server
+    # 应用名eureka-server
+    name: eureka-server
 
 # eureka 配置
 eureka:
@@ -16,4 +18,5 @@ eureka:
     fetch-registry: true              # 是否启用获取注册信息
     register-with-eureka: true        # 是否注册eureka
     service-url:
-      defaultZone: http://127.0.0.1:8666/eureka/    # 注册和查询都需要依赖该地址，多个以都好分隔
+      defaultZone: http://127.0.0.1:${server.port}/eureka/    # 注册和查询都需要依赖该地址，多个以都好分隔
+#      defaultZone: http://local.register.com:${server.port}}/eureka/

@@ -8,10 +8,11 @@
 
 1、先启动8666
 mvn spring-boot:run
+
 2、再启动
 mvn spring-boot:run -Dspring.profiles.active=peer
 
- mvn spring-boot:run -Dspring.profiles.active=usercopy 
+mvn spring-boot:run -Dspring.profiles.active=usercopy 
 
 ## Spring Cloud Eureka
 ### Eureka 的高可用

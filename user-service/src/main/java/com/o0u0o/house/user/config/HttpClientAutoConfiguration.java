@@ -40,13 +40,17 @@ public class HttpClientAutoConfiguration {
 	public HttpClient httpClient() {
 		RequestConfig requestConfig = RequestConfig.custom()
 				.setConnectTimeout(properties.getConnectTimeOut())
-				.setSocketTimeout(properties.getSocketTimeOut()).build();	// 构建requestConfig
+				// 构建requestConfig
+				.setSocketTimeout(properties.getSocketTimeOut()).build();
 		HttpClient client = HttpClientBuilder.create().setDefaultRequestConfig(requestConfig)
 				.setUserAgent(properties.getAgent())
 				.setMaxConnPerRoute(properties.getMaxConnPerRoute())
-				.setMaxConnTotal(properties.getMaxConnTotal())			//最大链接数
-				.addInterceptorFirst(logbookHttpRequestInterceptor)		//打印请求日志
-				.addInterceptorFirst(logbookHttpResponseInterceptor)	//打印响应日志
+				//最大链接数
+				.setMaxConnTotal(properties.getMaxConnTotal())
+				//打印请求日志
+				.addInterceptorFirst(logbookHttpRequestInterceptor)
+				//打印响应日志
+				.addInterceptorFirst(logbookHttpResponseInterceptor)
 				.build();
 		return client;
 	}

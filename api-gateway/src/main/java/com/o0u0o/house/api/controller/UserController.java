@@ -30,7 +30,6 @@ public class UserController {
     private AgencyService agencyService;
 
     //------------------------------- 注  册  流  程 S T A R T-------------------------------
-
     /**
      * 用户注册
      * @param account
@@ -75,7 +74,6 @@ public class UserController {
             return "redirect:/accounts/signin?" + ResultMsg.errorMsg("激活失败！请确认链接是否过期");
         }
     }
-
     //------------------------------- 注  册  流  程 E N D-------------------------------
 
 
