@@ -79,11 +79,11 @@ public class UserController {
 
 
     //------------------------------- 登  录  流  程 S T A R T-------------------------------
-    @RequestMapping(value = "/accounts/singin", method = {RequestMethod.POST, RequestMethod.GET})
+    @RequestMapping(value = "accounts/signin", method = {RequestMethod.POST, RequestMethod.GET})
     public String loginSubmit(HttpServletRequest request){
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        if (username ==null || password ==null){
+        if (username == null || password == null){
             request.setAttribute("target", request.getParameter("target"));
             return "/user/accounts/signin";
         }
@@ -96,5 +96,21 @@ public class UserController {
             UserContext.setUser(user);
             return StringUtils.isBlank(request.getParameter("target")) ? "redirect:" + request.getParameter("target") : "redirect:/index";
         }
+    }
+
+    /**
+     * 忘记密码
+     * @param username
+     * @param modelMap
+     * @return
+     */
+    @RequestMapping("accounts/remember")
+    public String remember(String username,ModelMap modelMap){
+        if (StringUtils.isBlank(username)) {
+            return "redirect:/accounts/signin?" + ResultMsg.errorMsg("邮箱不能为空").asUrlParams();
+        }
+        accountService.remember(username);
+        modelMap.put("email", username);
+        return "/user/accounts/remember";
     }
 }

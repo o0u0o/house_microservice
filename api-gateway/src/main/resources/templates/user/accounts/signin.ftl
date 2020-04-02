@@ -14,19 +14,19 @@
         <!-- Breadcrumb -->
         <div class="container">
             <ol class="breadcrumb">
-                <li><a href="#">Home</a></li>
+                <li><a href="/index">首页</a></li>
                 <li class="active">登录</li>
             </ol>
         </div>
         <!-- end Breadcrumb -->
 
         <div class="container">
-            <header><h1>Sign In</h1></header>
+            <header><h1>登录</h1></header>
             <div class="row">
                 <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
                     <form role="form" id="form-create-account" method="post" action="/accounts/signin">
                         <div class="form-group">
-                            <label for="form-create-account-email">Email:</label>
+                            <label for="form-create-account-email">登录邮箱:</label>
                             <input type="text"  name="username" value="${username!}" class="form-control" id="form-create-account-email" required>
                         </div><!-- /.form-group -->
                         <div class="form-group">

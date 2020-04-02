@@ -25,7 +25,6 @@ public class NewRuleConfig {
         return new PingUrl(false, "/health");
     }
 
-
     /**
      * 负载均衡规则
      * @param config

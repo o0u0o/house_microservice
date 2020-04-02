@@ -7,6 +7,7 @@ import com.o0u0o.house.api.utils.BeanHelper;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,7 +31,7 @@ public class AccountService {
 
     /**
      * 激活邮箱
-     * @param key
+     * @param key 激活码
      * @return
      */
     public boolean enable(String key){
@@ -93,5 +94,15 @@ public class AccountService {
             return null;
         }
         return user;
+    }
+
+    /**
+     * 忘记密码
+     * 调用重置通知接口
+     * @param email 电子邮箱
+     */
+    @Async
+    public void remember(String email){
+        userDao.resetNotify(email,"http://" + domainName + "/accounts/reset");
     }
 }

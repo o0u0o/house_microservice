@@ -12,7 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class HomepageController {
 
-    //TODO
+    /**
+     * 请求首页
+     * @param modelMap
+     * @return
+     */
     @RequestMapping("index")
     public String accountsRegister(ModelMap modelMap) {
         return "/homepage/index";

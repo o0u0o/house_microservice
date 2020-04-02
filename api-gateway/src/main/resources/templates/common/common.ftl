@@ -65,8 +65,8 @@
             <aside id="footer-thumbnails" class="footer-thumbnails"></aside><!-- /#footer-thumbnails -->
             <aside id="footer-copyright">
                 <div class="container">
-                    <span>Copyright © 2017. All Rights Reserved.</span>
-                    <span class="pull-right"><a href="#page-top" class="roll">Go to top</a></span>
+                    <span>Copyright © 2017 - 2020. All Rights Reserved. | 黔ICP备20002373</span>
+                    <span class="pull-right"><a href="#page-top" class="roll">回到顶部</a></span>
                 </div>
             </aside>
         </div><!-- /.inner -->

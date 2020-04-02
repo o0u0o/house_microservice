@@ -101,7 +101,7 @@ public class UserController {
 
     /**
      * 鉴权
-     * @param user
+     * @param token
      * @return
      */
     @RequestMapping("get")
@@ -110,7 +110,12 @@ public class UserController {
         return RestResponse.success(finalUser);
     }
 
-    //登出操作
+
+    /**
+     * 登出操作
+     * @param token
+     * @return
+     */
     @RequestMapping("logout")
     public RestResponse<Object> logout(String token){
         userService.invalidate(token);

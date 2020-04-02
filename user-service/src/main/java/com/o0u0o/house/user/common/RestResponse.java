@@ -12,7 +12,8 @@ import lombok.Data;
 public class RestResponse<T> {
     private int code;
     private String msg;
-    private T result;   //返回结果
+    //返回结果
+    private T result;
 
     public static <T> RestResponse<T> success(){
         RestResponse<T> response = new RestResponse<>();

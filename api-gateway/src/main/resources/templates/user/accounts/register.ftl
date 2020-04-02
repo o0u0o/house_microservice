@@ -14,7 +14,7 @@
         <!-- Breadcrumb -->
         <div class="container">
             <ol class="breadcrumb">
-                <li><a href="#">Home</a></li>
+                <li><a href="/index">首页</a></li>
                 <li class="active">注册</li>
             </ol>
         </div>
@@ -24,7 +24,7 @@
             <header><h1>注册账号</h1></header>
             <div class="row">
                 <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
-                    <h3>Account Type</h3>
+                    <h3>选择账号类型</h3>
                     <form role="form" id="form-create-account" method="post" enctype="multipart/form-data" action="/accounts/register">
                         <div class="radio" id="create-account-user">
                             <label>

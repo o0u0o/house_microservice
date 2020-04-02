@@ -10,11 +10,11 @@ import org.springframework.web.client.RestTemplate;
 
 
 /**
- * 即支持直连又支持服务发现的rest调用
- * 为什么要做二次封装
+ *
+ *
  * @Author aiuiot
  * @Date 2019/12/29 9:43 下午
- * @Descripton:
+ * @Descripton: 为什么要做二次封装 即支持直连又支持服务发现的rest调用
  **/
 @Service
 public class GenericRest {
@@ -25,7 +25,8 @@ public class GenericRest {
     @Autowired
     private RestTemplate directRestTemplate;
 
-    private static final String directFlag = "direct://";    //直连请求
+    /** 直连请求 */
+    private static final String directFlag = "direct://";
 
     public <T> ResponseEntity<T> post(String url, Object reqBody, ParameterizedTypeReference<T> responseType){
         RestTemplate template = getRestTemplate(url);

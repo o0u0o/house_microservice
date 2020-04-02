@@ -21,8 +21,7 @@ import java.util.Arrays;
  * @Descripton:
  **/
 @Configuration
-public class
-RestAutoConfig {
+public class RestAutoConfig {
     public  static class RestTemplateConfig{
 
         /**

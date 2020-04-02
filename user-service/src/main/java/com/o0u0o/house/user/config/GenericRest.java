@@ -25,7 +25,8 @@ public class GenericRest {
     @Autowired
     private RestTemplate directRestTemplate;
 
-    private static final String directFlag = "direct://";    //直连请求
+    /** 直连请求 */
+    private static final String directFlag = "direct://";
 
     public <T> ResponseEntity<T> post(String url, Object reqBody, ParameterizedTypeReference<T> responseType){
         RestTemplate template = getRestTemplate(url);

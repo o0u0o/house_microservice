@@ -6,6 +6,7 @@ import com.o0u0o.house.api.common.RestResponse;
 import com.o0u0o.house.api.config.GenericRest;
 import com.o0u0o.house.api.model.Agency;
 import com.o0u0o.house.api.model.User;
+import com.o0u0o.house.api.utils.Rests;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
@@ -42,7 +43,8 @@ public class UserDao {
         if (restResponse.getCode() == 0){
             return restResponse.getResult();
         } else {
-            return Lists.newArrayList();    //返回一个空的list
+            //返回一个空的list
+            return Lists.newArrayList();
         }
     }
 
@@ -98,5 +100,18 @@ public class UserDao {
         } else {
             throw new IllegalStateException("Can not add user");
         }
+    }
+
+    /**
+     * 重置通知
+     * @param email
+     * @param url
+     */
+    public void resetNotify(String email, String url) {
+        Rests.exc(() -> {
+            String sendUrl = Rests.toUrl(userServiceName, "/user/resetNotify?email=" + email + "&url="+url);
+            rest.get(sendUrl,new ParameterizedTypeReference<RestResponse<Object>>() {});
+            return new Object();
+        });
     }
 }

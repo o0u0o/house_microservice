@@ -40,7 +40,12 @@ public class AgencyController {
         return RestResponse.success(response);
     }
 
-    //经纪人详情
+
+    /***
+     * 经纪人详情
+     * @param id
+     * @return
+     */
     @RequestMapping("agent/detail")
     public RestResponse<User> agentDetail(Long id){
         User user = agencyService.getAgentDetail(id);
