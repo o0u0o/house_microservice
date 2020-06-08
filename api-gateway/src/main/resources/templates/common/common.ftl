@@ -18,7 +18,7 @@
 
     <link rel="stylesheet" href="/static/assets/css/toastr.css" type="text/css">
 
-      <title>好房网</title>
+      <title>黔之屋</title>
 </head>
 </#macro>
 
@@ -42,7 +42,7 @@
                                 <h3>联系方式</h3>
                                 <address>
                                     <strong>公司地址</strong><br>
-                                    北京西直门<br>
+                                    贵阳市南明区国际城<br>
                                     奋斗大厦B座3层
                                 </address>
                                 010-87111111<br>

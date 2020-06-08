@@ -13,7 +13,8 @@ import org.springframework.context.annotation.Configuration;
 import org.zalando.logbook.httpclient.LogbookHttpRequestInterceptor;
 import org.zalando.logbook.httpclient.LogbookHttpResponseInterceptor;
 
-@Configuration //声明为Java Config
+//声明为Java Config
+@Configuration
 @ConditionalOnClass({HttpClient.class})
 @EnableConfigurationProperties(HttpClientProperties.class)
 public class HttpClientAutoConfiguration {
@@ -41,12 +42,15 @@ public class HttpClientAutoConfiguration {
 	public HttpClient httpClient() {
 		RequestConfig requestConfig = RequestConfig.custom()
 				.setConnectTimeout(properties.getConnectTimeOut())
-				.setSocketTimeout(properties.getSocketTimeOut()).build();	// 构建requestConfig
+				// 构建requestConfig
+				.setSocketTimeout(properties.getSocketTimeOut()).build();
 		HttpClient client = HttpClientBuilder.create().setDefaultRequestConfig(requestConfig)
 				.setUserAgent(properties.getAgent())
 				.setMaxConnPerRoute(properties.getMaxConnPerRoute())
-				.setMaxConnTotal(properties.getMaxConnTotal())		//最大链接数
-				.addInterceptorFirst(logbookHttpRequestInterceptor)	//打印请求日志
+				//最大链接数
+				.setMaxConnTotal(properties.getMaxConnTotal())
+				//打印请求日志
+				.addInterceptorFirst(logbookHttpRequestInterceptor)
 				.addInterceptorFirst(logbookHttpResponseInterceptor)
 				.build();
 		return client;

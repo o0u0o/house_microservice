@@ -1,5 +1,6 @@
 package com.o0u0o.house.api.common;
 
+
 import com.o0u0o.house.api.model.User;
 
 /**

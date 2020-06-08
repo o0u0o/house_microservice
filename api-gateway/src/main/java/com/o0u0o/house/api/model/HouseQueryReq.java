@@ -4,8 +4,8 @@ import lombok.Data;
 
 /**
  * @Author aiuiot
- * @Date 2020/4/2 10:51 下午
- * @Descripton: 房产查询请求
+ * @Date 2020/6/8 5:47 下午
+ * @Descripton:
  **/
 @Data
 public class HouseQueryReq {

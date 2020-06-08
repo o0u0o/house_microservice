@@ -1,18 +1,14 @@
-package com.o0u0o.house.api.model;
+package com.o0u0o.model.agency;
 
 import lombok.Data;
 
-import java.io.Serializable;
-
 /**
  * @Author aiuiot
- * @Date 2020/6/8 5:42 下午
- * @Descripton: 经纪人实体类
+ * @Date 2020/1/14 12:42 上午
+ * @Descripton: 经纪人/机构
  **/
 @Data
-public class Agency implements Serializable {
-
-    private static final long serialVersionUID = -5762809463541541158L;
+public class Agency {
 
     private Integer id;
 
@@ -29,6 +25,5 @@ public class Agency implements Serializable {
     private String  webSite;
 
     private String  mobile;
-
 
 }

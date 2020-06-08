@@ -1,7 +1,6 @@
 package com.o0u0o.house.api.dao;
 
 import com.google.common.collect.Lists;
-import com.netflix.ribbon.proxy.annotation.Hystrix;
 import com.o0u0o.house.api.common.RestResponse;
 import com.o0u0o.house.api.config.GenericRest;
 import com.o0u0o.house.api.model.Agency;

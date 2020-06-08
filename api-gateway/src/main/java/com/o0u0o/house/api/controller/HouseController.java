@@ -1,17 +1,14 @@
 package com.o0u0o.house.api.controller;
 
-import com.o0u0o.house.api.common.CommonConstants;
 import com.o0u0o.house.api.common.PageData;
 import com.o0u0o.house.api.common.PageParams;
-import com.o0u0o.house.api.model.House;
 import com.o0u0o.house.api.service.HouseService;
+import com.o0u0o.house.api.model.House;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import java.util.List;
 
 /**
  * @Author aiuiot

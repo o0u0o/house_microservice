@@ -9,7 +9,7 @@ import org.apache.commons.lang3.StringUtils;
 /**
  * @Author aiuiot
  * @Date 2020/1/15 10:58 上午
- * @Descripton:
+ * @Descripton: 用户帮助类
  **/
 public class UserHelper {
     public static ResultMsg validateResetPassword(String key, String password, String confirmPassword) {
@@ -29,7 +29,7 @@ public class UserHelper {
         if (StringUtils.isBlank(account.getName())) {
             return ResultMsg.errorMsg("名字有误");
         }
-        if (StringUtils.isBlank(account.getConfirmPasswd()) || StringUtils.isBlank(account.getPassword()) || !account.getPassword().equals(account.getConfirmPasswd())) {
+        if (StringUtils.isBlank(account.getConfirmPassword()) || StringUtils.isBlank(account.getPassword()) || !account.getPassword().equals(account.getConfirmPassword())) {
             return ResultMsg.errorMsg("密码有误");
         }
         if (account.getPassword().length() < 6){

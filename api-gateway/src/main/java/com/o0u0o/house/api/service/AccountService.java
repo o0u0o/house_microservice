@@ -70,7 +70,8 @@ public class AccountService {
             account.setAvatar(imgs.get(0));
         }
         account.setEnableUrl("http://" + domainName+ "accounts/verify?key=");
-        BeanHelper.setDefaultProp(account, User.class); //设置默认属性
+        //设置默认属性
+        BeanHelper.setDefaultProp(account, User.class);
         userDao.addUser(account);
         return true;
     }

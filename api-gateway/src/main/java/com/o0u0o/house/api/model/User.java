@@ -1,52 +1,70 @@
 package com.o0u0o.house.api.model;
 
-import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * @Author aiuiot
- * @Date 2020/1/6 9:56 下午
+ * @Date 2020/6/8 5:14 下午
  * @Descripton: 用户实体
  **/
 @Data
-public class User {
-    private Long id; // 用户ID
+public class User implements Serializable {
 
-    private String name; // 姓名
+    private static final long serialVersionUID = 7316641144254429647L;
 
-    private String email; // 邮箱
+    /** 用户ID */
+    private Long id;
 
-    private String phone; // 手机
+    /** 姓名 */
+    private String name;
 
-    private String password; // 密码
+    /** 邮箱 */
+    private String email;
 
-    private String confirmPasswd; // 确认密码
+    /** 手机 */
+    private String phone;
 
-    private Integer type; // 1-普通用户 2-经纪人
+    /** 密码 */
+    private String password;
 
-    private Date createTime; // 创建时间
+    /** 确认密码 */
+    private String confirmPassword;
 
-    private Integer enable; // 是否激活
+    /** 1-普通用户 2-经纪人 */
+    private Integer type;
 
-    private String avatar; // 头像 url地址
+    /** 创建时间 */
+    private Date createTime;
 
-    @JSONField(deserialize = false, serialize = false)
-    private MultipartFile avatarFile; // 接收用户上传的文件(用户头像)
+    /** 是否激活 */
+    private Integer enable;
 
-    private String newPassword; // 新密码 用于修改密码使用
+    /** 头像 url地址 */
+    private String avatar;
 
-    private String key; // 激活码
+    /** 接收用户上传的文件(用户头像) */
+    private MultipartFile avatarFile;
 
-    private Long agencyId; // 经纪机构的ID
+    /** 新密码 用于修改密码使用 */
+    private String newPassword;
 
-    private String token;   //Token
+    /** 激活码 */
+    private String key;
 
-    private String aboutme; // 关于我
+    /** 经纪机构的ID */
+    private Long agencyId;
 
+    /** 关于我 */
+    private String aboutme;
+
+    /** 激活链接 */
     private String enableUrl;
 
-    private String agencyName; // 经纪人姓名
+    /** 经纪人姓名 */
+    private String agencyName;
+
 }

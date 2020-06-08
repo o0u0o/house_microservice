@@ -8,13 +8,16 @@ import java.util.List;
 /**
  * @Author aiuiot
  * @Date 2020/4/2 10:59 下午
- * @Descripton:
+ * @Descripton: fen ye
  **/
 @Data
 public class Pagination {
     public static final int DEFAULT_LIMIT      = 10;
+
     public static final int DEFAULT_PAGE       = 1;
+
     public static final int DEFAULT_OFFSET     = 0;
+
     public static final int DEFAULT_PAGE_SIZE  = 10;
 
     private int queryCount;

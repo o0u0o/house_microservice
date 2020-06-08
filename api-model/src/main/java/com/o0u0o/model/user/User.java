@@ -1,4 +1,4 @@
-package com.o0u0o.house.user.model;
+package com.o0u0o.model.user;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Data;
@@ -13,21 +13,30 @@ import java.util.Date;
  **/
 @Data
 public class User {
-    private Long id; // 用户ID
 
-    private String name; // 姓名
+    /** 用户ID */
+    private Long id;
 
-    private String email; // 邮箱
+    /** 姓名 */
+    private String name;
 
-    private String phone; // 手机
+    /** 邮箱 */
+    private String email;
 
-    private String password; // 密码
+    /** 手机 */
+    private String phone;
 
-    private String confirmPasswd; // 确认密码
+    /** 密码 */
+    private String password;
 
-    private Integer type; // 1-普通用户 2-经纪人
+    /** 确认密码 */
+    private String confirmPasswd;
 
-    private Date createTime; // 创建时间
+    /**  用户类型 1-普通用户 2-经纪人 */
+    private Integer type;
+
+    /** 创建时间 */
+    private Date createTime;
 
     private Integer enable; // 是否激活
 
