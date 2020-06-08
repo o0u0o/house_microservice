@@ -1,5 +1,5 @@
 server:
-  port: 8083
+  port: 0
 
 spring:
   application:
@@ -7,7 +7,7 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource    #阿里巴巴连接池
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://140.143.181.108:10151/house_user?characherEncoding=UTF-8
+    url: jdbc:mysql://140.143.181.108:10151/house_house?characherEncoding=UTF-8
     username: house_cloud
     password: house_cloud
   druid:

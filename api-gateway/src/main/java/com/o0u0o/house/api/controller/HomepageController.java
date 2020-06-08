@@ -22,6 +22,11 @@ public class HomepageController {
         return "/homepage/index";
     }
 
+    /**
+     * 重定向到请求首页
+     * @param modelMap
+     * @return
+     */
     @RequestMapping("")
     public String index(ModelMap modelMap) {
         return "redirect:/index";

@@ -54,7 +54,11 @@ public class AccountService {
         return null;
     }
 
-    //查询user
+    /**
+     * 查询user
+     * @param queryUser
+     * @return
+     */
     private List<User> getUserByQuery(User queryUser) {
         return userDao.getUserList(queryUser);
     }

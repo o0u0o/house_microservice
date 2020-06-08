@@ -5,14 +5,50 @@
 - SpringBoot 2.2.2.RELEASE
 - 
 
-
+### 项目启动顺序
 1、先启动8666
+```bash
 mvn spring-boot:run
+```
+
 
 2、再启动
 mvn spring-boot:run -Dspring.profiles.active=peer
 
 mvn spring-boot:run -Dspring.profiles.active=usercopy 
+
+
+
+## 微服务面临的问题和挑战
+### 1、服务通信
+服务与服务之间通信
+- 通信技术方案： RPC、REST、异步消息
+
+1、RPC：基于tcp通信 
+优点：ide 有代码提示 缺点：不支持跨语言
+
+- 服务注册和发现
+- 负载均衡
+
+### 2、服务网关
+- API Gateway
+- 为前端服务的后端(Backends For Forntends)
+- 身份认证、路由服务、流量控制、日志通知可放在服务网关，具体业务不应放在服务网关中
+
+### 高可观察
+- 健康检查、集中监控
+- 日志聚合及检索（可使用ELK）
+- 分布式追踪
+
+### 可靠性
+- 流量控制，超时控制
+- 舱壁隔离，熔断机制
+- 服务不可用时：服务降级、幂等重试
+
+## 微服务拆分原则和方法
+- 单一职责、高内聚低耦合原则
+- 服务粒度适中
+- 考虑团队结构
 
 ## Spring Cloud Eureka
 ### Eureka 的高可用
@@ -62,3 +98,10 @@ mvn spring-boot:run -Dspring.profiles.active=usercopy
    
  ## API-Gateway
  
+ 
+ ## 级联故障解决方案
+ 1、故障隔离
+ - 舱壁隔离(线程隔离)
+ - 超时控制
+ - 服务降级
+ - 熔断机制
