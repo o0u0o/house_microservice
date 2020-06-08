@@ -19,7 +19,6 @@ public class BeanHelper {
 
     private static final String createTimeKey  = "createTime";
 
-
     public static <T> void setDefaultProp(T target,Class<T> clazz) {
         PropertyDescriptor[] descriptors = PropertyUtils.getPropertyDescriptors(clazz);
         for (PropertyDescriptor propertyDescriptor : descriptors) {

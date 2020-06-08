@@ -1,8 +1,18 @@
 package com.o0u0o.house.hsrv.controller;
 
+import com.o0u0o.house.hsrv.common.LimitOffset;
+import com.o0u0o.house.hsrv.service.HouseService;
+import org.apache.commons.lang3.tuple.Pair;
+import com.o0u0o.house.hsrv.common.RestResponse;
+import com.o0u0o.house.hsrv.model.House;
+import com.o0u0o.house.hsrv.model.HouseQueryReq;
+import com.o0u0o.house.hsrv.model.ListResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * @Author aiuiot
@@ -12,6 +22,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("house")
 @RestController
 public class HouseController {
+
+    @Autowired
+    private HouseService houseService;
 
     /**
      * 房产列表
@@ -23,7 +36,7 @@ public class HouseController {
         Integer limit  = req.getLimit();
         Integer offset = req.getOffset();
         House   query  = req.getQuery();
-        Pair<List<House>, Long> pair = houseService.queryHouse(query,LimitOffset.build(limit, offset));
+        Pair<List<House>, Long> pair = houseService.queryHouse(query, LimitOffset.build(limit, offset));
         return RestResponse.success(ListResponse.build(pair.getKey(), pair.getValue()));
     }
 }
