@@ -38,14 +38,18 @@ public class User {
     /** 创建时间 */
     private Date createTime;
 
-    private Integer enable; // 是否激活
+    /** 是否激活 */
+    private Integer enable;
 
-    private String avatar; // 头像 url地址
+    /** 头像 url地址 */
+    private String avatar;
 
+    /** 接收用户上传的文件(用户头像) */
     @JSONField(deserialize = false, serialize = false)
-    private MultipartFile avatarFile; // 接收用户上传的文件(用户头像)
+    private MultipartFile avatarFile;
 
-    private String newPassword; // 新密码 用于修改密码使用
+    /** 新密码 用于修改密码使用 */
+    private String newPassword;
 
     private String key; // 激活码
 
@@ -53,7 +57,8 @@ public class User {
 
     private String token;   //Token
 
-    private String aboutme; // 关于我
+    /**  关于我 */
+    private String aboutme;
 
     private String enableUrl;
 

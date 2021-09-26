@@ -12,7 +12,8 @@ import org.springframework.context.annotation.Configuration;
 import org.zalando.logbook.httpclient.LogbookHttpRequestInterceptor;
 import org.zalando.logbook.httpclient.LogbookHttpResponseInterceptor;
 
-@Configuration //声明为Java Config
+//声明为Java Config
+@Configuration
 @ConditionalOnClass({HttpClient.class})
 @EnableConfigurationProperties(HttpClientProperties.class)
 public class HttpClientAutoConfiguration {

@@ -40,7 +40,7 @@ logbook:
 
 
 file:
-  path: /Users/duxuetech/opt/imgs
+  path: /Users/o0u0o/opt/imgs
   prefix: http://127.0.0.1:8080/images
   #  http://127.0.0.1:8082/static/imgs
 domain:

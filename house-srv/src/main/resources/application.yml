@@ -19,8 +19,8 @@ spring:
     min-evictable-idle-time-millis: 300000    # 空闲连接最小空闲时间
   # Redis配置
   redis:
-#    host: 127.0.0.1
-    host: 106.13.234.67
+    host: 127.0.0.1
+#    host: 106.13.234.67
     port: 6379
     jedis:
       pool:

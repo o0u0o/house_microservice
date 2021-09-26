@@ -6,7 +6,7 @@
 - 
 
 ### 项目启动顺序
-1、先启动8666
+1、先启动Eureka 端口 8666
 ```bash
 mvn spring-boot:run
 ```
