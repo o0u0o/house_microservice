@@ -4,16 +4,29 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <groupId>com.o0u0o.house.api</groupId>
     <artifactId>house-srv</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
 
+    <name>house-srv</name>
+    <description>House Service for house</description>
 
     <parent>
         <groupId>com.o0u0o</groupId>
         <artifactId>house-service</artifactId>
         <version>1.0</version>
     </parent>
+
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <springfox.version>2.2.2</springfox.version>
+        <logbook.version>1.3.0</logbook.version>
+    </properties>
+
 
     <dependencies>
         <dependency>
@@ -135,12 +148,12 @@
         <dependency> <!-- exclude掉spring-boot的默认log配置 -->
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
-<!--            <exclusions>-->
-<!--                <exclusion>-->
-<!--                    <groupId>org.springframework.boot</groupId>-->
-<!--                    <artifactId>spring-boot-starter-logging</artifactId>-->
-<!--                </exclusion>-->
-<!--            </exclusions>-->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
 <!--        <dependency>-->

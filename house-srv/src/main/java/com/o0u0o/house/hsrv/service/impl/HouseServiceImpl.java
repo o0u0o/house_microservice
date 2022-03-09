@@ -58,4 +58,20 @@ public class HouseServiceImpl implements HouseService {
         Long count = houseMapper.selectHouseCount(houseQuery);
         return ImmutablePair.of(houses, count);
     }
+
+    /**
+     * 查询单个房产
+     * @param id
+     * @return
+     */
+    @Override
+    public House queryOneHouse(long id) {
+        House query = new House();
+        query.setId(id);
+        List<House> houses = queryAndSetImg(query, LimitOffset.build(1, 0));
+        if (!houses.isEmpty()) {
+            return houses.get(0);
+        }
+        return null;
+    }
 }

@@ -2,6 +2,7 @@ package com.o0u0o.house.hsrv.controller;
 
 import com.o0u0o.house.hsrv.common.LimitOffset;
 import com.o0u0o.house.hsrv.service.HouseService;
+import com.o0u0o.house.hsrv.service.RecommendService;
 import org.apache.commons.lang3.tuple.Pair;
 import com.o0u0o.house.hsrv.common.RestResponse;
 import com.o0u0o.house.hsrv.model.House;
@@ -26,6 +27,9 @@ public class HouseController {
     @Autowired
     private HouseService houseService;
 
+    @Autowired
+    private RecommendService recommendService;
+
     /**
      * 房产列表
      * @param req
@@ -38,5 +42,12 @@ public class HouseController {
         House   query  = req.getQuery();
         Pair<List<House>, Long> pair = houseService.queryHouse(query, LimitOffset.build(limit, offset));
         return RestResponse.success(ListResponse.build(pair.getKey(), pair.getValue()));
+    }
+
+    @RequestMapping("detail")
+    public RestResponse<House> houseDetail(long id){
+        House house = houseService.queryOneHouse(id);
+        recommendService.increaseHot(id);
+        return RestResponse.success(house);
     }
 }
