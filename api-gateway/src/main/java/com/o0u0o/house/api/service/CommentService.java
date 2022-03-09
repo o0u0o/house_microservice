@@ -30,4 +30,11 @@ public interface CommentService {
      * @return
      */
     List<Comment> getHouseComments(long id);
+
+    /**
+     * <h2>获取博客评论</h2>
+     * @param id
+     * @return
+     */
+    List<Comment> getBlogComments(int id);
 }

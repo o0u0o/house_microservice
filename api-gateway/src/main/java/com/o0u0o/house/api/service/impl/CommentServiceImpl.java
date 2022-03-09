@@ -47,13 +47,27 @@ public class CommentServiceImpl implements CommentService {
     /**
      * <h2>查询房产评论</h2>
      * @param id
-     * @return
+     * @return List<Comment> 评论列表
      */
     @Override
     public List<Comment> getHouseComments(long id) {
         CommentReq commentReq = new CommentReq();
         commentReq.setHouseId(id);
         commentReq.setType(1);
+        commentReq.setSize(8);
+        return commentDao.listComment(commentReq);
+    }
+
+    /**
+     * <h2>获取博客评论</h2>
+     * @param id
+     * @return List<Comment> 评论列表
+     */
+    @Override
+    public List<Comment> getBlogComments(int id) {
+        CommentReq commentReq = new CommentReq();
+        commentReq.setBlogId(id);
+        commentReq.setType(2);
         commentReq.setSize(8);
         return commentDao.listComment(commentReq);
     }
