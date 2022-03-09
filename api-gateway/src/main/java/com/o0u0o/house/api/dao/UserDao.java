@@ -1,6 +1,9 @@
 package com.o0u0o.house.api.dao;
 
 import com.google.common.collect.Lists;
+import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.o0u0o.house.api.common.RestResponse;
 import com.o0u0o.house.api.config.GenericRest;
 import com.o0u0o.house.api.model.Agency;
@@ -21,6 +24,12 @@ import java.util.List;
  * @Descripton:
  **/
 @Repository
+@DefaultProperties(groupKey="userDao",
+        commandProperties={@HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds",value="2000")},
+        threadPoolProperties={@HystrixProperty(name="coreSize",value="10")
+                ,@HystrixProperty(name="maxQueueSize",value="1000")},
+        threadPoolKey="userDao"
+)
 public class UserDao {
 
     /**
@@ -48,6 +57,15 @@ public class UserDao {
         }
     }
 
+    @HystrixCommand
+    public User getAgentById(Long id) {
+        return Rests.exc(() ->{
+            String url = Rests.toUrl(userServiceName, "/agency/agentDetail?id=" +id);
+            ResponseEntity<RestResponse<User>> responseEntity =
+                    rest.get(url, new ParameterizedTypeReference<RestResponse<User>>() {});
+            return responseEntity.getBody();
+        }).getResult();
+    }
 
     /**
      * 激活邮箱

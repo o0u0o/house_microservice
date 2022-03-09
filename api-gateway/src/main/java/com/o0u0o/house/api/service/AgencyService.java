@@ -2,6 +2,7 @@ package com.o0u0o.house.api.service;
 
 import com.o0u0o.house.api.dao.UserDao;
 import com.o0u0o.house.api.model.Agency;
+import com.o0u0o.house.api.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,4 +36,7 @@ public class AgencyService {
         userDao.addAgency(agency);
     }
 
+    public User getAgentDetail(Long userId) {
+        return userDao.getAgentById(userId);
+    }
 }

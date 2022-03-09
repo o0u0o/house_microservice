@@ -29,7 +29,7 @@ public class BlogController {
     @Autowired
     private HouseService houseService;
 
-    @RequestMapping(value="blog/list",method={RequestMethod.POST,RequestMethod.GET})
+    @RequestMapping(value="blog/list",method={RequestMethod.POST, RequestMethod.GET})
     public String list(Integer pageSize, Integer pageNum, Blog query, ModelMap modelMap){
         PageData<Blog> ps = commentService.queryBlogs(query, PageParams.build(pageSize, pageNum));
         List<House> houses =  houseService.getHotHouse(CommonConstants.RECOM_SIZE);

@@ -43,7 +43,7 @@ public class HouseService {
      * @param id 房屋ID
      * @return
      */
-    private House queryOneHouse(long id){
+    public House queryOneHouse(long id){
         RestResponse<House> response = houseClient.houseDetail(id);
         return response.getResult();
     }
