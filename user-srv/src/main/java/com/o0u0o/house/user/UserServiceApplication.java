@@ -7,6 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
 
+/**
+ * <h1>用户服务启动类</h1>
+ */
 @SpringBootApplication
 @EnableDiscoveryClient
 //@EnableSwagger2

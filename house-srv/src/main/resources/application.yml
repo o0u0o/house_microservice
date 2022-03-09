@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: user  # 应用名为user
+    name: house  # 应用名为house
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource    #阿里巴巴连接池
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -20,11 +20,12 @@ spring:
   # Redis配置
   redis:
     host: 127.0.0.1
-#    host: 106.13.234.67
     port: 6379
+    database: 1
     jedis:
       pool:
         max-active: 5 #最大连接数为5
+
   # Spring Mail邮箱配置
   mail:
     host: smtp.163.com
