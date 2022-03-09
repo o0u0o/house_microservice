@@ -10,8 +10,7 @@ import org.springframework.web.client.RestTemplate;
 
 
 /**
- *
- *
+ * <h1>既支持直连又支持服务发现的调用</h1>
  * @Author aiuiot
  * @Date 2019/12/29 9:43 下午
  * @Descripton: 为什么要做二次封装 即支持直连又支持服务发现的rest调用
