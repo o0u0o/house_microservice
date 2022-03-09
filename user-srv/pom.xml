@@ -2,8 +2,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.o0u0o</groupId>
     <artifactId>user-srv</artifactId>
+    <version>0.0.2-SNAPSHOT</version>
     <packaging>jar</packaging>
+
+    <name>user-srv</name>
+    <description>用户服务</description>
 
     <parent>
         <groupId>com.o0u0o</groupId>

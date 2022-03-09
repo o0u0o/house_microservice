@@ -18,7 +18,7 @@ import java.sql.SQLException;
  * @author o0u0o
  * @date 2022/3/9 3:14 PM
  */
-@Configuration
+//@Configuration
 public class DruidConfig {
 
     @ConfigurationProperties(prefix="spring.druid")
