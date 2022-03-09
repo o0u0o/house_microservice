@@ -15,7 +15,7 @@ import java.util.List;
 public interface HouseService {
 
     /**
-     * 查询房产
+     * <h1>查询房产</h1>
      * @param query
      * @param build
      * @return

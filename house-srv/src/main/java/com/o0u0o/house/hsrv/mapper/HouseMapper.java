@@ -23,14 +23,19 @@ public interface HouseMapper {
 
     /**
      * 查询房产列表
-     * @param query
-     * @param limitOffset
-     * @return
+     * @param house
+     * @param pageParams
+     * @return List<House>
      */
-    List<House> selectHouse(@Param("house") House query,
-                            @Param("pageParams") LimitOffset limitOffset);
+    List<House> selectHouse(@Param("house") House house,
+                            @Param("pageParams") LimitOffset pageParams);
 
-    Long selectHouseCount(@Param("house") House query);
+    /**
+     * 查询房产数量
+     * @param house
+     * @return Long
+     */
+    Long selectHouseCount(@Param("house") House house);
 
     List<Community> selectCommunity(Community community);
 

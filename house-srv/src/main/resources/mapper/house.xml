@@ -116,9 +116,10 @@
 
 
     <select id="selectHouseCount" resultType="long" >
-        select count(id)
-        from   house a
-        <include refid="houseCondition" />
+        select
+            count(id)
+        from
+            house a
     </select>
 
     <update id="updateHouse">
