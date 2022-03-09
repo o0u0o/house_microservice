@@ -35,6 +35,13 @@ public class HouseServiceImpl implements HouseService {
     @Value("${file.prefix}")
     private String imgPrefix;
 
+    /**
+     * 查询和设置图片
+     * @param query
+     * @param pageParams
+     * @return
+     */
+    @Override
     public List<House> queryAndSetImg(House query, LimitOffset pageParams){
         List<House> houses =  houseMapper.selectHouse(query,pageParams);
         houses.forEach(h -> {

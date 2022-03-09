@@ -1,5 +1,9 @@
 package com.o0u0o.house.hsrv.service;
 
+import com.o0u0o.house.hsrv.model.House;
+
+import java.util.List;
+
 /**
  * <h1>推荐业务接口</h1>
  * @author o0u0o
@@ -12,4 +16,11 @@ public interface RecommendService {
      * @param id
      */
     void increaseHot(long id);
+
+    /**
+     * 获取热门房产
+     * @param size 数量
+     * @return List<House> 房产列表
+     */
+    List<House> getHotHouse(Integer size);
 }

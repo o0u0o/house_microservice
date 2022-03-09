@@ -67,4 +67,15 @@ public class HouseController {
         houseService.addHouse(house,house.getUserId());
         return RestResponse.success();
     }
+
+    /**
+     * 热门房产
+     * @param size
+     * @return
+     */
+    @RequestMapping("hot")
+    public RestResponse<List<House>> getHotHouse(Integer size){
+        List<House> list =   recommendService.getHotHouse(size);
+        return RestResponse.success(list);
+    }
 }

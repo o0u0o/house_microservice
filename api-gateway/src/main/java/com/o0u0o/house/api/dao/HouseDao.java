@@ -12,6 +12,8 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * @Author aiuiot
  * @Date 2020/4/2 10:49 下午
@@ -38,5 +40,18 @@ public class HouseDao {
             return responseEntity.getBody();
         });
         return resp.getResult();
+    }
+
+    /**
+     * 远程调用house服务的热门房产信息
+     * @param recomSize
+     * @return List<House> 热门房产列表
+     */
+    public List<House> getHotHouse(Integer recomSize) {
+        return Rests.exc(() ->{
+            String url = Rests.toUrl(houseServiceName, "/house/hot" + "?size="+recomSize);
+            ResponseEntity<RestResponse<List<House>>> responseEntity =  rest.get(url, new ParameterizedTypeReference<RestResponse<List<House>>>() {});
+            return responseEntity.getBody();
+        }).getResult();
     }
 }

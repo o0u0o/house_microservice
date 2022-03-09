@@ -35,4 +35,12 @@ public interface HouseService {
      * @param userId
      */
     void addHouse(House house, Long userId);
+
+    /**
+     * 查询和设置图片
+     * @param query
+     * @param build
+     * @return
+     */
+    List<House> queryAndSetImg(House query, LimitOffset build);
 }

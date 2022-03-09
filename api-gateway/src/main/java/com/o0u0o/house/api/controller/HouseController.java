@@ -46,9 +46,8 @@ public class HouseController {
     @RequestMapping(value = "house/list", method = {RequestMethod.POST, RequestMethod.GET})
     public String houseList(Integer pageSize, Integer pageNum, House query, ModelMap modelMap){
         PageData<House> ps = houseService.queryHouse(query, PageParams.build(pageSize, pageNum));
-        //List<House> rcHouses =  houseService.getHotHouse(CommonConstants.RECOM_SIZE);
-        modelMap.put("recomHouses", null);
-        //modelMap.put("recomHouses", rcHouses);
+        List<House> rcHouses =  houseService.getHotHouse(CommonConstants.RECOM_SIZE);
+        modelMap.put("recomHouses", rcHouses);
         modelMap.put("vo", query);
         modelMap.put("ps", ps);
         return "/house/listing";

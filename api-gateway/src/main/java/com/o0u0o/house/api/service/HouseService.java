@@ -59,8 +59,13 @@ public class HouseService {
         return PageData.<House>buildPage(result.getList(), result.getCount(), build.getPageSize(), build.getPageNum());
     }
 
-
+    /**
+     * <h2>获取热门房产</h2>
+     * @param recomSize
+     * @return List<House> 房产列表
+     */
     public List<House> getHotHouse(Integer recomSize) {
-        return null;
+        List<House> list = houseDao.getHotHouse(recomSize);
+        return list;
     }
 }
