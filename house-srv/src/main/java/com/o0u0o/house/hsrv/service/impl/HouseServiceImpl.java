@@ -43,7 +43,7 @@ public class HouseServiceImpl implements HouseService {
      */
     @Override
     public List<House> queryAndSetImg(House query, LimitOffset pageParams){
-        List<House> houses =  houseMapper.selectHouse(query,pageParams);
+        List<House> houses =  houseMapper.selectHouse(query, pageParams);
         houses.forEach(h -> {
             h.setFirstImg(imgPrefix + h.getFirstImg());
             h.setImageList(h.getImageList().stream().map(img -> imgPrefix + img).collect(Collectors.toList()));

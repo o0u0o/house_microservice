@@ -35,13 +35,13 @@ public class HouseController {
     /**
      * 房产列表
      * @param req
-     * @return
+     * @return RestResponse<ListResponse<House>>
      */
     @RequestMapping("list")
     public RestResponse<ListResponse<House>> houseList(@RequestBody HouseQueryReq req){
         Integer limit  = req.getLimit();
         Integer offset = req.getOffset();
-        House   query  = req.getQuery();
+        House query  = req.getQuery();
         Pair<List<House>, Long> pair = houseService.queryHouse(query, LimitOffset.build(limit, offset));
         return RestResponse.success(ListResponse.build(pair.getKey(), pair.getValue()));
     }

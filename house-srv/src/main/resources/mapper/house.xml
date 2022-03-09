@@ -45,8 +45,9 @@
     </select>
 
     <select id="selectHouse" resultType="house">
-        select <include refid="houseField"/>
-        from   house a
+        select
+            <include refid="houseField"/>
+        from house a
         <include refid="houseCondition" />
         <choose>
             <when test="house.sort != null and house.sort == 'price_asc'">
