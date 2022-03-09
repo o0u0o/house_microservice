@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.stereotype.Controller;
@@ -18,7 +19,7 @@ import java.util.List;
  * 注解 @EnableFeignClients 使用feign 时
  */
 @SpringBootApplication
-//@EnableDiscoveryClient
+@EnableDiscoveryClient
 @Controller
 @RibbonClient(name = "user", configuration = NewRuleConfig.class)
 //@RibbonClient(name = "life-base", configuration = NewRuleConfig.class)

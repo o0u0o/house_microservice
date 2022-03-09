@@ -6,7 +6,8 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
- * @Author aiuiot
+ * <h1>房产服务启动类</h1>
+ * @Author o0u0o
  * @Date 2020/4/2 11:17 下午
  * @Descripton: 房产服务启动类
  **/

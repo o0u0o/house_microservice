@@ -11,6 +11,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 /**
+ * <h1>房产映射对象</h1>
  * @Author aiuiot
  * @Date 2020/6/8 6:49 下午
  * @Descripton:

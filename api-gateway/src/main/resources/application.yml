@@ -20,6 +20,7 @@ spring:
       auto_import: common/common.ftl as common
       template_exception_handler: ignore
       template_update_delay: 0
+# eureka配置
 eureka:
   client:
     service-url:
