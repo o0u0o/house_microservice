@@ -49,6 +49,14 @@ public class HouseService {
     }
 
     /**
+     * <h2>获取最新房产</h2>
+     * @return
+     */
+    public List<House> getLastest() {
+        return houseDao.getLastest();
+    }
+
+    /**
      * 查询房产
      * @param query
      * @param build
@@ -68,4 +76,5 @@ public class HouseService {
         List<House> list = houseDao.getHotHouse(recomSize);
         return list;
     }
+
 }

@@ -53,4 +53,15 @@ public class RecommendServiceImpl implements RecommendService {
         query.setIds(ids);
         return houseService.queryAndSetImg(query, LimitOffset.build(size, 0));
     }
+
+    /**
+     * <h2>获取最新房产</h2>
+     * @return List<House> 房产列表
+     */
+    @Override
+    public List<House> getLastest() {
+        House query = new House();
+        query.setSort("create_time");
+        return houseService.queryAndSetImg(query, LimitOffset.build(8, 0));
+    }
 }

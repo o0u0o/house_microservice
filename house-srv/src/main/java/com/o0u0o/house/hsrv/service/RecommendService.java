@@ -18,9 +18,15 @@ public interface RecommendService {
     void increaseHot(long id);
 
     /**
-     * 获取热门房产
+     * <h2>获取热门房产</h2>
      * @param size 数量
      * @return List<House> 房产列表
      */
     List<House> getHotHouse(Integer size);
+
+    /**
+     * <h2>获取最新房产</h2>
+     * @return
+     */
+    List<House> getLastest();
 }

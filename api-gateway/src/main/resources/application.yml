@@ -42,12 +42,13 @@ logbook:
 
 file:
   path: /Users/o0u0o/opt/imgs
-  prefix: http://127.0.0.1:8080/images
+#  prefix: http://127.0.0.1:8080/images
+  prefix: /static/imgs
   #  http://127.0.0.1:8082/static/imgs
 domain:
   name: 127.0.0.1:8080
 
-
+# 配置其他服务
 user:
   service:
     name: user

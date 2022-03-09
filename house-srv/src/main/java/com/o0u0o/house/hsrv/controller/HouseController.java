@@ -78,4 +78,13 @@ public class HouseController {
         List<House> list =   recommendService.getHotHouse(size);
         return RestResponse.success(list);
     }
+
+    /**
+     * 最新房产
+     * @return
+     */
+    @RequestMapping("lastest")
+    public RestResponse<List<House>> getLastest(){
+        return RestResponse.success(recommendService.getLastest());
+    }
 }

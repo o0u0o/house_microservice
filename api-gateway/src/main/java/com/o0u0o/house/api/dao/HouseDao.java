@@ -42,8 +42,23 @@ public class HouseDao {
         return resp.getResult();
     }
 
+
     /**
-     * 远程调用house服务的热门房产信息
+     * <h2>远程调用最新房产信息</h2>
+     * @return
+     */
+    public List<House> getLastest() {
+        RestResponse<List<House>> resp = Rests.exc(() -> {
+
+            String url = Rests.toUrl(houseServiceName, "/house/lastest");
+            ResponseEntity<RestResponse<List<House>>> responseEntity = rest.get(url,new ParameterizedTypeReference<RestResponse<List<House>>>() {});
+            return responseEntity.getBody();
+        });
+        return resp.getResult();
+    }
+
+    /**
+     * <h2>远程调用house服务的热门房产信息</h2>
      * @param recomSize
      * @return List<House> 热门房产列表
      */
@@ -54,4 +69,5 @@ public class HouseDao {
             return responseEntity.getBody();
         }).getResult();
     }
+
 }

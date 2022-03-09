@@ -45,8 +45,15 @@ eureka:
 mybatis:
   config-location: classpath:/mybatis/mybatis-config.xml
 file:
-  prefix: 127.0.0.1:8083/static/imgs
+#  prefix: 127.0.0.1:8083/static/imgs
+  prefix: /static/imgs
 
+house:
+  service:
+    name: house
+user:
+  service:
+    name: user
 
 # 配置logbook #日志级别为info
 logbook:
