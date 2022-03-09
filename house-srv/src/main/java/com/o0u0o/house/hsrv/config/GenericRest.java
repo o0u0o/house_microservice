@@ -1,6 +1,5 @@
-package com.o0u0o.house.hsrv.service.impl;
+package com.o0u0o.house.hsrv.config;
 
-import com.o0u0o.house.hsrv.service.GenericRest;
 import org.apache.commons.lang3.tuple.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
@@ -12,12 +11,12 @@ import org.springframework.web.client.RestTemplate;
 
 /**
  * <h1>GenericRest实现类</h1>
+ * 即支持直连又支持服务发现的rest调用
  * @author o0u0o
  * @date 2022/3/9 9:11 PM
  */
 @Service
-public class GenericRestImpl implements GenericRest {
-
+public class GenericRest {
 
     @Autowired
     private RestTemplate lbRestTemplate;
@@ -27,7 +26,6 @@ public class GenericRestImpl implements GenericRest {
 
     private static final  String directFlag = "direct://";
 
-    @Override
     @SuppressWarnings({"rawtypes", "unchecked"})
     public  <T> ResponseEntity<T> post(String url, Object reqBody, ParameterizedTypeReference<T> responseType){
         Pair<RestTemplate, String> pair = getRestTemplate(url);
@@ -43,7 +41,6 @@ public class GenericRestImpl implements GenericRest {
         return Pair.of(rest, url);
     }
 
-    @Override
     public  <T> ResponseEntity<T> get(String url, ParameterizedTypeReference<T> responseType){
         Pair<RestTemplate, String> pair  = getRestTemplate(url);
         return pair.getLeft().exchange(pair.getRight(),HttpMethod.GET, HttpEntity.EMPTY,responseType);

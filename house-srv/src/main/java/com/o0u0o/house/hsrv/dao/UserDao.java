@@ -2,8 +2,8 @@ package com.o0u0o.house.hsrv.dao;
 
 import com.o0u0o.house.hsrv.common.RestResponse;
 import com.o0u0o.house.hsrv.common.utils.Rests;
+import com.o0u0o.house.hsrv.config.GenericRest;
 import com.o0u0o.house.hsrv.model.User;
-import com.o0u0o.house.hsrv.service.GenericRest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
