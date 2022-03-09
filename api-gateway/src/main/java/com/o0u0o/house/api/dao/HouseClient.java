@@ -4,7 +4,7 @@ import com.o0u0o.house.api.common.RestResponse;
 import com.o0u0o.house.api.config.HouseFeignConfig;
 import com.o0u0o.house.api.model.House;
 import com.o0u0o.house.api.model.UserMsg;
-import org.springframework.cloud.netflix.feign.FeignClient;
+import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

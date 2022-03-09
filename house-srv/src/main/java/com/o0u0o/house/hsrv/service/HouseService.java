@@ -23,9 +23,16 @@ public interface HouseService {
     Pair<List<House>, Long> queryHouse(House query, LimitOffset build);
 
     /**
-     * 查询当个房产
+     * <h2>查询单个房产</h2>
      * @param id
      * @return
      */
     House queryOneHouse(long id);
+
+    /**
+     * <h2>新增房产</h2>
+     * @param house
+     * @param userId
+     */
+    void addHouse(House house, Long userId);
 }

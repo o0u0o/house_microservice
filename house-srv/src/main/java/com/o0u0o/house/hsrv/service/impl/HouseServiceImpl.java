@@ -1,10 +1,13 @@
 package com.o0u0o.house.hsrv.service.impl;
 
 import com.google.common.collect.Lists;
+import com.o0u0o.house.hsrv.common.BeanHelper;
 import com.o0u0o.house.hsrv.common.LimitOffset;
+import com.o0u0o.house.hsrv.common.enums.HouseUserType;
 import com.o0u0o.house.hsrv.mapper.HouseMapper;
 import com.o0u0o.house.hsrv.model.Community;
 import com.o0u0o.house.hsrv.model.House;
+import com.o0u0o.house.hsrv.model.HouseUser;
 import com.o0u0o.house.hsrv.service.HouseService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.ImmutablePair;
@@ -12,6 +15,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -73,5 +77,36 @@ public class HouseServiceImpl implements HouseService {
             return houses.get(0);
         }
         return null;
+    }
+
+    /**
+     * <h2>新增房产</h2>
+     * 1. 添加房产
+     * 2. 绑定房产到用户关系
+     * @param house
+     * @param userId
+     */
+    @Transactional(rollbackFor=Exception.class)
+    @Override
+    public void addHouse(House house, Long userId) {
+        BeanHelper.setDefaultProp(house, House.class);
+        BeanHelper.onInsert(house);
+        houseMapper.insert(house);
+        bindUser2House(house.getId(),userId, HouseUserType.SALE);
+    }
+
+    @Transactional(rollbackFor=Exception.class)
+    public void bindUser2House(Long id, Long userId, HouseUserType sale) {
+        HouseUser existHouseUser = houseMapper.selectHouseUser(userId,id, sale.value);
+        if (existHouseUser != null) {
+            return;
+        }
+        HouseUser houseUser  = new HouseUser();
+        houseUser.setHouseId(id);
+        houseUser.setUserId(userId);
+        houseUser.setType(sale.value);
+        BeanHelper.setDefaultProp(houseUser, HouseUser.class);
+        BeanHelper.onInsert(houseUser);
+        houseMapper.insertHouseUser(houseUser);
     }
 }

@@ -1,6 +1,8 @@
 package com.o0u0o.house.hsrv.controller;
 
+import com.o0u0o.house.hsrv.common.CommonConstants;
 import com.o0u0o.house.hsrv.common.LimitOffset;
+import com.o0u0o.house.hsrv.common.RestCode;
 import com.o0u0o.house.hsrv.service.HouseService;
 import com.o0u0o.house.hsrv.service.RecommendService;
 import org.apache.commons.lang3.tuple.Pair;
@@ -49,5 +51,20 @@ public class HouseController {
         House house = houseService.queryOneHouse(id);
         recommendService.increaseHot(id);
         return RestResponse.success(house);
+    }
+
+    /**
+     * 房产新增
+     * @param house
+     * @return
+     */
+    @RequestMapping("add")
+    public RestResponse<Object> doAdd(@RequestBody House house){
+        house.setState(CommonConstants.HOUSE_STATE_UP);
+        if (house.getUserId() == null) {
+            return RestResponse.error(RestCode.ILLEGAL_PARAMS);
+        }
+        houseService.addHouse(house,house.getUserId());
+        return RestResponse.success();
     }
 }
