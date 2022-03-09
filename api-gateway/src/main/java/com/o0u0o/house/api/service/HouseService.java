@@ -11,6 +11,8 @@ import com.o0u0o.house.api.model.UserMsg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @Author aiuiot
  * @Date 2020/4/2 9:44 下午
@@ -58,4 +60,7 @@ public class HouseService {
     }
 
 
+    public List<House> getHotHouse(Integer recomSize) {
+        return null;
+    }
 }

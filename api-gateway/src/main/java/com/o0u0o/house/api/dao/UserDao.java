@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import com.o0u0o.house.api.common.RestResponse;
 import com.o0u0o.house.api.config.GenericRest;
 import com.o0u0o.house.api.model.Agency;
+import com.o0u0o.house.api.model.ListResponse;
 import com.o0u0o.house.api.model.User;
 import com.o0u0o.house.api.utils.Rests;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,6 +86,21 @@ public class UserDao {
                     rest.post(url, agency,new ParameterizedTypeReference<RestResponse<Object>>() {});
             return responseEntity.getBody();
         });
+    }
+
+    /**
+     * <h2>获取经纪人列表</h2>
+     * @param limit
+     * @param offset
+     * @return
+     */
+    public ListResponse<User> getAgentList(Integer limit, Integer offset) {
+        return Rests.exc(() -> {
+            String url = Rests.toUrl(userServiceName, "/agency/agentList?limit=" + limit + "&offset="+offset);
+            ResponseEntity<RestResponse<ListResponse<User>>> responseEntity =
+                    rest.get(url,new ParameterizedTypeReference<RestResponse<ListResponse<User>>>() {});
+            return responseEntity.getBody();
+        }).getResult();
     }
 
     //TODO
