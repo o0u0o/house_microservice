@@ -4,7 +4,9 @@ import com.google.common.base.Objects;
 import com.o0u0o.house.api.common.CommonConstants;
 import com.o0u0o.house.api.common.PageData;
 import com.o0u0o.house.api.common.PageParams;
+import com.o0u0o.house.api.common.ResultMsg;
 import com.o0u0o.house.api.model.Comment;
+import com.o0u0o.house.api.model.UserMsg;
 import com.o0u0o.house.api.service.AgencyService;
 import com.o0u0o.house.api.service.CommentService;
 import com.o0u0o.house.api.service.HouseService;
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -68,4 +71,18 @@ public class HouseController {
         modelMap.put("commentList", comments);
         return "/house/detail";
     }
+
+    @RequestMapping(value="house/leaveMsg",method={RequestMethod.POST,RequestMethod.GET})
+    public String houseMsg(UserMsg userMsg){
+        houseService.addUserMsg(userMsg);
+        return "redirect:/house/detail?id=" + userMsg.getHouseId() + "&" + ResultMsg.successMsg("留言成功").asUrlParams();
+    }
+
+    @ResponseBody
+    @RequestMapping(value="house/rating",method={RequestMethod.POST,RequestMethod.GET})
+    public ResultMsg houseRate(Double rating, Long id){
+        houseService.updateRating(id, rating);
+        return ResultMsg.success();
+    }
+
 }

@@ -31,6 +31,15 @@ public class HouseService {
     private HouseClient houseClient;
 
     /**
+     * <h2>更新评分</h2>
+     * @param id
+     * @param rating
+     */
+    public void updateRating(Long id, Double rating) {
+        houseDao.rating(id, rating);
+    }
+
+    /**
      * 添加用户信息
      * @param userMsg
      */

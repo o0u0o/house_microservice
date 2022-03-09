@@ -3,6 +3,7 @@ package com.o0u0o.house.hsrv.controller;
 import com.o0u0o.house.hsrv.common.CommonConstants;
 import com.o0u0o.house.hsrv.common.LimitOffset;
 import com.o0u0o.house.hsrv.common.RestCode;
+import com.o0u0o.house.hsrv.model.UserMsg;
 import com.o0u0o.house.hsrv.service.HouseService;
 import com.o0u0o.house.hsrv.service.RecommendService;
 import org.apache.commons.lang3.tuple.Pair;
@@ -13,6 +14,7 @@ import com.o0u0o.house.hsrv.model.ListResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -51,6 +53,30 @@ public class HouseController {
         House house = houseService.queryOneHouse(id);
         recommendService.increaseHot(id);
         return RestResponse.success(house);
+    }
+
+    /**
+     * <h1>添加用户留言</h1>
+     * @param userMsg
+     * @return
+     */
+    @RequestMapping("addUserMsg")
+    public RestResponse<Object> houseMsg(@RequestBody UserMsg userMsg){
+        houseService.addUserMsg(userMsg);
+        return RestResponse.success();
+    }
+
+    /**
+     * <h1>房产评分</h1>
+     * @param rating
+     * @param id
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("rating")
+    public RestResponse<Object> houseRate(Double rating,Long id){
+        houseService.updateRating(id,rating);
+        return RestResponse.success();
     }
 
     /**

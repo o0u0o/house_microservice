@@ -4,11 +4,11 @@ import com.google.common.collect.Lists;
 import com.o0u0o.house.hsrv.common.BeanHelper;
 import com.o0u0o.house.hsrv.common.LimitOffset;
 import com.o0u0o.house.hsrv.common.enums.HouseUserType;
+import com.o0u0o.house.hsrv.dao.UserDao;
 import com.o0u0o.house.hsrv.mapper.HouseMapper;
-import com.o0u0o.house.hsrv.model.Community;
-import com.o0u0o.house.hsrv.model.House;
-import com.o0u0o.house.hsrv.model.HouseUser;
+import com.o0u0o.house.hsrv.model.*;
 import com.o0u0o.house.hsrv.service.HouseService;
+import com.o0u0o.house.hsrv.service.MailService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
@@ -32,6 +32,13 @@ public class HouseServiceImpl implements HouseService {
     @Autowired
     private HouseMapper houseMapper;
 
+    @Autowired
+    private MailService mailService;
+
+    @Autowired
+    private UserDao userDao;
+
+
     @Value("${file.prefix}")
     private String imgPrefix;
 
@@ -50,6 +57,26 @@ public class HouseServiceImpl implements HouseService {
             h.setFloorPlanList(h.getFloorPlanList().stream().map(img -> imgPrefix + img).collect(Collectors.toList()));
         });
         return houses;
+    }
+
+    @Override
+    public void addUserMsg(UserMsg userMsg) {
+        BeanHelper.onInsert(userMsg);
+        BeanHelper.setDefaultProp(userMsg, UserMsg.class);
+        houseMapper.insertUserMsg(userMsg);
+        User user = userDao.getAgentDetail(userMsg.getAgentId());
+        mailService.sendSimpleMail("来自用户" + userMsg.getEmail(), userMsg.getMsg(), user.getEmail());
+    }
+
+    @Override
+    public void updateRating(Long id, Double rating) {
+        House house = queryOneHouse(id);
+        Double oldRating = house.getRating();
+        Double newRating = oldRating.equals(0D) ? rating : Math.min(Math.round(oldRating + rating)/2, 5);
+        House updateHouse =  new House();
+        updateHouse.setId(id);
+        updateHouse.setRating(newRating);
+        houseMapper.updateHouse(updateHouse);
     }
 
     @Override

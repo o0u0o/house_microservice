@@ -2,6 +2,7 @@ package com.o0u0o.house.hsrv.service;
 
 import com.o0u0o.house.hsrv.common.LimitOffset;
 import com.o0u0o.house.hsrv.model.House;
+import com.o0u0o.house.hsrv.model.UserMsg;
 import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.List;
@@ -43,4 +44,8 @@ public interface HouseService {
      * @return
      */
     List<House> queryAndSetImg(House query, LimitOffset build);
+
+    void addUserMsg(UserMsg userMsg);
+
+    void updateRating(Long id, Double rating);
 }

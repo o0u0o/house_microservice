@@ -70,4 +70,16 @@ public class HouseDao {
         }).getResult();
     }
 
+    /**
+     * <h2>更新评分</h2>
+     * @param id
+     * @param rating
+     */
+    public void rating(Long id, Double rating) {
+        Rests.exc(() ->{
+            String url = Rests.toUrl(houseServiceName, "/house/rating?id=" + id + "&rating=" + rating );
+            ResponseEntity<RestResponse<Object>> responseEntity = rest.get(url,new ParameterizedTypeReference<RestResponse<Object>>() {});
+            return responseEntity.getBody();
+        });
+    }
 }
