@@ -5,7 +5,7 @@ import com.o0u0o.house.hsrv.model.Community;
 import com.o0u0o.house.hsrv.model.House;
 import com.o0u0o.house.hsrv.model.HouseUser;
 import com.o0u0o.house.hsrv.model.UserMsg;
-import org.mapstruct.Mapper;
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;

@@ -2,6 +2,7 @@ package com.o0u0o.house.hsrv.service.impl;
 
 import com.o0u0o.house.hsrv.service.RecommendService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 /**
