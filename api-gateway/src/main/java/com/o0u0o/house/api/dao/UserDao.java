@@ -60,6 +60,32 @@ public class UserDao {
         return response.getCode() == 0;
     }
 
+    /**
+     * <h2>根据ID获取经纪人</h2>
+     * @param id 经纪人ID
+     * @return Agency
+     */
+    public Agency getAgencyById(Integer id) {
+        return Rests.exc(() -> {
+            String url = Rests.toUrl(userServiceName, "/agency/agencyDetail?id=" + id);
+            ResponseEntity<RestResponse<Agency>> responseEntity =
+                    rest.get(url, new ParameterizedTypeReference<RestResponse<Agency>>() {});
+            return responseEntity.getBody();
+        }).getResult();
+    }
+
+    /**
+     * <h2>新增经纪人</h2>
+     * @param agency 经纪人实体
+     */
+    public void addAgency(Agency agency) {
+        Rests.exc(() -> {
+            String url = Rests.toUrl(userServiceName, "/agency/add");
+            ResponseEntity<RestResponse<Object>> responseEntity =
+                    rest.post(url, agency,new ParameterizedTypeReference<RestResponse<Object>>() {});
+            return responseEntity.getBody();
+        });
+    }
 
     //TODO
     public List<Agency> getAllAgency() {

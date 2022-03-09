@@ -27,4 +27,12 @@ public class AgencyService {
         return userDao.getAllAgency();
     }
 
+    /**
+     * <h2>添加经纪人</h2>
+     * @param agency
+     */
+    public void add(Agency agency) {
+        userDao.addAgency(agency);
+    }
+
 }
