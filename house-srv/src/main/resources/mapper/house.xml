@@ -120,6 +120,7 @@
             count(id)
         from
             house a
+        <include refid="houseCondition" />
     </select>
 
     <update id="updateHouse">

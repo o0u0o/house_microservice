@@ -51,7 +51,8 @@ public class User {
     /** 新密码 用于修改密码使用 */
     private String newPassword;
 
-    private String key; // 激活码
+    /** 激活码 */
+    private String key;
 
     private Long agencyId; // 经纪机构的ID
 
@@ -62,5 +63,6 @@ public class User {
 
     private String enableUrl;
 
-    private String agencyName; // 经纪人姓名
+    /** 经纪人姓名 */
+    private String agencyName;
 }

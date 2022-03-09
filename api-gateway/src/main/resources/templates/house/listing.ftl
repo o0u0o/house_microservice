@@ -14,7 +14,7 @@
         <!-- Breadcrumb -->
         <div class="container">
             <ol class="breadcrumb">
-                <li><a href="#">Home</a></li>
+                <li><a href="#">首页</a></li>
                 <li class="active">房产列表</li>
             </ol>
         </div>
@@ -67,17 +67,17 @@
                                         </p>
 
                                         <dl>
-                                            <dt>Status:</dt>
-                                                <dd>Sale</dd>
-                                            <dt>Area:</dt>
+                                            <dt>状态:</dt>
+                                                <dd>销售</dd>
+                                            <dt>面积:</dt>
                                                 <dd>${house.area} m<sup>2</sup></dd>
-                                            <dt>Beds:</dt>
+                                            <dt>卧室:</dt>
                                                 <dd>${house.beds}</dd>
-                                            <dt>Baths:</dt>
+                                            <dt>卫生间:</dt>
                                                 <dd>${house.baths}</dd>
                                         </dl>
                                     </aside>
-                                    <a href="/house/detail?id=${house.id}" class="link-arrow">Read More</a>
+                                    <a href="/house/detail?id=${house.id}" class="link-arrow">了解更多</a>
                                 </div>
                             </div>
                         </#list>

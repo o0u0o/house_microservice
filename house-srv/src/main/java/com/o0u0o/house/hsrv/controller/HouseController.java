@@ -60,14 +60,14 @@ public class HouseController {
      * @param userMsg
      * @return
      */
-    @RequestMapping("addUserMsg")
-    public RestResponse<Object> houseMsg(@RequestBody UserMsg userMsg){
-        houseService.addUserMsg(userMsg);
-        return RestResponse.success();
-    }
+//    @RequestMapping("addUserMsg")
+//    public RestResponse<Object> houseMsg(@RequestBody UserMsg userMsg){
+//        houseService.addUserMsg(userMsg);
+//        return RestResponse.success();
+//    }
 
     /**
-     * <h1>房产评分</h1>
+     * <h2>房产评分</h2>
      * @param rating
      * @param id
      * @return
@@ -80,7 +80,7 @@ public class HouseController {
     }
 
     /**
-     * 房产新增
+     * <h2>房产新增</h2>
      * @param house
      * @return
      */

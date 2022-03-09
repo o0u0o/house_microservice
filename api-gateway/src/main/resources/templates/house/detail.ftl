@@ -14,8 +14,8 @@
         <!-- Breadcrumb -->
         <div class="container">
             <ol class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li class="active">Property Detail</li>
+                <li><a href="#">首页</a></li>
+                <li class="active">房产详情</li>
             </ol>
         </div>
         <!-- end Breadcrumb -->

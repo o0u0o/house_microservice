@@ -15,6 +15,7 @@
         <module>eureka-sever</module>
         <module>house-srv</module>
         <module>user-srv</module>
+        <module>comment-srv</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

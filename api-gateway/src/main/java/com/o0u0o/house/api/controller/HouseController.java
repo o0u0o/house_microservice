@@ -56,10 +56,10 @@ public class HouseController {
         return "/house/listing";
     }
 
-    @RequestMapping(value="house/detail",method={RequestMethod.POST,RequestMethod.GET})
-    public String houseDetail(long id,ModelMap modelMap){
+    @RequestMapping(value="house/detail", method={RequestMethod.POST,RequestMethod.GET})
+    public String houseDetail(long id, ModelMap modelMap){
         House house = houseService.queryOneHouse(id);
-        List<Comment> comments = commentService.getHouseComments(id);
+//        List<Comment> comments = commentService.getHouseComments(id);
         List<House> rcHouses =  houseService.getHotHouse(CommonConstants.RECOM_SIZE);
         if (house.getUserId() != null) {
             if (!Objects.equal(0L, house.getUserId())) {
@@ -68,7 +68,7 @@ public class HouseController {
         }
         modelMap.put("house", house);
         modelMap.put("recomHouses", rcHouses);
-        modelMap.put("commentList", comments);
+//        modelMap.put("commentList", comments);
         return "/house/detail";
     }
 

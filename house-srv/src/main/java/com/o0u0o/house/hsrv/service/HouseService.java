@@ -45,7 +45,7 @@ public interface HouseService {
      */
     List<House> queryAndSetImg(House query, LimitOffset build);
 
-    void addUserMsg(UserMsg userMsg);
+//    void addUserMsg(UserMsg userMsg);
 
     void updateRating(Long id, Double rating);
 }

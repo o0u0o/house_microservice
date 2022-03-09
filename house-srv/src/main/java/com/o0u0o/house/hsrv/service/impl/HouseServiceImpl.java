@@ -59,14 +59,14 @@ public class HouseServiceImpl implements HouseService {
         return houses;
     }
 
-    @Override
-    public void addUserMsg(UserMsg userMsg) {
-        BeanHelper.onInsert(userMsg);
-        BeanHelper.setDefaultProp(userMsg, UserMsg.class);
-        houseMapper.insertUserMsg(userMsg);
-        User user = userDao.getAgentDetail(userMsg.getAgentId());
-        mailService.sendSimpleMail("来自用户" + userMsg.getEmail(), userMsg.getMsg(), user.getEmail());
-    }
+//    @Override
+//    public void addUserMsg(UserMsg userMsg) {
+//        BeanHelper.onInsert(userMsg);
+//        BeanHelper.setDefaultProp(userMsg, UserMsg.class);
+//        houseMapper.insertUserMsg(userMsg);
+//        User user = userDao.getAgentDetail(userMsg.getAgentId());
+//        mailService.sendSimpleMail("来自用户" + userMsg.getEmail(), userMsg.getMsg(), user.getEmail());
+//    }
 
     @Override
     public void updateRating(Long id, Double rating) {

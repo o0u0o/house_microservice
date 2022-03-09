@@ -2,7 +2,7 @@ package com.o0u0o.house.hsrv.dao;
 
 import com.o0u0o.house.hsrv.common.RestResponse;
 import com.o0u0o.house.hsrv.common.utils.Rests;
-import com.o0u0o.house.hsrv.config.GenericRest;
+//import com.o0u0o.house.hsrv.config.GenericRest;
 import com.o0u0o.house.hsrv.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,21 +18,21 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class UserDao {
-
-    @Autowired
-    private GenericRest rest;
-
-
-    @Value("${user.service.name}")
-    private String userServiceName;
-
-    public User getAgentDetail(Long agentId) {
-        RestResponse<User> response = Rests.exc(() -> {
-            String url = Rests.toUrl(userServiceName, "/agency/agentDetail" + "?id=" + agentId);
-            ResponseEntity<RestResponse<User>> responseEntity = rest.get(url, new ParameterizedTypeReference<RestResponse<User>>() {});
-            return responseEntity.getBody();
-        });
-        return response.getResult();
-    }
+//
+//    @Autowired
+//    private GenericRest rest;
+//
+//
+//    @Value("${user.service.name}")
+//    private String userServiceName;
+//
+//    public User getAgentDetail(Long agentId) {
+//        RestResponse<User> response = Rests.exc(() -> {
+//            String url = Rests.toUrl(userServiceName, "/agency/agentDetail" + "?id=" + agentId);
+//            ResponseEntity<RestResponse<User>> responseEntity = rest.get(url, new ParameterizedTypeReference<RestResponse<User>>() {});
+//            return responseEntity.getBody();
+//        });
+//        return response.getResult();
+//    }
 
 }
