@@ -29,14 +29,23 @@ public class HouseDao {
     @Value("${house.service.name}")
     private String houseServiceName;
 
+    /**
+     * <h1>获取房产(远程调用房产服务)</h1>
+     * @param query
+     * @param limit
+     * @param offset
+     * @return
+     */
     public ListResponse<House> getHouses(House query, Integer limit, Integer offset) {
         RestResponse<ListResponse<House>> resp =  Rests.exc(() ->{
             HouseQueryReq req = new HouseQueryReq();
             req.setLimit(limit);
             req.setOffset(offset);
             req.setQuery(query);
+            //构建url
             String url = Rests.toUrl(houseServiceName, "/house/list");
-            ResponseEntity<RestResponse<ListResponse<House>>> responseEntity = rest.post(url,req,new ParameterizedTypeReference<RestResponse<ListResponse<House>>>() {});
+            //发起调用
+            ResponseEntity<RestResponse<ListResponse<House>>> responseEntity = rest.post(url, req, new ParameterizedTypeReference<RestResponse<ListResponse<House>>>() {});
             return responseEntity.getBody();
         });
         return resp.getResult();
@@ -65,6 +74,19 @@ public class HouseDao {
         return Rests.exc(() ->{
             String url = Rests.toUrl(houseServiceName, "/house/hot" + "?size="+recomSize);
             ResponseEntity<RestResponse<List<House>>> responseEntity =  rest.get(url, new ParameterizedTypeReference<RestResponse<List<House>>>() {});
+            return responseEntity.getBody();
+        }).getResult();
+    }
+
+    /**
+     * <h2>查询单个房产</h2>
+     * @param id
+     * @return
+     */
+    public House getOneHouse(Long id){
+        return Rests.exc(()->{
+            String url = Rests.toUrl(houseServiceName, "/house/detail?id=" + id);
+            ResponseEntity<RestResponse<House>> responseEntity = rest.get(url, new ParameterizedTypeReference<RestResponse<House>>() {});
             return responseEntity.getBody();
         }).getResult();
     }

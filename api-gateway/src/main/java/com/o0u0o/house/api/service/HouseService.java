@@ -50,11 +50,20 @@ public class HouseService {
     /**
      * 查询单个房屋信息（使用Feign）
      * @param id 房屋ID
+     * @return House
+     */
+//    public House queryOneHouse(long id){
+//        RestResponse<House> response = houseClient.houseDetail(id);
+//        return response.getResult();
+//    }
+
+    /**
+     * 查询单个房屋信息
+     * @param id
      * @return
      */
-    public House queryOneHouse(long id){
-        RestResponse<House> response = houseClient.houseDetail(id);
-        return response.getResult();
+    public House queryOneHouse(Long id){
+        return houseDao.getOneHouse(id);
     }
 
     /**
@@ -66,10 +75,10 @@ public class HouseService {
     }
 
     /**
-     * 查询房产
+     * <h1>查询房产</h1>
      * @param query
      * @param build
-     * @return
+     * @return PageData<House>
      */
     public PageData<House> queryHouse(House query, PageParams build) {
         ListResponse<House> result = houseDao.getHouses(query,build.getLimit(),build.getOffset());
