@@ -3,7 +3,8 @@ server:
 
 spring:
   application:
-    name: house  # 应用名为house
+    # 应用名为house
+    name: house
   datasource:
     #阿里巴巴连接池
     type: com.alibaba.druid.pool.DruidDataSource

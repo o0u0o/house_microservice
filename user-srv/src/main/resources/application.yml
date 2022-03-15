@@ -3,7 +3,8 @@ server:
 
 spring:
   application:
-    name: user  # 应用名为user
+    # 应用名为user
+    name: user
   datasource:
     #阿里巴巴连接池
     type: com.alibaba.druid.pool.DruidDataSource
@@ -50,12 +51,23 @@ mybatis:
 file:
   prefix: 127.0.0.1:8083/static/imgs
 
+house:
+  service:
+    name: house
+user:
+  service:
+    name: user
+comment:
+  service:
+    name: comment
+
 # 配置logbook #日志级别为info
 logbook:
   write:
     level: info
   format:
     style: http
+
 # log4j2配置
 logging:
   config: classpath:log4j2.xml

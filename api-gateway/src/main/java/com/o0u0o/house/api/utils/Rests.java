@@ -66,9 +66,9 @@ public final class Rests {
         try {
             result = callable.call();
         } catch (Exception e) {
-            throw new RestException("sendReq error by " + e.getMessage());
+            throw new RestException("sendReq error by :" + e.getMessage());
         }finally {
-            LOGGER.info("result={}",result);
+            LOGGER.info("result={}", result);
         }
         return result;
 
