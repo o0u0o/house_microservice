@@ -27,14 +27,14 @@ public interface CommentService {
     /**
      * <h2>查询房产评论</h2>
      * @param id
-     * @return
+     * @return List<Comment>
      */
     List<Comment> getHouseComments(long id);
 
     /**
      * <h2>获取博客评论</h2>
-     * @param id
-     * @return
+     * @param id 博客ID
+     * @return List<Comment>
      */
     List<Comment> getBlogComments(int id);
 }

@@ -15,8 +15,8 @@
         <!-- Breadcrumb -->
         <div class="container">
             <ol class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li class="active">Blog Listing</li>
+                <li><a href="#">首页</a></li>
+                <li class="active">百科列表</li>
             </ol>
         </div>
         <!-- end Breadcrumb -->
@@ -26,7 +26,7 @@
                 <!-- Content -->
                 <div class="col-md-9 col-sm-9">
                     <section id="content">
-                        <header><h1>博客列表</h1></header>
+                        <header><h1>百科列表</h1></header>
                         
                      <#list ps.list as blog> 
                         <article class="blog-post">
@@ -43,7 +43,7 @@
                             <p>
                                ${blog.digest}
                             </p>
-                            <a href="/blog/detail?id=${blog.id}" class="link-arrow">Read More</a>
+                            <a href="/blog/detail?id=${blog.id}" class="link-arrow">阅读更多</a>
                         </article><!-- /.blog-post -->
                     </#list>
 

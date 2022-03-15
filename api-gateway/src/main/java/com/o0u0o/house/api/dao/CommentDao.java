@@ -41,6 +41,11 @@ public class CommentDao {
         });
     }
 
+    /**
+     * <h2>评论列表</>h2
+     * @param commentReq
+     * @return
+     */
     public List<Comment> listComment(CommentReq commentReq) {
         return Rests.exc(() ->{
             String url = Rests.toUrl(commentServiceName, "/comment/list");

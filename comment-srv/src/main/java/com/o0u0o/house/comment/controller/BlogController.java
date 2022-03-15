@@ -32,4 +32,9 @@ public class BlogController {
         return RestResponse.success(ListResponse.build(pair.getKey(), pair.getValue()));
     }
 
+    @RequestMapping("one")
+    public RestResponse<Blog> one(Integer id){
+        Blog blog = blogService.queryOneBlog(id);
+        return RestResponse.success(blog);
+    }
 }

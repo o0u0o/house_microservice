@@ -20,4 +20,11 @@ public interface BlogService {
      * @return
      */
     Pair<List<Blog>, Long> queryBlog(Blog blog, Integer limit, Integer offset);
+
+    /**
+     * <h2>查询一条百科</h2>
+     * @param id
+     * @return
+     */
+    Blog queryOneBlog(Integer id);
 }

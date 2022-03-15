@@ -44,6 +44,22 @@ public class BlogServiceImpl implements BlogService {
     }
 
     /**
+     * <h2>查询一条百科</h2>
+     * @param id 百科id
+     * @return
+     */
+    @Override
+    public Blog queryOneBlog(Integer id) {
+        Blog query = new Blog();
+        query.setId(id);
+        List<Blog> blogs = blogMapper.selectBlog(query, LimitOffset.build(1, 0));
+        if (!blogs.isEmpty()) {
+            return blogs.get(0);
+        }
+        return null;
+    }
+
+    /**
      *
      * @param blogs
      */

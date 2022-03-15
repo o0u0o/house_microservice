@@ -15,8 +15,9 @@
         <!-- Breadcrumb -->
         <div class="container">
             <ol class="breadcrumb">
-                <li><a href="/blog/list">Home</a></li>
-                <li class="active">Blog Detail</li>
+<#--                <li><a href="/blog/list">首页</a></li>-->
+                <li><a href="/index">首页</a></li>
+                <li class="active">百科详情</li>
             </ol>
         </div>
         <!-- end Breadcrumb -->
@@ -26,7 +27,7 @@
                 <!-- Content -->
                 <div class="col-md-9 col-sm-9">
                     <section id="content">
-                        <header><h1>Article Detail</h1></header>
+                        <header><h1>文章详情</h1></header>
                         <article class="blog-post">
                             <header><a href="/blog/detail"><h2>${blog.title}</h2></a></header>
                             <figure class="meta">

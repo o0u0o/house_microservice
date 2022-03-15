@@ -39,11 +39,17 @@ public class BlogController {
         return "/blog/listing";
     }
 
+    /**
+     * <h2>百科详情</h2>
+     * @param id
+     * @param modelMap
+     * @return
+     */
     @RequestMapping(value="blog/detail",method={RequestMethod.POST,RequestMethod.GET})
     public String blogDetail(int id,ModelMap modelMap){
         Blog blog = commentService.queryOneBlog(id);
         List<Comment> comments = commentService.getBlogComments(id);
-        List<House> houses =  houseService.getHotHouse(CommonConstants.RECOM_SIZE);
+        List<House> houses = houseService.getHotHouse(CommonConstants.RECOM_SIZE);
         modelMap.put("recomHouses", houses);
         modelMap.put("blog", blog);
         modelMap.put("commentList", comments);

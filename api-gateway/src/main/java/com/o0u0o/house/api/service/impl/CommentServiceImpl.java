@@ -35,7 +35,7 @@ public class CommentServiceImpl implements CommentService {
      */
     @Override
     public PageData<Blog> queryBlogs(Blog query, PageParams build) {
-        Pair<List<Blog>, Long> pair = commentDao.getBlogs(query,build.getLimit(),build.getOffset());
+        Pair<List<Blog>, Long> pair = commentDao.getBlogs(query, build.getLimit(), build.getOffset());
         return PageData.buildPage(pair.getKey(), pair.getValue(), build.getPageSize(), build.getPageNum());
     }
 

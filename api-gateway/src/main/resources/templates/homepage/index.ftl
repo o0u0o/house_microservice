@@ -175,7 +175,7 @@
         </section><!-- /#testimonials -->
         <section id="partners" class="block">
             <div class="container">
-                <header class="section-title"><h2>Our Partners</h2></header>
+                <header class="section-title"><h2>我们的合作伙伴</h2></header>
                 <div class="logos">
                     <div class="logo"><a href=""><img src="/static/assets/img/logo-partner-01.png" alt=""></a></div>
                     <div class="logo"><a href=""><img src="/static/assets/img/logo-partner-02.png" alt=""></a></div>
