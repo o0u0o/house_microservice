@@ -3,7 +3,6 @@ package com.o0u0o.house.user;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * <h1>用户服务启动类</h1>
