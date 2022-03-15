@@ -1,10 +1,7 @@
 package com.o0u0o.house.api.controller;
 
 import com.google.common.base.Objects;
-import com.o0u0o.house.api.common.CommonConstants;
-import com.o0u0o.house.api.common.PageData;
-import com.o0u0o.house.api.common.PageParams;
-import com.o0u0o.house.api.common.ResultMsg;
+import com.o0u0o.house.api.common.*;
 import com.o0u0o.house.api.model.Comment;
 import com.o0u0o.house.api.model.UserMsg;
 import com.o0u0o.house.api.service.AgencyService;
@@ -17,6 +14,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -26,6 +24,7 @@ import java.util.List;
  * @Date 2020/4/2 10:39 下午
  * @Descripton: 房产接口
  **/
+@RequestMapping("house")
 @Controller
 public class HouseController {
 
@@ -46,7 +45,7 @@ public class HouseController {
      * @param modelMap
      * @return
      */
-    @RequestMapping(value = "house/list", method = {RequestMethod.POST, RequestMethod.GET})
+    @RequestMapping(value = "list", method = {RequestMethod.POST, RequestMethod.GET})
     public String houseList(Integer pageSize, Integer pageNum, House query, ModelMap modelMap){
         PageData<House> ps = houseService.queryHouse(query, PageParams.build(pageSize, pageNum));
         List<House> rcHouses =  houseService.getHotHouse(CommonConstants.RECOM_SIZE);
@@ -56,7 +55,7 @@ public class HouseController {
         return "/house/listing";
     }
 
-    @RequestMapping(value="house/detail", method={RequestMethod.POST,RequestMethod.GET})
+    @RequestMapping(value="detail", method={RequestMethod.POST,RequestMethod.GET})
     public String houseDetail(long id, ModelMap modelMap){
         House house = houseService.queryOneHouse(id);
 //        List<Comment> comments = commentService.getHouseComments(id);
@@ -72,14 +71,14 @@ public class HouseController {
         return "/house/detail";
     }
 
-    @RequestMapping(value="house/leaveMsg",method={RequestMethod.POST,RequestMethod.GET})
+    @RequestMapping(value="leaveMsg",method={RequestMethod.POST,RequestMethod.GET})
     public String houseMsg(UserMsg userMsg){
         houseService.addUserMsg(userMsg);
         return "redirect:/house/detail?id=" + userMsg.getHouseId() + "&" + ResultMsg.successMsg("留言成功").asUrlParams();
     }
 
     @ResponseBody
-    @RequestMapping(value="house/rating",method={RequestMethod.POST,RequestMethod.GET})
+    @RequestMapping(value="rating",method={RequestMethod.POST,RequestMethod.GET})
     public ResultMsg houseRate(Double rating, Long id){
         houseService.updateRating(id, rating);
         return ResultMsg.success();

@@ -30,17 +30,19 @@ public class RecommendServiceImpl implements RecommendService {
 
 
     /**
-     * 新增热度
+     * <h2>累计热度</h2>
      * @param id
      */
     @Override
     public void increaseHot(long id) {
+        //支持分数倒序 当用户点击 增1
         redisTemplate.opsForZSet().incrementScore(HOT_HOUSE_KEY, ""+id, 1.0D);
+        // 只保留前10个热门房产，其余的remove(移除)
         redisTemplate.opsForZSet().removeRange(HOT_HOUSE_KEY, 0, -11);
     }
 
     /**
-     * 获取热门房产
+     * <h2>获取热门房产</h2>
      * @param size 数量
      * @return List<House> 房产列表
      */
@@ -59,7 +61,7 @@ public class RecommendServiceImpl implements RecommendService {
      * @return List<House> 房产列表
      */
     @Override
-    public List<House> getLastest() {
+    public List<House> getLatest() {
         House query = new House();
         query.setSort("create_time");
         return houseService.queryAndSetImg(query, LimitOffset.build(8, 0));

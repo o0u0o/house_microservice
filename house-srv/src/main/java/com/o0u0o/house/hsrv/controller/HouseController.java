@@ -59,7 +59,7 @@ public class HouseController {
     @RequestMapping("detail")
     public RestResponse<House> houseDetail(long id){
         House house = houseService.queryOneHouse(id);
-        //todo recommendService.increaseHot(id);
+        recommendService.increaseHot(id);
         return RestResponse.success(house);
     }
 
@@ -125,11 +125,11 @@ public class HouseController {
     /**
      * 热门房产
      * @param size
-     * @return
+     * @return RestResponse<List<House>>
      */
     @RequestMapping("hot")
     public RestResponse<List<House>> getHotHouse(Integer size){
-        List<House> list =   recommendService.getHotHouse(size);
+        List<House> list = recommendService.getHotHouse(size);
         return RestResponse.success(list);
     }
 
@@ -139,6 +139,6 @@ public class HouseController {
      */
     @RequestMapping("lastest")
     public RestResponse<List<House>> getLastest(){
-        return RestResponse.success(recommendService.getLastest());
+        return RestResponse.success(recommendService.getLatest());
     }
 }

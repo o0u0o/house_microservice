@@ -26,7 +26,7 @@ public interface RecommendService {
 
     /**
      * <h2>获取最新房产</h2>
-     * @return
+     * @return List<House>
      */
-    List<House> getLastest();
+    List<House> getLatest();
 }
