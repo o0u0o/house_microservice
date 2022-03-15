@@ -18,7 +18,7 @@ public interface CommentService {
      * <h2>查询博客论</h2>
      * @param query
      * @param build
-     * @return
+     * @return PageData<Blog>
      */
     PageData<Blog> queryBlogs(Blog query, PageParams build);
 

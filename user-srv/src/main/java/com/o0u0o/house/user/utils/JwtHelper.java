@@ -36,8 +36,10 @@ public class JwtHelper {
         //使用 HMAC256 算法
         try {
             Algorithm algorithm = Algorithm.HMAC256(SECRET);
-            JWTCreator.Builder builder = JWT.create().withIssuer(ISSUER) //创建发布者
-                    .withExpiresAt(DateUtils.addDays(new Date(), 1));   //设置过期时间为1天
+            //创建发布者
+            JWTCreator.Builder builder = JWT.create().withIssuer(ISSUER)
+                    //设置过期时间为1天
+                    .withExpiresAt(DateUtils.addDays(new Date(), 1));
 
             claims.forEach((k, v) -> builder.withClaim(k, v));
             return builder.sign(algorithm).toString();
