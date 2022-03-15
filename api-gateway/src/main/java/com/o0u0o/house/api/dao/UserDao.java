@@ -57,10 +57,35 @@ public class UserDao {
         }
     }
 
+
+    @HystrixCommand
+    public List<Agency> getAllAgency() {
+        return Rests.exc(() ->{
+            String url = Rests.toUrl(userServiceName, "/agency/list");
+            ResponseEntity<RestResponse<List<Agency>>> responseEntity =
+                    rest.get(url, new ParameterizedTypeReference<RestResponse<List<Agency>>>() {});
+            return responseEntity.getBody();
+        }).getResult();
+    }
+
+    /**
+     * 更新用户
+     * @param user
+     * @return User
+     */
+    public User updateUser(User user) {
+        return Rests.exc(() ->{
+            String url = Rests.toUrl(userServiceName, "/user/update");
+            ResponseEntity<RestResponse<User>> responseEntity =
+                    rest.post(url, user, new ParameterizedTypeReference<RestResponse<User>>() {});
+            return responseEntity.getBody();
+        }).getResult();
+    }
+
     @HystrixCommand
     public User getAgentById(Long id) {
         return Rests.exc(() ->{
-            String url = Rests.toUrl(userServiceName, "/agency/agentDetail?id=" +id);
+            String url = Rests.toUrl(userServiceName, "/agency/agentDetail?id=" + id);
             ResponseEntity<RestResponse<User>> responseEntity =
                     rest.get(url, new ParameterizedTypeReference<RestResponse<User>>() {});
             return responseEntity.getBody();
@@ -119,11 +144,6 @@ public class UserDao {
                     rest.get(url,new ParameterizedTypeReference<RestResponse<ListResponse<User>>>() {});
             return responseEntity.getBody();
         }).getResult();
-    }
-
-    //TODO
-    public List<Agency> getAllAgency() {
-        return null;
     }
 
     /**

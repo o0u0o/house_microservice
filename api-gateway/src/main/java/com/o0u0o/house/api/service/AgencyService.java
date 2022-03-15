@@ -36,6 +36,11 @@ public class AgencyService {
         userDao.addAgency(agency);
     }
 
+    /**
+     * <h2>经纪人详情</h2>
+     * @param userId
+     * @return User
+     */
     public User getAgentDetail(Long userId) {
         return userDao.getAgentById(userId);
     }

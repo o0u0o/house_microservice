@@ -55,7 +55,7 @@ public class HouseController {
         return "/house/listing";
     }
 
-    @RequestMapping(value="detail", method={RequestMethod.POST,RequestMethod.GET})
+    @RequestMapping(value="detail", method={RequestMethod.POST, RequestMethod.GET})
     public String houseDetail(long id, ModelMap modelMap){
         House house = houseService.queryOneHouse(id);
 //        List<Comment> comments = commentService.getHouseComments(id);

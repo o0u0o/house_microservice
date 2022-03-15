@@ -5,7 +5,8 @@ spring:
   application:
     name: user  # 应用名为user
   datasource:
-    type: com.alibaba.druid.pool.DruidDataSource    #阿里巴巴连接池
+    #阿里巴巴连接池
+    type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://140.143.181.108:10151/house_user?characherEncoding=UTF-8
     username: house_cloud
@@ -24,7 +25,8 @@ spring:
     database: 1
     jedis:
       pool:
-        max-active: 5 #最大连接数为5
+        #最大连接数为5
+        max-active: 5
 
 
   # Spring Mail邮箱配置
@@ -35,7 +37,8 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://127.0.0.1:8666/eureka/    # 注册地址 和eureka-server一致
+      # 注册地址 和eureka-server一致
+      defaultZone: http://127.0.0.1:8666/eureka/
     healthcheck:
       enabled: true                                 # 将服务健康状态发送到注册中心
   instance:

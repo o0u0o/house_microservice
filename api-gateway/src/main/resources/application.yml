@@ -23,9 +23,11 @@ spring:
 # eureka配置
 eureka:
   client:
+    # api不需要注册到注册中心
+    register-with-eureka: false
     service-url:
       defaultZone: http://127.0.0.1:8666/eureka
-    register-with-eureka: false                         # api不需要注册到注册中心
+
 
 # Ribbon 客户端负载均衡配置
 #user:
