@@ -25,7 +25,7 @@ public class RestAutoConfig {
         /**
          * 支持负载均衡
          * @param httpClient
-         * @return
+         * @return RestTemplate
          */
         @Bean
         @LoadBalanced

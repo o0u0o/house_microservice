@@ -22,35 +22,35 @@ public class GenericRest {
     private RestTemplate lbRestTemplate;
 
     @Autowired
-    private RestTemplate plainRestTemplate;
+    private RestTemplate directRestTemplate;
 
     private static final  String directFlag = "direct://";
 
-    @SuppressWarnings({"rawtypes", "unchecked"})
-    public  <T> ResponseEntity<T> post(String url, Object reqBody, ParameterizedTypeReference<T> responseType){
-        Pair<RestTemplate, String> pair = getRestTemplate(url);
-        return pair.getLeft().exchange(pair.getRight(), HttpMethod.POST, new HttpEntity(reqBody),  responseType);
+    /**
+     * <h2>post请求</h2>
+     * @param url
+     * @param reqBody
+     * @param responseType
+     * @param <T>
+     * @return
+     */
+    public <T> ResponseEntity<T> post(String url, Object reqBody, ParameterizedTypeReference<T> responseType){
+        RestTemplate template = getRestTemplate(url);
+        url = url.replace(directFlag, "");
+        return template.exchange(url, HttpMethod.POST, new HttpEntity(reqBody), responseType);
     }
 
-    private  Pair<RestTemplate, String> getRestTemplate(String url) {
-        RestTemplate rest = lbRestTemplate;
-        if (url.contains(directFlag)) {
-            rest = plainRestTemplate;
-            url = url.replace("direct://", "");
+    public <T> ResponseEntity<T> get(String url, ParameterizedTypeReference<T> responseType){
+        RestTemplate template = getRestTemplate(url);
+        url = url.replace(directFlag, "");
+        return template.exchange(url, HttpMethod.GET, HttpEntity.EMPTY, responseType);
+    }
+
+    private RestTemplate getRestTemplate(String url){
+        if (url.contains(directFlag)){
+            return directRestTemplate;
+        }else {
+            return lbRestTemplate;
         }
-        return Pair.of(rest, url);
-    }
-
-    public  <T> ResponseEntity<T> get(String url, ParameterizedTypeReference<T> responseType){
-        Pair<RestTemplate, String> pair  = getRestTemplate(url);
-        return pair.getLeft().exchange(pair.getRight(),HttpMethod.GET, HttpEntity.EMPTY,responseType);
-    }
-
-    public RestTemplate getPlainRest(){
-        return plainRestTemplate;
-    }
-
-    public RestTemplate getLbRest(){
-        return lbRestTemplate;
     }
 }

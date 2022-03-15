@@ -28,6 +28,14 @@ public class GenericRest {
     /** 直连请求 */
     private static final String directFlag = "direct://";
 
+    /**
+     * <h2>post请求</h2>
+     * @param url
+     * @param reqBody
+     * @param responseType
+     * @param <T>
+     * @return
+     */
     public <T> ResponseEntity<T> post(String url, Object reqBody, ParameterizedTypeReference<T> responseType){
         RestTemplate template = getRestTemplate(url);
         url = url.replace(directFlag, "");
