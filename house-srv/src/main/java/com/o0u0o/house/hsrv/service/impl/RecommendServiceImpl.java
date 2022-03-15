@@ -48,6 +48,9 @@ public class RecommendServiceImpl implements RecommendService {
      */
     @Override
     public List<House> getHotHouse(Integer size) {
+        if (size == null){
+            size = 3;
+        }
         //bug修复，根据热度从高到底排序
         Set<String> idSet =  redisTemplate.opsForZSet().reverseRange(HOT_HOUSE_KEY, 0, -1);
         List<Long> ids = idSet.stream().map(b -> Long.parseLong(b)).collect(Collectors.toList());
@@ -63,7 +66,9 @@ public class RecommendServiceImpl implements RecommendService {
     @Override
     public List<House> getLatest() {
         House query = new House();
+        //根据时间倒序查询
         query.setSort("create_time");
+        //查询出8个最新房产
         return houseService.queryAndSetImg(query, LimitOffset.build(8, 0));
     }
 }
