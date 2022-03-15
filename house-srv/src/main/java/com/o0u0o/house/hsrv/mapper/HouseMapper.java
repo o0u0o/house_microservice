@@ -43,6 +43,13 @@ public interface HouseMapper {
 
     int updateHouse(House house);
 
+    /**
+     * 查询用不的房产
+     * @param userID
+     * @param id
+     * @param type
+     * @return
+     */
     HouseUser selectHouseUser(@Param("userId") long userID,
                               @Param("id") long id,
                               @Param("type") int type);

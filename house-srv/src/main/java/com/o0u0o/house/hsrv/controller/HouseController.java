@@ -1,9 +1,12 @@
 package com.o0u0o.house.hsrv.controller;
 
+import com.google.common.base.Objects;
 import com.o0u0o.house.hsrv.common.CommonConstants;
 import com.o0u0o.house.hsrv.common.LimitOffset;
 import com.o0u0o.house.hsrv.common.RestCode;
+import com.o0u0o.house.hsrv.common.enums.HouseUserType;
 import com.o0u0o.house.hsrv.model.UserMsg;
+import com.o0u0o.house.hsrv.model.req.HouseUserReq;
 import com.o0u0o.house.hsrv.service.HouseService;
 import com.o0u0o.house.hsrv.service.RecommendService;
 import org.apache.commons.lang3.tuple.Pair;
@@ -35,7 +38,7 @@ public class HouseController {
     private RecommendService recommendService;
 
     /**
-     * 房产列表
+     * <h2>房产列表</h2>
      * @param req
      * @return RestResponse<ListResponse<House>>
      */
@@ -48,23 +51,28 @@ public class HouseController {
         return RestResponse.success(ListResponse.build(pair.getKey(), pair.getValue()));
     }
 
+    /**
+     * <h2>房产详情</h2>
+     * @param id
+     * @return
+     */
     @RequestMapping("detail")
     public RestResponse<House> houseDetail(long id){
         House house = houseService.queryOneHouse(id);
-        recommendService.increaseHot(id);
+        //todo recommendService.increaseHot(id);
         return RestResponse.success(house);
     }
 
     /**
-     * <h1>添加用户留言</h1>
+     * <h2>添加用户留言</h2>
      * @param userMsg
      * @return
      */
-//    @RequestMapping("addUserMsg")
-//    public RestResponse<Object> houseMsg(@RequestBody UserMsg userMsg){
-//        houseService.addUserMsg(userMsg);
-//        return RestResponse.success();
-//    }
+    @RequestMapping("addUserMsg")
+    public RestResponse<Object> houseMsg(@RequestBody UserMsg userMsg){
+        houseService.addUserMsg(userMsg);
+        return RestResponse.success();
+    }
 
     /**
      * <h2>房产评分</h2>
@@ -91,6 +99,26 @@ public class HouseController {
             return RestResponse.error(RestCode.ILLEGAL_PARAMS);
         }
         houseService.addHouse(house,house.getUserId());
+        return RestResponse.success();
+    }
+
+    /**
+     * 绑定/解绑房产
+     * @param req
+     * @return
+     */
+    @RequestMapping("bind")
+    public RestResponse<Object> delsale(@RequestBody HouseUserReq req){
+        Integer bindType = req.getBindType();
+        HouseUserType houseUserType = Objects.equal(bindType, 1) ? HouseUserType.SALE : HouseUserType.BOOKMARK;
+        if (req.isUnBind()) {
+            //解绑操作
+            houseService.unbindUser2Houser(req.getHouseId(),req.getUserId(),houseUserType);
+        }
+        else {
+            //绑定操作
+            houseService.bindUser2House(req.getHouseId(), req.getUserId(), houseUserType);
+        }
         return RestResponse.success();
     }
 
