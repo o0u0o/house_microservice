@@ -6,13 +6,14 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * <h1>用户服务启动类</h1>
  */
 @SpringBootApplication
 @EnableDiscoveryClient
-//@EnableSwagger2
+@EnableSwagger2
 //@RibbonClient(name = "user", configuration = NewRuleConfig.class)
 public class UserServiceApplication {
 
