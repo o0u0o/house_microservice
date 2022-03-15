@@ -1,7 +1,10 @@
 package com.o0u0o.house.api.service;
 
+import com.o0u0o.house.api.common.PageData;
+import com.o0u0o.house.api.common.PageParams;
 import com.o0u0o.house.api.dao.UserDao;
 import com.o0u0o.house.api.model.Agency;
+import com.o0u0o.house.api.model.ListResponse;
 import com.o0u0o.house.api.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,6 +37,17 @@ public class AgencyService {
      */
     public void add(Agency agency) {
         userDao.addAgency(agency);
+    }
+
+    /**
+     * <h2>获取所有经纪人</h2>
+     * @param pageParams
+     * @return PageData<User>
+     */
+    public PageData<User> getAllAgent(PageParams pageParams) {
+        ListResponse<User> result = userDao.getAgentList(pageParams.getLimit(),pageParams.getOffset());
+        Long  count = result.getCount();
+        return PageData.<User>buildPage(result.getList(), count, pageParams.getPageSize(), pageParams.getPageNum());
     }
 
     /**

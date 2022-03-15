@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 /**
+ * <h1>ApiGateway启动类</h1>
  * 注解 @EnableFeignClients 使用feign 时
  */
 @SpringBootApplication
