@@ -56,11 +56,11 @@ public class BlogController {
     @RequestMapping(value="blog/detail",method={RequestMethod.POST,RequestMethod.GET})
     public String blogDetail(int id, ModelMap modelMap){
         Blog blog = commentService.queryOneBlog(id);
-//        List<Comment> comments = commentService.getBlogComments(id);
+        List<Comment> comments = commentService.getBlogComments(id);
         List<House> houses = houseService.getHotHouse(CommonConstants.RECOM_SIZE);
         modelMap.put("recomHouses", houses);
         modelMap.put("blog", blog);
-// todo       modelMap.put("commentList", comments);
+        modelMap.put("commentList", comments);
         return "/blog/detail";
     }
 }

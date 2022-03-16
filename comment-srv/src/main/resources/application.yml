@@ -42,6 +42,13 @@ eureka:
 mybatis:
   config-location: classpath:/mybatis/mybatis-config.xml
 
+house:
+  service:
+    name: house
+user:
+  service:
+    name: user
+
 # 配置logbook #日志级别为info
 logbook:
   write:
