@@ -59,8 +59,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     /**
-     * <h2>查询房产列表</h2>
-     *
+     * <h2>查询房产评论列表</h2>
      * @param houseId
      * @param size
      * @return
@@ -81,15 +80,27 @@ public class CommentServiceImpl implements CommentService {
     }
 
     /**
-     * <h2>查询百科列表</h2>
-     *
+     * <h2>查询评论百科列表</h2>
      * @param blogId
      * @param size
      * @return
      */
     @Override
     public List<Comment> getBlogComments(Integer blogId, Integer size) {
-        return null;
+        String key = "blog_comments_"+blogId + "_" + size;
+        String json = redisTemplate.opsForValue().get(key);
+        List<Comment> comments = JSON.parseObject(json,new TypeReference<List<Comment>>(){});
+        if (Strings.isNullOrEmpty(json)) {
+            comments = commentMapper.selectBlogComments(blogId,size);
+            redisTemplate.opsForValue().set(key, JSON.toJSONString(comments));
+            redisTemplate.expire(key, 5, TimeUnit.MINUTES);
+        }
+        comments.forEach(comment -> {
+            User user = userDao.getUserDetail(comment.getUserId());
+            comment.setUserName(user.getName());
+            comment.setAvatar(user.getAvatar());
+        });
+        return comments;
     }
 
 
