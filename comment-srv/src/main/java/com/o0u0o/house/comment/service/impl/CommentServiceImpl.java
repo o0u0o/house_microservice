@@ -5,6 +5,7 @@ import com.alibaba.fastjson.TypeReference;
 import com.google.common.base.Strings;
 import com.o0u0o.house.comment.common.BeanHelper;
 import com.o0u0o.house.comment.common.CommonConstants;
+import com.o0u0o.house.comment.dao.UserDao;
 import com.o0u0o.house.comment.mapper.CommentMapper;
 import com.o0u0o.house.comment.model.Comment;
 import com.o0u0o.house.comment.model.User;
