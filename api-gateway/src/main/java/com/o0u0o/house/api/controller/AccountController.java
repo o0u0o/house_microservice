@@ -23,7 +23,7 @@ public class AccountController {
 
     /**
      * <h2>忘记密码</h2>
-     * @param username
+     * @param username 用户名
      * @param modelMap
      * @return
      */
@@ -37,4 +37,20 @@ public class AccountController {
         return "/user/accounts/remember";
     }
 
+    /**
+     * <h2>重置密码</h2>
+     * @param key
+     * @param modelMap
+     * @return
+     */
+    @RequestMapping("accounts/reset")
+    public String reset(String key,ModelMap modelMap){
+        String email = accountService.getResetEmail(key);
+        if (StringUtils.isBlank(email)) {
+            return "redirect:/accounts/signin?" + ResultMsg.errorMsg("重置链接已过期");
+        }
+        modelMap.put("email", email);
+        modelMap.put("success_key", key);
+        return "/user/accounts/reset";
+    }
 }

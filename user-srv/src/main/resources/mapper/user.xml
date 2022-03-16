@@ -46,6 +46,13 @@
         where id = #{id}
     </select>
 
+    <select id="selectByEmail" resultType="user">
+        select <include refid="userField"/>
+        from   user
+        where  email = #{email}
+    </select>
+
+
     <insert id="insert">
 		INSERT into user(
 			name,

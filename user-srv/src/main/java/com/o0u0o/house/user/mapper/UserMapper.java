@@ -42,4 +42,11 @@ public interface UserMapper {
     //删除用户
     public int delete(String email);
 
+    /**
+     * <h2>通过邮箱查询用户</h2>
+     * @param email 邮箱
+     * @return User用户对象
+     */
+    User selectByEmail(String email);
+
 }

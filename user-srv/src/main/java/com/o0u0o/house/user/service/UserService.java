@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
 import java.util.List;
@@ -172,7 +173,8 @@ public class UserService {
      */
     private String renewToken(String token, String email){
         redisTemplate.opsForValue().set(email, token);
-        redisTemplate.expire(email, 30, TimeUnit.MINUTES);  //30分钟过期
+        //30分钟过期
+        redisTemplate.expire(email, 30, TimeUnit.MINUTES);
         return token;
     }
 
@@ -215,7 +217,6 @@ public class UserService {
         throw new UserException(UserException.Type.USER_NOT_LOGIN, "User Not Found" + email);
     }
 
-
     /**
      * 登出 Token 失效
      * @param token
@@ -223,5 +224,50 @@ public class UserService {
     public void invalidate(String token) {
         Map<String, String> map = JwtHelper.verifyToken(token);
         redisTemplate.delete(map.get("email"));
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    public User updateUser(User user) {
+        if (user.getEmail() == null) {
+            return null;
+        }
+        if (!Strings.isNullOrEmpty(user.getPassword()) ) {
+            user.setPassword(HashUtils.encryPassword(user.getPassword()));
+        }
+        userMapper.update(user);
+        return userMapper.selectByEmail(user.getEmail());
+    }
+
+    /**
+     * <h2>重置密码邮箱通知</h2>
+     * @param email
+     * @param url
+     */
+    public void resetNotify(String email,String url) {
+        String randomKey = "reset_" + org.apache.commons.lang.RandomStringUtils.randomAlphabetic(10);
+        redisTemplate.opsForValue().set(randomKey, email);
+        redisTemplate.expire(randomKey, 1,TimeUnit.HOURS);
+        String content = url +"?key="+  randomKey;
+        mailService.sendSimpleMail("房产平台重置密码邮件", content, email);
+
+    }
+
+    /**
+     * <h2>重置</h2>
+     * @param key 秘钥
+     * @param password 新密码
+     * @return
+     */
+    public User reset(String key, String password) {
+        String email = getResetKeyEmail(key);
+        User updateUser = new User();
+        updateUser.setEmail(email);
+        updateUser.setPassword(HashUtils.encryPassword(password));
+        userMapper.update(updateUser);
+        return getUserByEmail(email);
+    }
+
+    public String getResetKeyEmail(String key) {
+        return  redisTemplate.opsForValue().get(key);
     }
 }

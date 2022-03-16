@@ -110,4 +110,24 @@ public class AccountService {
     public void remember(String email){
         userDao.resetNotify(email,"http://" + domainName + "/accounts/reset");
     }
+
+    /**
+     * 重置密码操作
+     * @param key 秘钥
+     * @param password 密码
+     * @return
+     */
+    public User reset(String key,String password){
+        return userDao.reset(key,password);
+    }
+
+    /**
+     * <h2>根据邮箱重置密码</h2>
+     * @param key
+     * @return
+     */
+    public String getResetEmail(String key) {
+        String email = userDao.getEmail(key);
+        return email;
+    }
 }

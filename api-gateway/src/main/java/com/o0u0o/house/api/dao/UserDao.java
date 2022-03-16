@@ -41,6 +41,11 @@ public class UserDao {
     @Value("${user.service.name}")
     private String userServiceName;
 
+    /**
+     * <h2>获取用户列表</h2>
+     * @param query 查询参数
+     * @return List<User> 用户列表
+     */
     public List<User> getUserList(User query) {
         ResponseEntity<RestResponse<List<User>>> resultEntity = rest.post("http://" + userServiceName + "/user/getList",
                 query,
@@ -57,6 +62,39 @@ public class UserDao {
         }
     }
 
+    /**
+     * <h2>新增用户</h2>
+     * @param account
+     * @return User 用户对象
+     */
+    public User addUser(User account) {
+        String url = "http://"+ userServiceName +"/user/add";
+        ResponseEntity<RestResponse<User>> responseEntity = rest.post(url, account, new ParameterizedTypeReference<RestResponse<User>>() {});
+        RestResponse<User> restResponse = responseEntity.getBody();
+        if (restResponse.getCode() == 0){
+            return restResponse.getResult();
+        } else {
+            throw new IllegalStateException("Can not add");
+        }
+
+    }
+
+    /**
+     * <h2>用户鉴权</h2>
+     * @param user
+     * @return
+     */
+    //@Hystrix
+    public User authUser(User user) {
+        String url = "http://" + userServiceName + "/user/auth";
+        ResponseEntity<RestResponse<User>> responseEntity = rest.post(url, user, new ParameterizedTypeReference<RestResponse<User>>() {});
+        RestResponse<User> response = responseEntity.getBody();
+        if (response.getCode() == 0){
+            return response.getResult();
+        } else {
+            throw new IllegalStateException("Can not add user");
+        }
+    }
 
     @HystrixCommand
     public List<Agency> getAllAgency() {
@@ -135,7 +173,7 @@ public class UserDao {
      * <h2>获取经纪人列表</h2>
      * @param limit
      * @param offset
-     * @return
+     * @return ListResponse<User>
      */
     public ListResponse<User> getAgentList(Integer limit, Integer offset) {
         return Rests.exc(() -> {
@@ -146,39 +184,35 @@ public class UserDao {
         }).getResult();
     }
 
+
+
     /**
-     * 新增用户
-     * @param account
+     * <h2>获取邮箱</h2>
+     * @param key
      * @return
      */
-    public User addUser(User account) {
-        String url = "http://"+ userServiceName +"/user/add";
-        ResponseEntity<RestResponse<User>> responseEntity = rest.post(url, account, new ParameterizedTypeReference<RestResponse<User>>() {});
-        RestResponse<User> restResponse = responseEntity.getBody();
-        if (restResponse.getCode() == 0){
-            return restResponse.getResult();
-        } else {
-            throw new IllegalStateException("Can not add");
-        }
-
+    public String getEmail(String key) {
+        return Rests.exc(() -> {
+            String url = Rests.toUrl(userServiceName, "/user/getKeyEmail?key=" + key);
+            ResponseEntity<RestResponse<String>> responseEntity =
+                    rest.get(url,new ParameterizedTypeReference<RestResponse<String>>() {});
+            return responseEntity.getBody();
+        }).getResult();
     }
 
     /**
-     * TODO
-     * 用户鉴权
-     * @param user
-     * @return
+     * <h2>重置密码</h2>
+     * @param key
+     * @param password
+     * @return User 用户对象
      */
-    //@Hystrix
-    public User authUser(User user) {
-        String url = "http://" + userServiceName + "/user/auth";
-        ResponseEntity<RestResponse<User>> responseEntity = rest.post(url, user, new ParameterizedTypeReference<RestResponse<User>>() {});
-        RestResponse<User> response = responseEntity.getBody();
-        if (response.getCode() == 0){
-            return response.getResult();
-        } else {
-            throw new IllegalStateException("Can not add user");
-        }
+    public User reset(String key, String password) {
+        return Rests.exc(() -> {
+            String url = Rests.toUrl(userServiceName, "/user/reset?key=" + key + "&password="+password);
+            ResponseEntity<RestResponse<User>> responseEntity =
+                    rest.get(url,new ParameterizedTypeReference<RestResponse<User>>() {});
+            return responseEntity.getBody();
+        }).getResult();
     }
 
     /**
