@@ -28,12 +28,6 @@ public class UserController {
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
 
-    @Value("${server.port}")
-    private Integer port;
-
-    @Autowired
-    private StringRedisTemplate redisTemplate;
-
     @Autowired
     private UserService userService;
 
@@ -44,8 +38,7 @@ public class UserController {
      * @param id
      * @return
      */
-    //@RequestMapping("getById")
-    @RequestMapping("user/info")
+    @RequestMapping("getById")
     public RestResponse<User> getUserById(Long id){
         User user = userService.getUserById(id);
         return RestResponse.success(user);
@@ -110,7 +103,6 @@ public class UserController {
         return RestResponse.success(finalUser);
     }
 
-
     /**
      * <h2>登出操作</h2>
      * @param token
@@ -130,6 +122,18 @@ public class UserController {
     @RequestMapping("update")
     public RestResponse<User> update(@RequestBody User user){
         User updateUser = userService.updateUser(user);
+        return RestResponse.success(updateUser);
+    }
+
+    /**
+     * <h2>重置密码</h2>
+     * @param key
+     * @param password
+     * @return
+     */
+    @RequestMapping("reset")
+    public RestResponse<User> reset(String key, String password){
+        User updateUser = userService.reset(key, password);
         return RestResponse.success(updateUser);
     }
 

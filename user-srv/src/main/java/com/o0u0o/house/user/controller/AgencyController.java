@@ -39,12 +39,17 @@ public class AgencyController {
 
     /**
      * <h2>经纪人列表</h2>
-     * @param limit
-     * @param offset
      * @return
      */
-    @RequestMapping("agent/list")
-    public RestResponse<ListResponse<User>> agentList(Integer limit, Integer offset){
+    @RequestMapping("list")
+    public RestResponse<List<Agency>> agencyList() {
+        List<Agency> agencies = agencyService.getAllAgency();
+        return RestResponse.success(agencies);
+    }
+
+
+    @RequestMapping("agentList")
+    public RestResponse<ListResponse<User>> agentList(Integer limit, Integer offset) {
         PageParams pageParams = new PageParams();
         pageParams.setLimit(limit);
         pageParams.setOffset(offset);
@@ -52,7 +57,6 @@ public class AgencyController {
         ListResponse<User> response = ListResponse.build(pair.getKey(), pair.getValue());
         return RestResponse.success(response);
     }
-
 
     /**
      * <h2>经纪人详情</h2>

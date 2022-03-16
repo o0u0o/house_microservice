@@ -41,26 +41,24 @@ public class UserRegisterController {
         }
         ResultMsg resultMsg = UserHelper.validate(account);
 
-        if (resultMsg.isSuccess()){
+        if (resultMsg.isSuccess() ) {
             boolean exist = accountService.isExist(account.getEmail());
-            if (!exist){
+            if (!exist) {
                 accountService.addAccount(account);
-                modelMap.put("email", account.getEmail());
+                modelMap.put("success_email", account.getEmail());
                 return "/user/accounts/registerSubmit";
-            } else {
-                return "redirect:/accounts/register?" + resultMsg.asUrlParams();
+            }else {
+                return "redirect:/accounts/register?" + ResultMsg.errorMsg("邮箱已被占用").asUrlParams();
             }
-
-        } else {
-            return "redirect:/accounts/register?" + resultMsg.asUrlParams();
+        }else {
+            return "redirect:/accounts/register?" + ResultMsg.errorMsg("参数错误").asUrlParams();
         }
-
     }
 
     /**
      * 激活验证
      * @param key
-     * @return
+     * @return String
      */
     @RequestMapping("accounts/verify")
     public String verify(String key){

@@ -117,8 +117,8 @@ public class AccountService {
      * @param password 密码
      * @return
      */
-    public User reset(String key,String password){
-        return userDao.reset(key,password);
+    public User reset(String key, String password){
+        return userDao.reset(key, password);
     }
 
     /**

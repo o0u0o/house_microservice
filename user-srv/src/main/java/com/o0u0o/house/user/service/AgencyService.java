@@ -30,7 +30,15 @@ public class AgencyService {
     private AgencyMapper agencyMapper;
 
     /**
-     * 获取经纪人列表
+     * <h2>获取经纪人列表</h2>
+     * @return
+     */
+    public List<Agency> getAllAgency(){
+        return agencyMapper.select(new Agency());
+    }
+
+    /**
+     *  <h2>获取经纪人列表-带参数</h2>
      * @param pageParams
      * @return Pair<List<User>, Long>
      */

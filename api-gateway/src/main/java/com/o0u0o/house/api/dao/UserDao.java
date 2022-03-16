@@ -223,7 +223,7 @@ public class UserDao {
     public void resetNotify(String email, String url) {
         Rests.exc(() -> {
             String sendUrl = Rests.toUrl(userServiceName, "/user/resetNotify?email=" + email + "&url="+url);
-            rest.get(sendUrl,new ParameterizedTypeReference<RestResponse<Object>>() {});
+            rest.get(sendUrl, new ParameterizedTypeReference<RestResponse<Object>>() {});
             return new Object();
         });
     }
