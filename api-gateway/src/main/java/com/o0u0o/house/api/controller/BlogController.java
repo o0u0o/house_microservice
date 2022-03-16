@@ -30,6 +30,14 @@ public class BlogController {
     @Autowired
     private HouseService houseService;
 
+    /**
+     * <h2>百科列表</h2>
+     * @param pageSize
+     * @param pageNum
+     * @param query
+     * @param modelMap
+     * @return
+     */
     @RequestMapping(value="blog/list",method={RequestMethod.POST, RequestMethod.GET})
     public String list(Integer pageSize, Integer pageNum, Blog query, ModelMap modelMap){
         PageData<Blog> ps = commentService.queryBlogs(query, PageParams.build(pageSize, pageNum));
@@ -41,18 +49,18 @@ public class BlogController {
 
     /**
      * <h2>百科详情</h2>
-     * @param id
+     * @param id 博客ID
      * @param modelMap
      * @return
      */
     @RequestMapping(value="blog/detail",method={RequestMethod.POST,RequestMethod.GET})
-    public String blogDetail(int id,ModelMap modelMap){
+    public String blogDetail(int id, ModelMap modelMap){
         Blog blog = commentService.queryOneBlog(id);
-        List<Comment> comments = commentService.getBlogComments(id);
+//        List<Comment> comments = commentService.getBlogComments(id);
         List<House> houses = houseService.getHotHouse(CommonConstants.RECOM_SIZE);
         modelMap.put("recomHouses", houses);
         modelMap.put("blog", blog);
-        modelMap.put("commentList", comments);
+// todo       modelMap.put("commentList", comments);
         return "/blog/detail";
     }
 }

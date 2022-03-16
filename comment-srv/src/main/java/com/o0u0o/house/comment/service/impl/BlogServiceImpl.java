@@ -22,10 +22,8 @@ import java.util.List;
 @Service
 public class BlogServiceImpl implements BlogService {
 
-
     @Autowired
     private BlogMapper blogMapper;
-
 
     /**
      * <h2>查询百科</h2>
