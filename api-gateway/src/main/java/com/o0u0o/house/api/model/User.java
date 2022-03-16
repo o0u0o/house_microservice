@@ -58,6 +58,8 @@ public class User implements Serializable {
     /** 经纪机构的ID */
     private Long agencyId;
 
+    private String token;
+
     /** 关于我 */
     private String aboutme;
 

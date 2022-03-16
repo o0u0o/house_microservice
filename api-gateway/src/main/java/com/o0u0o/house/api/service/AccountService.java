@@ -80,6 +80,11 @@ public class AccountService {
         return true;
     }
 
+
+    public void logout(String token) {
+        userDao.logout(token);
+    }
+
     /**
      * 登录鉴权
      * @param username 用户名
@@ -87,6 +92,7 @@ public class AccountService {
      * @return 用户对象
      */
     public User auth(String username, String password) {
+        // 1、判断用户名和密码是否为空
         if (StringUtils.isBlank(username) || StringUtils.isBlank(password)){
             return null;
         }

@@ -79,12 +79,33 @@ public class UserDao {
 
     }
 
+
+    /**
+     * 调用鉴权服务
+     * @param token
+     * @return
+     */
+    @HystrixCommand(fallbackMethod = "getUserByTokenFb")
+    public User getUserByToken(String token) {
+        String url = "http://" + userServiceName + "/user/get?token=" + token;
+        ResponseEntity<RestResponse<User>> responseEntity = rest.get(url, new ParameterizedTypeReference<RestResponse<User>>() {});
+        RestResponse<User> response = responseEntity.getBody();
+        if (response == null || response.getCode() != 0) {
+            return null;
+        }
+        return response.getResult();
+    }
+
+    public User getUserByTokenFb(String token){
+        return new User();
+    }
+
     /**
      * <h2>用户鉴权</h2>
      * @param user
      * @return
      */
-    //@Hystrix
+    @HystrixCommand
     public User authUser(User user) {
         String url = "http://" + userServiceName + "/user/auth";
         ResponseEntity<RestResponse<User>> responseEntity = rest.post(url, user, new ParameterizedTypeReference<RestResponse<User>>() {});
@@ -94,6 +115,16 @@ public class UserDao {
         } else {
             throw new IllegalStateException("Can not add user");
         }
+    }
+
+    /**
+     * <h2>用户登出</h2>
+     * @param token
+     */
+    @HystrixCommand
+    public void logout(String token) {
+        String url = "http://" + userServiceName + "/user/logout?token=" + token;
+        rest.get(url, new ParameterizedTypeReference<RestResponse<Object>>() {});
     }
 
     @HystrixCommand

@@ -300,7 +300,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot.version}</version>
                 <configuration>
-                    <mainClass>com.o0u0o.house.user.UserServiceApplication</mainClass>
+                    <mainClass>com.o0u0o.house.user.UserSrvApplication</mainClass>
                     <layout>ZIP</layout>
                 </configuration>
                 <executions>

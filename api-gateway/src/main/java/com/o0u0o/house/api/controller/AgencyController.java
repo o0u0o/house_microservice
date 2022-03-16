@@ -7,6 +7,7 @@ import com.o0u0o.house.api.model.House;
 import com.o0u0o.house.api.model.User;
 import com.o0u0o.house.api.service.AgencyService;
 import com.o0u0o.house.api.service.HouseService;
+import com.o0u0o.house.api.service.MailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -25,9 +26,11 @@ public class AgencyController {
     @Autowired
     private AgencyService agencyService;
 
-
     @Autowired
     private HouseService houseService;
+
+    @Autowired
+    private MailService mailService;
 
     @RequestMapping("agency/create")
     public String agencyCreate(){
@@ -65,7 +68,7 @@ public class AgencyController {
      * @return String
      */
     @RequestMapping("/agency/agentList")
-    public String agentList(Integer pageSize,Integer pageNum,ModelMap modelMap){
+    public String agentList(Integer pageSize, Integer pageNum, ModelMap modelMap){
         if (pageSize == null) {
             pageSize = 6;
         }
@@ -76,4 +79,41 @@ public class AgencyController {
         return "/user/agent/agentList";
     }
 
+    /**
+     * <h2>经纪人详情</h2>
+     * @param id
+     * @param modelMap
+     * @return
+     */
+    @RequestMapping("/agency/agentDetail")
+    public String agentDetail(Long id,ModelMap modelMap){
+        User user =  agencyService.getAgentDetail(id);
+        List<House> houses =  houseService.getHotHouse(CommonConstants.RECOM_SIZE);
+        House query = new House();
+        query.setUserId(id);
+        query.setBookmarked(false);
+        PageData<House> bindHouse = houseService.queryHouse(query, new PageParams(3,1));
+        if (bindHouse != null) {
+            modelMap.put("bindHouses", bindHouse.getList()) ;
+        }
+        modelMap.put("recomHouses", houses);
+        modelMap.put("agent", user);
+        return "/user/agent/agentDetail";
+    }
+
+    @RequestMapping("/agency/agencyDetail")
+    public String agencyDetail(Integer id, ModelMap modelMap){
+        Agency agency =  agencyService.getAgency(id);
+        List<House> houses =  houseService.getHotHouse(CommonConstants.RECOM_SIZE);
+        modelMap.put("recomHouses", houses);
+        modelMap.put("agency", agency);
+        return "/user/agency/agencyDetail";
+    }
+
+    @RequestMapping("/agency/agentMsg")
+    public String agentMsg(Long id, String msg, String name,String email, ModelMap modelMap){
+        User user =  agencyService.getAgentDetail(id);
+        mailService.sendSimpleMail("来自"+ email +"的咨询", msg, user.getEmail());
+        return "redirect:/agency/agentDetail?id="+id +"&" + ResultMsg.successMsg("留言成功").asUrlParams();
+    }
 }

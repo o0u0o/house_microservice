@@ -24,11 +24,20 @@ public class AgencyService {
 
 
     /**
-     * 获取所有经纪人/机构
+     * <h2>获取所有经纪人/机构</h2>
      * @return
      */
     public List<Agency> getAllAgency(){
         return userDao.getAllAgency();
+    }
+
+    /**
+     * <h2>获取经纪人</h2>
+     * @param id 经纪人ID
+     * @return
+     */
+    public Agency getAgency(Integer id){
+        return userDao.getAgencyById(id);
     }
 
     /**

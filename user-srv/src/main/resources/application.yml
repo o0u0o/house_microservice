@@ -54,9 +54,6 @@ file:
 house:
   service:
     name: house
-user:
-  service:
-    name: user
 comment:
   service:
     name: comment

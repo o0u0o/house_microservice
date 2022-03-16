@@ -20,6 +20,11 @@ spring:
       auto_import: common/common.ftl as common
       template_exception_handler: ignore
       template_update_delay: 0
+  # Spring Mail邮箱配置
+  mail:
+    host: smtp.163.com
+    username: studytechnology@163.com
+    password: aiuiot123
 # eureka配置
 eureka:
   client:
@@ -44,8 +49,8 @@ logbook:
 
 file:
   path: /Users/o0u0o/opt/imgs
-#  prefix: http://127.0.0.1:8080/images
-  prefix: /static/imgs
+  prefix: http://127.0.0.1:8080/images
+#  prefix: /static/imgs
   #  http://127.0.0.1:8082/static/imgs
 domain:
   name: 127.0.0.1:8080
