@@ -209,7 +209,7 @@
                                 <li><a href="/agency/list">经纪机构列表</a></li>
                             </ul>
                         </li>
-                        <li><a href="/blog/list">百科</a></li>
+                        <li><a href="/blog/list">博客</a></li>
                     </ul>
                 </nav><!-- /.navbar collapse-->
                 <div class="add-your-property">

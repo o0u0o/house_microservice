@@ -12,6 +12,7 @@ import com.o0u0o.house.api.model.User;
 import com.o0u0o.house.api.utils.Rests;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
@@ -21,15 +22,15 @@ import java.util.List;
 /**
  * @Author aiuiot
  * @Date 2019/12/29 10:43 下午
- * @Descripton:
+ * @Descripton: 1、DefaultProperties 用于设置默认的熔断配置
+ * 2、注解：@EnableCircuitBreaker 启动断路器
  **/
 @Repository
 @DefaultProperties(groupKey="userDao",
-        commandProperties={@HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds",value="2000")},
-        threadPoolProperties={@HystrixProperty(name="coreSize",value="10")
-                ,@HystrixProperty(name="maxQueueSize",value="1000")},
-        threadPoolKey="userDao"
-)
+        commandProperties={@HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds", value="2000")},
+        threadPoolProperties={@HystrixProperty(name="coreSize",value="10"),@HystrixProperty(name="maxQueueSize",value="1000")},
+        threadPoolKey="userDao")
+@EnableCircuitBreaker
 public class UserDao {
 
     /**
@@ -84,6 +85,7 @@ public class UserDao {
      * 调用鉴权服务
      * @param token
      * @return
+     * 1、HystrixCommand
      */
     @HystrixCommand(fallbackMethod = "getUserByTokenFb")
     public User getUserByToken(String token) {
@@ -96,7 +98,18 @@ public class UserDao {
         return response.getResult();
     }
 
+    /**
+     * <h2>降级方法</h2>
+     * 1、降级方法要求：返回值和参数要和原方法一致
+     * 2、什么时候调用降级方法(fallback)
+     *  - 2.1 线程池拒绝(并发较高，把所有线程占满)
+     *  - 2.2 远程端口未开启
+     *  - 2.3 服务调用超时
+     * @param token
+     * @return
+     */
     public User getUserByTokenFb(String token){
+        System.out.printf("===========[降级方法]getUserByTokenFb==========");
         return new User();
     }
 

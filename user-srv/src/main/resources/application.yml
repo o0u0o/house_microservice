@@ -42,16 +42,22 @@ eureka:
       # 注册地址 和eureka-server一致
       defaultZone: http://127.0.0.1:8666/eureka/
     healthcheck:
-      enabled: true                                 # 将服务健康状态发送到注册中心
+      # 将服务健康状态发送到注册中心
+      enabled: true
   instance:
-    lease-renewal-interval-in-seconds: 5            # 续约心跳间隔时间 5秒
-    lease-expiration-duration-in-seconds: 10        # 续约过期时间 10秒 每隔10秒检查一次
+    # 续约心跳间隔时间 5秒
+    lease-renewal-interval-in-seconds: 5
+    # 续约过期时间 10秒 每隔10秒检查一次
+    lease-expiration-duration-in-seconds: 10
 
 mybatis:
   config-location: classpath:/mybatis/mybatis-config.xml
 file:
   prefix: 127.0.0.1:8083/static/imgs
 
+user:
+  service:
+    name: user
 house:
   service:
     name: house

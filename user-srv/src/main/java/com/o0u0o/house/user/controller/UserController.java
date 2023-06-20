@@ -99,6 +99,16 @@ public class UserController {
      */
     @RequestMapping("get")
     public RestResponse<User> getUser(String token){
+        //模拟登录高延时 -start
+        if (token != null){
+            try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        //模拟登录高延时 -end
+
         User finalUser = userService.getLoginedUserByToken(token);
         return RestResponse.success(finalUser);
     }
@@ -110,6 +120,15 @@ public class UserController {
      */
     @RequestMapping("logout")
     public RestResponse<Object> logout(String token){
+        //模拟登录高延时 -start
+        if (token != null){
+            try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        //模拟登录高延时 -end
         userService.invalidate(token);
         return RestResponse.success();
     }

@@ -1,9 +1,14 @@
 server:
   port: 8080
 
+management:
+  server:
+    port: 8023
+
 spring:
   application:
     name: api-gateway
+
   freemarker:
     cache: true
     charset: UTF-8
@@ -20,6 +25,7 @@ spring:
       auto_import: common/common.ftl as common
       template_exception_handler: ignore
       template_update_delay: 0
+
   # Spring Mail邮箱配置
   mail:
     host: smtp.163.com
@@ -33,6 +39,31 @@ eureka:
     service-url:
       defaultZone: http://127.0.0.1:8666/eureka
 
+# hytrix断路器配置
+hytrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            # 超时时间10s
+            timeoutInMilliseconds: 10000
+      circuitBreaker:
+        # 失败的阈值50%
+        errorThresholdPercentage: 50
+        # 休眠的时间10s
+        sleepThresholdPercentage: 10000
+  # hytrix-线程池配置
+  threadpool:
+    default:
+      # 核心线程数
+      coreSize: 5
+      # 最大队列长度
+      maxQueueSize: 30
+      # 最大线程数
+      maximumSize: 10
+
+      queueSizeRejectionThreshold: 30
 
 # Ribbon 客户端负载均衡配置
 #user:

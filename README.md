@@ -104,7 +104,7 @@ mvn spring-boot:run -Dspring.profiles.active=usercopy
  
  ## 级联故障解决方案
  1、故障隔离
- - 舱壁隔离(线程隔离)
+ - 舱壁隔离(线程隔离) 线程池实现
  - 超时控制
  - 服务降级
  - 熔断机制
