@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * @Author aiuiot
  * @Date 2020/4/2 10:49 下午
- * @Descripton: 房产DAO
+ * @Descripton: 房产DAO RestTemplate自定义封装远程调用
  **/
 
 @Repository

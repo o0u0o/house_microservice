@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 /**
  * @Author aiuiot
  * @Date 2020/1/5 11:20 上午
- * @Descripton: 房产客户端
+ * @Descripton: 房产客户端(Feign调用)
  * 注解 @FeignClient 将bean 识别为 FeignClient
  * name 为服务名 url 自动将path抽取出来
  *
@@ -40,6 +42,14 @@ public interface HouseClient {
      */
     @RequestMapping(value = "house/addUserMsg", method = RequestMethod.POST)
     public RestResponse<Object> houseMsg(@RequestBody UserMsg userMsg);
+
+    /**
+     * 获取热门房产
+     * @param recomSize
+     * @return
+     */
+    @RequestMapping(value = "house/addUserMsg", method = RequestMethod.GET)
+    RestResponse<List<House>> getHotHouse(@RequestParam("recomSize") Integer recomSize);
 
 
 

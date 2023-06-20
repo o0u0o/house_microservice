@@ -2,6 +2,7 @@ package com.o0u0o.house.api.service;
 
 import com.o0u0o.house.api.common.PageData;
 import com.o0u0o.house.api.common.PageParams;
+import com.o0u0o.house.api.common.RestResponse;
 import com.o0u0o.house.api.dao.HouseClient;
 import com.o0u0o.house.api.dao.HouseDao;
 import com.o0u0o.house.api.model.House;
@@ -90,7 +91,9 @@ public class HouseService {
      * @return List<House> 房产列表
      */
     public List<House> getHotHouse(Integer recomSize) {
-        List<House> list = houseDao.getHotHouse(recomSize);
+        //List<House> list = houseDao.getHotHouse(recomSize);
+        RestResponse<List<House>> restResponse = houseClient.getHotHouse(recomSize);
+        List<House> list = restResponse.getResult();
         return list;
     }
 

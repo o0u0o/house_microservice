@@ -132,8 +132,7 @@ public class UserService {
     }
 
     /**
-     *
-     * 校验用户名密码，生成token并返回
+     * <h2>校验用户名密码，生成token并返回</h2>
      * @param email
      * @param password
      * @return
@@ -168,7 +167,7 @@ public class UserService {
     }
 
     /**
-     * 重新生成Token
+     * <h2>重新生成Token</h2>
      * @return
      */
     private String renewToken(String token, String email){
