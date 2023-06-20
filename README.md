@@ -3,10 +3,12 @@
 ## 环境
 - Java1.8
 - SpringBoot 2.2.2.RELEASE
-- 
+-  
 
 ### 项目启动顺序
-1、先启动Eureka 端口 8666
+注册中心使用Eureka
+- 1、先启动Eureka 端口 8666
+- 2、在启动其他服务
 ```bash
 mvn spring-boot:run
 ```

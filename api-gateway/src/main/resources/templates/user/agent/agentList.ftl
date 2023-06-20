@@ -13,8 +13,8 @@
         <!-- Breadcrumb -->
         <div class="container">
             <ol class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Agents</a></li>
+                <li><a href="#">首页</a></li>
+                <li><a href="#">经纪人</a></li>
                 <li class="active">经纪人列表</li>
             </ol>
         </div>
