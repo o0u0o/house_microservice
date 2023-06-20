@@ -23,6 +23,10 @@ public class UserException extends RuntimeException implements WithTypeException
     public enum Type{
         USER_NOT_LOGIN,
         USER_NOT_FOUND,
+
+        //用户已存在
+        USER_IS_EXIST,
+
         USER_AUTH_FAIL;
     }
 

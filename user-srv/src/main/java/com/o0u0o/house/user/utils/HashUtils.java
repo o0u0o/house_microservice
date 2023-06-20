@@ -50,6 +50,6 @@ public class HashUtils {
      * @param args
      */
     public static void main(String[] args) {
-        System.out.println(encryPassword("111111"));
+        System.out.println(encryPassword("12345"));
     }
 }

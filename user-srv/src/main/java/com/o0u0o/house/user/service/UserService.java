@@ -93,11 +93,18 @@ public class UserService {
      * @param enableUrl 激活连接
      */
     public void addAccount(User user, String enableUrl) {
-        user.setPassword(HashUtils.encryPassword(user.getPassword()));  //加盐加密
-        BeanHelper.onInsert(user);  //设置了用户的创建时间和更新时间
+        //1、先查询邮箱是否被注册
+        User isExistUser = userMapper.selectByEmail(user.getEmail());
+        if (isExistUser != null){
+            throw new UserException(UserException.Type.USER_IS_EXIST, "该邮箱已被用户注册！");
+        }
+        //加盐加密
+        user.setPassword(HashUtils.encryPassword(user.getPassword()));
+        //设置了用户的创建时间和更新时间
+        BeanHelper.onInsert(user);
         userMapper.insert(user);
-        registerNotify(user.getEmail(), enableUrl); //激活通知
-
+        //激活通知
+        registerNotify(user.getEmail(), enableUrl);
     }
 
     /**
