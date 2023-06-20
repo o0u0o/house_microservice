@@ -56,9 +56,10 @@ public class HouseDao {
      * <h2>远程调用最新房产信息</h2>
      * @return List<House> 房产列表
      */
-    public List<House> getLastest() {
+    public List<House> getLatest() {
         RestResponse<List<House>> resp = Rests.exc(() -> {
-            String url = Rests.toUrl(houseServiceName, "/house/lastest");
+            //服务地址+url
+            String url = Rests.toUrl(houseServiceName, "/house/latest");
             ResponseEntity<RestResponse<List<House>>> responseEntity = rest.get(url, new ParameterizedTypeReference<RestResponse<List<House>>>() {});
             return responseEntity.getBody();
         });

@@ -37,6 +37,16 @@ public class AgencyService {
         return agencyMapper.select(new Agency());
     }
 
+    public Agency getAgency(Integer id){
+        Agency agency = new Agency();
+        agency.setId(id);
+        List<Agency> agencies = agencyMapper.select(agency);
+        if (agencies.isEmpty()) {
+            return null;
+        }
+        return agencies.get(0);
+    }
+
     /**
      *  <h2>获取经纪人列表-带参数</h2>
      * @param pageParams
@@ -72,19 +82,18 @@ public class AgencyService {
         user.setType(2);
         List<User> list = agencyMapper.selectAgent(user, new PageParams(1, 1));
         setImg(list);
-        //如果没有则返回null
-        if (list.isEmpty()){
-            return null;
+        if (!list.isEmpty()) {
+            User agent = list.get(0);
+            //将经纪人关联的经纪机构也一并查询出来
+            Agency agency = new Agency();
+            agency.setId(agent.getAgencyId().intValue());
+            List<Agency> agencies = agencyMapper.select(agency);
+            if (!agencies.isEmpty()) {
+                agent.setAgencyName(agencies.get(0).getName());
+            }
+            return agent;
         }
-        User agent = list.get(0);
-        //将经纪人关联的经纪机构也一并查询出来
-        Agency agency = new Agency();
-        agency.setId(agent.getAgencyId().intValue());
-        List<Agency> agencies = agencyMapper.select(agency);
-        if (!agencies.isEmpty()) {
-            agent.setAgencyName(agencies.get(0).getName());
-        }
-        return agent;
+        return null;
     }
 
     /**

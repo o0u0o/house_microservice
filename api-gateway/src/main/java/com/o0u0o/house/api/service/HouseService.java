@@ -2,7 +2,6 @@ package com.o0u0o.house.api.service;
 
 import com.o0u0o.house.api.common.PageData;
 import com.o0u0o.house.api.common.PageParams;
-import com.o0u0o.house.api.common.RestResponse;
 import com.o0u0o.house.api.dao.HouseClient;
 import com.o0u0o.house.api.dao.HouseDao;
 import com.o0u0o.house.api.model.House;
@@ -70,8 +69,8 @@ public class HouseService {
      * <h2>获取最新房产</h2>
      * @return
      */
-    public List<House> getLastest() {
-        return houseDao.getLastest();
+    public List<House> getLatest() {
+        return houseDao.getLatest();
     }
 
     /**

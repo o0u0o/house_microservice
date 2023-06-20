@@ -14,6 +14,7 @@ import java.io.IOException;
 
 /**
  * <h2>错误Filter</h2>
+ * 继承ZuulFilter
  * @author o0u0o
  * @date 2022/3/15 3:32 PM
  */

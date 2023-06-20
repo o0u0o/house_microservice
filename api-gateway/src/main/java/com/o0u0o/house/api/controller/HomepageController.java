@@ -28,13 +28,13 @@ public class HomepageController {
      */
     @RequestMapping("index")
     public String accountsRegister(ModelMap modelMap) {
-        List<House> houses =  houseService.getLastest();
+        List<House> houses =  houseService.getLatest();
         modelMap.put("recomHouses", houses);
         return "/homepage/index";
     }
 
     /**
-     * 重定向到请求首页
+     * <h2>重定向到请求首页</h2>
      * @param modelMap
      * @return
      */

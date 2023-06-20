@@ -68,4 +68,10 @@ public class AgencyController {
         User user = agencyService.getAgentDetail(id);
         return RestResponse.success(user);
     }
+
+    @RequestMapping("agencyDetail")
+    public RestResponse<Agency> agencyDetail(Integer id) {
+        Agency agency = agencyService.getAgency(id);
+        return RestResponse.success(agency);
+    }
 }

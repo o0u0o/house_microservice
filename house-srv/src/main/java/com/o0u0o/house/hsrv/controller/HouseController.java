@@ -134,11 +134,11 @@ public class HouseController {
     }
 
     /**
-     * 最新房产
+     * <h2>最新房产</h2>
      * @return
      */
-    @RequestMapping("lastest")
-    public RestResponse<List<House>> getLastest(){
+    @RequestMapping("latest")
+    public RestResponse<List<House>> getLatest(){
         return RestResponse.success(recommendService.getLatest());
     }
 }

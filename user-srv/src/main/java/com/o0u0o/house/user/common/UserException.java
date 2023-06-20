@@ -1,7 +1,5 @@
 package com.o0u0o.house.user.common;
 
-import com.o0u0o.house.user.exception.IllegalParamsException;
-import com.o0u0o.house.user.exception.IllegalParamsException.Type;
 import com.o0u0o.house.user.exception.WithTypeException;
 
 /**

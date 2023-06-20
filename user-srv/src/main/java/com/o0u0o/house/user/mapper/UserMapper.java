@@ -36,10 +36,18 @@ public interface UserMapper {
      */
     public int update(User user);
 
-    //插入用户
+    /**
+     * <h2>新增用户</h2>
+     * @param account
+     * @return
+     */
     public int insert(User account);
 
-    //删除用户
+    /**
+     * <h2>删除用户</h2>
+     * @param email
+     * @return
+     */
     public int delete(String email);
 
     /**

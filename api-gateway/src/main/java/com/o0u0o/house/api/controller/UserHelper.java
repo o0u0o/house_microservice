@@ -31,23 +31,23 @@ public class UserHelper {
     }
 
 
-//    public static ResultMsg validate(User account) {
-//        if (StringUtils.isBlank(account.getEmail())) {
-//            return ResultMsg.errorMsg("Email有误");
-//        }
-//        if (StringUtils.isBlank(account.getName())) {
-//            return ResultMsg.errorMsg("名字有误");
-//        }
-//        if (StringUtils.isBlank(account.getConfirmPasswd()) || StringUtils.isBlank(account.getPasswd()) || !account.getPasswd().equals(account.getConfirmPasswd())) {
-//            return ResultMsg.errorMsg("密码有误");
-//        }
-//        if (account.getPasswd().length() < 6){
-//            return ResultMsg.errorMsg("密码长度应大于6位");
-//        }
-//        if (account.getType() == null || !Range.closed(1, 2).contains(account.getType())){
-//            return ResultMsg.errorMsg("类型有误");
-//        }
-//        return ResultMsg.success();
-//    }
+    public static ResultMsg validate(User account) {
+        if (StringUtils.isBlank(account.getEmail())) {
+            return ResultMsg.errorMsg("Email有误");
+        }
+        if (StringUtils.isBlank(account.getName())) {
+            return ResultMsg.errorMsg("名字有误");
+        }
+        if (StringUtils.isBlank(account.getConfirmPassword()) || StringUtils.isBlank(account.getPassword()) || !account.getPassword().equals(account.getConfirmPassword())) {
+            return ResultMsg.errorMsg("密码有误");
+        }
+        if (account.getPassword().length() < 6){
+            return ResultMsg.errorMsg("密码长度应大于6位");
+        }
+        if (account.getType() == null || !Range.closed(1, 2).contains(account.getType())){
+            return ResultMsg.errorMsg("类型有误");
+        }
+        return ResultMsg.success();
+    }
 
 }
