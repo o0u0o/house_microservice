@@ -37,6 +37,21 @@ public class CommentServiceImpl implements CommentService {
     }
 
     /**
+     * <h2>添加博客评论</h2>
+     * @param blogId 博客ID
+     * @param content 评论内容
+     * @param userId 用户ID
+     */
+    public void addBlogComment(Integer blogId, String content, Long userId) {
+        CommentReq commentReq = new CommentReq();
+        commentReq.setBlogId(blogId);
+        commentReq.setContent(content);
+        commentReq.setUserId(userId);
+        commentReq.setType(2);
+        commentDao.addComment(commentReq);
+    }
+
+    /**
      * <h2>查询博客论</h2>
      *
      * @param query

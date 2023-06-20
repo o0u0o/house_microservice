@@ -23,6 +23,14 @@ public interface CommentService {
     void addHouseComment(Long houseId, String content, Long userId);
 
     /**
+     * <h2>添加博客评论</h2>
+     * @param blogId 博客ID
+     * @param content 评论内容
+     * @param userId 用户ID
+     */
+    void addBlogComment(Integer blogId, String content, Long userId);
+
+    /**
      * <h2>查询博客论</h2>
      * @param query
      * @param build
