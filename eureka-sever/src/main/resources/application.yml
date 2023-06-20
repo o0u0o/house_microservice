@@ -19,7 +19,7 @@ eureka:
   client:
     # 是否启用获取注册信息
     fetch-registry: true
-    # 是否注册eureka
+    # 是否将自己注册eureka
     register-with-eureka: true
     service-url:
       # 注册和查询都需要依赖该地址，多个以都好分隔
