@@ -9,6 +9,7 @@
     <version>1.0</version>
     <packaging>pom</packaging>
 
+    <!--  子模块  -->
     <modules>
         <module>api-gateway</module>
         <module>api-model</module>

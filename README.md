@@ -8,7 +8,8 @@
 ### 项目启动顺序
 注册中心使用Eureka
 - 1、先启动Eureka 端口 8666
-- 2、在启动其他服务
+- 2、再启动api-gateway 端口 8080
+- 3、在启动其他服务
 ```bash
 mvn spring-boot:run
 ```

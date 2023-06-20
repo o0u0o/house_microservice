@@ -48,7 +48,7 @@
                                                     <form role="form" id="form-contact-agent" method="post" action="/comment/leaveBlogComment" class="clearfix">
                                                         <input type="hidden" name="blogId" value="${blog.id}">
                                                         <div class="form-group">
-                                                            <label for="form-contact-agent-message">评论</label>
+                                                            <label for="form-contact-agent-message">写点评论吧:</label>
                                                             <textarea class="form-control" id="form-contact-agent-message" rows="2" name="content" required></textarea>
                                                         </div><!-- /.form-group -->
                                                         <div class="form-group">
@@ -57,7 +57,7 @@
                                                         <div id="form-contact-agent-status"></div>
                                                     </form><!-- /#form-contact -->
                                                 </div>
-                                    <header><h2 class="no-border">Comments</h2></header>
+                                    <header><h2 class="no-border">评论</h2></header>
                                     <ul class="comments">
                                       <#list commentList as comment> 
                                         <li class="comment" style="width: 830px;">

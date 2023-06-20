@@ -15,6 +15,14 @@ import java.util.List;
 public interface CommentService {
 
     /**
+     * <h2>添加房产评论</h2>
+     * @param houseId 房产ID
+     * @param content 评论内容
+     * @param userId 用户ID
+     */
+    void addHouseComment(Long houseId, String content, Long userId);
+
+    /**
      * <h2>查询博客论</h2>
      * @param query
      * @param build

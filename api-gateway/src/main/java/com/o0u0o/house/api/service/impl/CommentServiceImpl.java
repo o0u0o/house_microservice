@@ -26,6 +26,16 @@ public class CommentServiceImpl implements CommentService {
     private CommentDao commentDao;
 
 
+    @Override
+    public void addHouseComment(Long houseId, String content, Long userId) {
+        CommentReq commentReq = new CommentReq();
+        commentReq.setHouseId(houseId);
+        commentReq.setContent(content);
+        commentReq.setUserId(userId);
+        commentReq.setType(1);
+        commentDao.addComment(commentReq);
+    }
+
     /**
      * <h2>查询博客论</h2>
      *

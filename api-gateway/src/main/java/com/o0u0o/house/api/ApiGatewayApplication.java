@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
@@ -21,8 +22,9 @@ import java.util.List;
  */
 @SpringBootApplication
 @EnableDiscoveryClient
+@EnableCircuitBreaker
 @Controller
-@RibbonClient(name = "user", configuration = NewRuleConfig.class)
+//@RibbonClient(name = "user", configuration = NewRuleConfig.class)
 //@RibbonClient(name = "life-base", configuration = NewRuleConfig.class)
 @EnableFeignClients
 public class ApiGatewayApplication {
