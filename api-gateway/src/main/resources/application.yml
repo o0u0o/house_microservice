@@ -1,14 +1,15 @@
 server:
   port: 8080
 
-management:
-  server:
-    port: 8023
+# 加密工具
+jasypt:
+  encryptor:
+    algorithm: PBEWITHHMACSHA512ANDAES_256
+    iv-generator-classname: org.jasypt.iv.RandomIvGenerator
 
 spring:
   application:
     name: api-gateway
-
   freemarker:
     cache: true
     charset: UTF-8
@@ -28,9 +29,9 @@ spring:
 
   # Spring Mail邮箱配置
   mail:
-    host: smtp.163.com
-    username: studytechnology@163.com
-    password: aiuiot123
+    host: ENC(NGdiFe/aM/1/kTp8iaLOoFh5XP5sT13nSfgCaRupMkF1GKwilvEiUDYhW9RjheHD)
+    username: ENC(bdEHpS3L64Mbed8F2Ba4FBrjJkj8WwC9vb4ootg+GRJa9/jPjDWkMbF9Wk53KsVVEAJkQm6SWUiD0uRL9MF0zQ==)
+    password: ENC(/3glnE72qQzbmGXtvyXrTwcsmLgYAEGKS7QsOmgaJusSjcgKDzoOqi3Ecp+g3zzPKN5WkNd4eqXqxE8JGp6a4Q==)
 # eureka配置
 eureka:
   client:
@@ -96,3 +97,36 @@ house:
 comment:
     service:
       name: comment
+
+####暴露端点给Prometheus采集 [必须] - START ####
+management:
+  server:
+    port: 8023
+  endpoints:
+    web:
+      exposure:
+        # 暴露端口：metrics，其中就包含我们需要的JVM相关指标
+        # 需要暴露的端点：[health,info,metrics]用,分隔
+        include: info,metrics,prometheus
+  endpoint:
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+  metrics:
+    tags:
+      application: ${spring.application.name}
+    export:
+      prometheus:
+        pushgateway:
+          # 启用推送 如果不需要设置为false
+          enabled: false
+          username: ENC(SfTvfV6BnIYOsSrHEpGZCXzKF1KL62hYDSKbDBR3+h5y63G61fhRCKthwPKcIr2x)
+          password: ENC(YNye0NvTzUZVfB+l1I4a9m0ua2AG0K/+ElShxlZPfc710GAti9B7SGoTP/yOQaoP)
+          # PUSHGATEWAY 地址
+          baseUrl: ENC(gLE7IvLP8gNnqP8UUE0UtgGYhGIWSg/JJnew1As43IUfADqWdRpc+MOdmy/AqrPAZPpWXZwigwSY83q5LoXu4Q==)
+          # 推送周期 每隔15秒上报一次
+          pushRate: 15s
+          # job定义名
+          job : ${spring.application.name}
+#### 暴露端点给Prometheus采集 [必须] - END ####

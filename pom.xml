@@ -32,6 +32,8 @@
         <spring-boot.version>2.3.12.RELEASE</spring-boot.version>
         <springfox.version>2.9.2</springfox.version>
         <logbook.version>1.13.0</logbook.version>
+
+        <jasypt-spring-boot.version>3.0.2</jasypt-spring-boot.version>
     </properties>
 
     <dependencies>
@@ -143,6 +145,12 @@
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
             <version>1.11.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.ulisesbocchio</groupId>
+            <artifactId>jasypt-spring-boot-starter</artifactId>
+            <version>${jasypt-spring-boot.version}</version>
         </dependency>
 
     </dependencies>
