@@ -11,7 +11,7 @@
     <parent>
         <groupId>com.o0u0o</groupId>
         <artifactId>house-service</artifactId>
-        <version>1.0</version>
+        <version>1.1.0</version>
     </parent>
 
 
@@ -109,6 +109,20 @@
             <version>1.4.7.RELEASE</version>
         </dependency>
 
+        <!--   监控服务需要添加，单体项目不需要时需要删除以下依赖  -START    -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.micrometer</groupId>  <!--  https://micrometer.io/ -->
+            <artifactId>micrometer-registry-prometheus</artifactId>
+        </dependency>
+        <dependency>    <!-- Prometheus 生态下的组件simpleclient_pushgateway 采用定时 push 模式       -->
+            <groupId>io.prometheus</groupId>
+            <artifactId>simpleclient_pushgateway</artifactId>
+        </dependency>
+        <!--   监控服务需要添加，单体项目不需要时需要删除以下依赖  -END     -->
 
 
     </dependencies>

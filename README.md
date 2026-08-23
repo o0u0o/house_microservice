@@ -21,6 +21,10 @@ mvn spring-boot:run -Dspring.profiles.active=peer
 mvn spring-boot:run -Dspring.profiles.active=usercopy 
 
 
+- 下载源代码(可使用以下命令下载源代码)：
+```Bash
+mvn dependency:resolve -Dclassifier=sources
+```
 
 ## 微服务面临的问题和挑战
 ### 1、服务通信
