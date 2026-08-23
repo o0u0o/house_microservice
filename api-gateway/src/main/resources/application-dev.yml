@@ -1,0 +1,123 @@
+spring:
+  application:
+    name: api-gateway-dev
+  freemarker:
+    cache: true
+    charset: UTF-8
+    content-type: text/html;charset=UTF-8
+    expose-request-attributes: true
+    expose-session-attributes: true
+    expose-spring-macro-helpers: true
+    allow-session-override: true
+    suffix: .ftl
+    settings:
+      datetime_format: yyyy-MM-dd HH:mm:ss
+      default_encoding: UTF-8
+      number_format: 0.##########
+      auto_import: common/common.ftl as common
+      template_exception_handler: ignore
+      template_update_delay: 0
+
+  # Spring Mail邮箱配置
+  mail:
+    host: ENC(NGdiFe/aM/1/kTp8iaLOoFh5XP5sT13nSfgCaRupMkF1GKwilvEiUDYhW9RjheHD)
+    username: ENC(bdEHpS3L64Mbed8F2Ba4FBrjJkj8WwC9vb4ootg+GRJa9/jPjDWkMbF9Wk53KsVVEAJkQm6SWUiD0uRL9MF0zQ==)
+    password: ENC(/3glnE72qQzbmGXtvyXrTwcsmLgYAEGKS7QsOmgaJusSjcgKDzoOqi3Ecp+g3zzPKN5WkNd4eqXqxE8JGp6a4Q==)
+# eureka配置
+eureka:
+  client:
+    # api-gateway服务 false-不需要注册到注册中心
+    register-with-eureka: false
+    service-url:
+      defaultZone: http://127.0.0.1:8666/eureka
+
+# hytrix断路器配置
+hytrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            # 超时时间10s
+            timeoutInMilliseconds: 10000
+      circuitBreaker:
+        # 失败的阈值50%
+        errorThresholdPercentage: 50
+        # 休眠的时间10s
+        sleepThresholdPercentage: 10000
+  # hytrix-线程池配置
+  threadpool:
+    default:
+      # 核心线程数
+      coreSize: 5
+      # 最大队列长度
+      maxQueueSize: 30
+      # 最大线程数
+      maximumSize: 10
+
+      queueSizeRejectionThreshold: 30
+
+# Ribbon 客户端负载均衡配置
+#user:
+#life-base:
+#  ribbon:
+#    listOfServer: 127.0.0.1:8083,127.0.0.1:8084
+
+logbook:
+  write:
+    level: info
+  format:
+    style: http
+
+
+file:
+  path: /Users/o0u0o/opt/imgs
+  prefix: http://127.0.0.1:8080/images
+#  prefix: /static/imgs
+  #  http://127.0.0.1:8082/static/imgs
+domain:
+  name: 127.0.0.1:8080
+
+# 配置其他服务
+user:
+  service:
+    name: user-srv
+house:
+  service:
+    name: house-srv
+comment:
+  service:
+    name: comment-srv
+
+####暴露端点给Prometheus采集 [必须] - START ####
+management:
+  server:
+    port: 8023
+  endpoints:
+    web:
+      exposure:
+        # 暴露端口：metrics，其中就包含我们需要的JVM相关指标
+        # 需要暴露的端点：[health,info,metrics]用,分隔
+        include: info,metrics,prometheus
+  endpoint:
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+  metrics:
+    tags:
+      application: ${spring.application.name}
+    export:
+      prometheus:
+        pushgateway:
+          # 启用推送 如果不需要设置为false
+          enabled: false
+          username: ENC(SfTvfV6BnIYOsSrHEpGZCXzKF1KL62hYDSKbDBR3+h5y63G61fhRCKthwPKcIr2x)
+          password: ENC(YNye0NvTzUZVfB+l1I4a9m0ua2AG0K/+ElShxlZPfc710GAti9B7SGoTP/yOQaoP)
+          # PUSHGATEWAY 地址
+          baseUrl: ENC(gLE7IvLP8gNnqP8UUE0UtgGYhGIWSg/JJnew1As43IUfADqWdRpc+MOdmy/AqrPAZPpWXZwigwSY83q5LoXu4Q==)
+          # 推送周期 每隔15秒上报一次
+          pushRate: 15s
+          # job定义名
+          job : ${spring.application.name}
+#### 暴露端点给Prometheus采集 [必须] - END ####
