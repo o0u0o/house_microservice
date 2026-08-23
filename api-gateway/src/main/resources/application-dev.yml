@@ -81,13 +81,13 @@ domain:
 # 配置其他服务
 user:
   service:
-    name: user
+    name: user-srv
 house:
   service:
-    name: house
+    name: house-srv
 comment:
-    service:
-      name: comment
+  service:
+    name: comment-srv
 
 ####暴露端点给Prometheus采集 [必须] - START ####
 management:

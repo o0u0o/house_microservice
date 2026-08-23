@@ -6,7 +6,7 @@
 
     <groupId>com.o0u0o</groupId>
     <artifactId>house-service</artifactId>
-    <version>1.1.1</version>
+    <version>1.1.2</version>
     <packaging>pom</packaging>
 
     <parent>
@@ -35,21 +35,11 @@
         <logbook.version>1.13.0</logbook.version>
         <lombok.version>1.18.46</lombok.version>
 
+        <druid-spring-boot.version>1.2.28</druid-spring-boot.version>
         <jasypt-spring-boot.version>3.0.2</jasypt-spring-boot.version>
     </properties>
 
     <dependencies>
-        <!-- lombok 工具通过在代码编译时期动态的将注解替换为具体的代码,IDEA 需要添加 lombok 插件 -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
-        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -62,26 +52,26 @@
 
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-ribbon</artifactId>
-            <version>1.4.7.RELEASE</version>
+            <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+            <version>2.2.10.RELEASE</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-feign</artifactId>
-            <version>1.4.7.RELEASE</version>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+            <version>5.0.3</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-hystrix</artifactId>
-            <version>1.4.7.RELEASE</version>
+            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+            <version>2.2.10.RELEASE</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-hystrix-dashboard</artifactId>
-            <version>1.4.7.RELEASE</version>
+            <artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
+            <version>2.2.10.RELEASE</version>
         </dependency>
 
         <dependency>
@@ -158,6 +148,24 @@
                 <groupId>com.github.ulisesbocchio</groupId>
                 <artifactId>jasypt-spring-boot-starter</artifactId>
                 <version>${jasypt-spring-boot.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid-spring-boot.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+                <version>5.0.2</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

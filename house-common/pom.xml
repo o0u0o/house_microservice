@@ -4,16 +4,29 @@
     <parent>
         <groupId>com.o0u0o</groupId>
         <artifactId>house-service</artifactId>
-        <version>1.1.1</version>
+        <version>1.1.2</version>
     </parent>
     <artifactId>house-common</artifactId>
     <name>公共模块</name>
     <url>https://maven.apache.org</url>
     <packaging>pom</packaging>
 
-    <dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
 
-    </dependencyManagement>
+        <!-- jasypt 加密工具库 -->
+        <dependency>
+            <groupId>com.github.ulisesbocchio</groupId>
+            <artifactId>jasypt-spring-boot-starter</artifactId>
+        </dependency>
 
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

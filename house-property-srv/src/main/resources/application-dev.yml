@@ -3,8 +3,7 @@ spring:
     # 应用名为 house-srv
     name: house-srv
   datasource:
-    #阿里巴巴连接池
-    type: com.alibaba.druid.pool.DruidDataSource
+    type: com.alibaba.druid.pool.DruidDataSource  # 阿里巴巴连接池
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: ENC(iwgqjMdmwGW0TSBrIKmhyUNGTNj4lNbhFgEBT7IltDbxI8C2tGOY/dtP2wqrnkMMHxwsTHiQyvpMpUnKb/Giu1chKAKgdHCdPh10V7pJ9SxN0n614VbgwZNDZlEv5p0OVuEEAqi39k/3UVIkRSdR6g==)
     username: ENC(DnJLR4jkYvyDAfUXa+eZcdAWahAJA56DX8vcHExlYp3pjXsCtVqhM/vpo/Uudyh0)
@@ -38,6 +37,21 @@ mybatis:
 file:
 #  prefix: 127.0.0.1:8083/static/imgs
   prefix: /static/imgs
+
+# Eureka配置
+eureka:
+  client:
+    service-url:
+      # 注册地址 和eureka-server一致
+      defaultZone: http://127.0.0.1:8666/eureka/
+    healthcheck:
+      # 将服务健康状态发送到注册中心
+      enabled: true
+  instance:
+    # 续约心跳间隔时间 5秒
+    lease-renewal-interval-in-seconds: 5
+    # 续约过期时间 10秒 每隔10秒检查一次
+    lease-expiration-duration-in-seconds: 10
 
 house:
   service:
