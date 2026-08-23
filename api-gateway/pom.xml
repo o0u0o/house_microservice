@@ -124,6 +124,16 @@
         </dependency>
         <!--   监控服务需要添加，单体项目不需要时需要删除以下依赖  -END     -->
 
+        <dependency>
+            <groupId>com.github.ulisesbocchio</groupId>
+            <artifactId>jasypt-spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.o0u0o</groupId>
+            <artifactId>house-common</artifactId>
+            <version>1.1.1</version>
+        </dependency>
 
     </dependencies>
 
@@ -164,6 +174,14 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>9</source>
+                    <target>9</target>
+                </configuration>
             </plugin>
         </plugins>
     </build>

@@ -20,18 +20,20 @@
         <module>api-gateway</module>
         <module>api-model</module>
         <module>eureka-sever</module>
-        <module>house-srv</module>
-        <module>user-srv</module>
-        <module>comment-srv</module>
+        <module>house-property-srv</module>
+        <module>house-user-srv</module>
+        <module>house-comment-srv</module>
+        <module>house-common</module>
     </modules>
 
 
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>21</java.version>
         <spring-cloud.version>Hoxton.SR12</spring-cloud.version>
         <spring-boot.version>2.3.12.RELEASE</spring-boot.version>
         <springfox.version>2.9.2</springfox.version>
         <logbook.version>1.13.0</logbook.version>
+        <lombok.version>1.18.46</lombok.version>
 
         <jasypt-spring-boot.version>3.0.2</jasypt-spring-boot.version>
     </properties>
@@ -41,11 +43,12 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.16.18</version>
+            <version>${lombok.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -147,11 +150,15 @@
             <version>1.11.0</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.github.ulisesbocchio</groupId>
-            <artifactId>jasypt-spring-boot-starter</artifactId>
-            <version>${jasypt-spring-boot.version}</version>
-        </dependency>
-
     </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.github.ulisesbocchio</groupId>
+                <artifactId>jasypt-spring-boot-starter</artifactId>
+                <version>${jasypt-spring-boot.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>
