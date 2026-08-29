@@ -1,8 +1,8 @@
 # 房产销售系统微服务
 
 ## 环境
-- Java1.8
-- SpringBoot 2.2.2.RELEASE
+- Java 21
+- SpringBoot 3.5.7
 -  
 
 ### 项目启动顺序

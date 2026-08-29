@@ -29,11 +29,12 @@ spring:
         pool:
           #最大连接数为5
           max-active: 5
-  # Spring Mail邮箱配置
+
+  # Spring Mail邮箱配置(安全起见需定期轮换)
   mail:
-    host: smtp.163.com
-    username: studytechnology@163.com
-    password: NJZcK3pvBFFwwWDC
+    host: ENC(5KwsRo6hkUY7GEYwG6552j0ZzxIYoodJ9tvwPTDDIiFtc8W6UlKWuhjmya56Wjhb)
+    username: ENC(S3Y397RZ2CAoY6wwGKNTehnXzF32/2hIT9zF1JtVy09JP0EQKNzTR990KiKUuxe2A/y6BUmyqO824JiIK0P03Q==)
+    password: ENC(IdSrsyBHEjQnai0v785VcvOq+wuJD8DAyCUOMhjWiW5lGRvsznbZCvMqfYXwpIJI7Tlb2R4hJlv/Ck6ZpSWO9A==)
 
 mybatis:
   config-location: classpath:/mybatis/mybatis-config.xml

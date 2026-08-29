@@ -5,7 +5,7 @@
 
     <groupId>com.o0u0o</groupId>
     <artifactId>house-user-srv</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>1.3.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>user-srv</name>
@@ -14,7 +14,7 @@
     <parent>
         <groupId>com.o0u0o</groupId>
         <artifactId>house-service</artifactId>
-        <version>1.2.0</version>
+        <version>1.3.0</version>
     </parent>
 
     <dependencies>
@@ -144,7 +144,7 @@
         <dependency>
             <groupId>com.o0u0o</groupId>
             <artifactId>house-common</artifactId>
-            <version>1.2.0</version>
+            <version>1.3.0</version>
         </dependency>
 
     </dependencies>
