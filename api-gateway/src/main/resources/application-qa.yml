@@ -1,9 +1,3 @@
-# 加密工具
-jasypt:
-  encryptor:
-    algorithm: PBEWITHHMACSHA512ANDAES_256
-    iv-generator-classname: org.jasypt.iv.RandomIvGenerator
-
 spring:
   application:
     name: api-gateway

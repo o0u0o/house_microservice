@@ -11,14 +11,14 @@
     <parent>
         <groupId>com.o0u0o</groupId>
         <artifactId>house-service</artifactId>
-        <version>1.3.0</version>
+        <version>1.3.1</version>
     </parent>
 
     <dependencies>
         <dependency>
             <groupId>com.o0u0o</groupId>
             <artifactId>house-framework-starter-web</artifactId>
-            <version>1.3.0</version>
+            <version>1.3.1</version>
         </dependency>
 
         <dependency>
@@ -86,7 +86,7 @@
         <dependency>
             <groupId>com.o0u0o</groupId>
             <artifactId>house-common</artifactId>
-            <version>1.3.0</version>
+            <version>1.3.1</version>
         </dependency>
 
     </dependencies>
