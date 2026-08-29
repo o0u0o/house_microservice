@@ -6,7 +6,7 @@
 
     <groupId>com.o0u0o</groupId>
     <artifactId>house-comment-srv</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>1.3.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>comment-srv</name>
@@ -81,19 +81,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
-
-        <!--        <dependency>-->
-        <!--            <groupId>io.springfox</groupId>-->
-        <!--            <artifactId>springfox-swagger2</artifactId>-->
-        <!--            <version>${springfox.version}</version>-->
-        <!--        </dependency>-->
-
-        <!--        <dependency>-->
-        <!--            <groupId>io.springfox</groupId>-->
-        <!--            <artifactId>springfox-swagger-ui</artifactId>-->
-        <!--            <version>${springfox.version}</version>-->
-        <!--        </dependency>-->
-
 
         <dependency>
             <groupId>com.alibaba</groupId>

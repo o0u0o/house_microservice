@@ -6,7 +6,7 @@ spring:
     name: comment-srv
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: ENC(iwgqjMdmwGW0TSBrIKmhyUNGTNj4lNbhFgEBT7IltDbxI8C2tGOY/dtP2wqrnkMMHxwsTHiQyvpMpUnKb/Giu1chKAKgdHCdPh10V7pJ9SxN0n614VbgwZNDZlEv5p0OVuEEAqi39k/3UVIkRSdR6g==)
+    url: ENC(7C2G3sZ4tWi2MgdUjBvUqvBLM6IuC6QOUfMHN5YdMPrCPk2eqq9HK3c1ruS+wQ3lpwFFrzayr+cbLXbXee0OyPR3QFRZPHT4gjPmz/0eOWoBXA2JAKpceaqOXMfwTpe435ieABY+vIW5uKGr4MZb4A==)
     username: ENC(DnJLR4jkYvyDAfUXa+eZcdAWahAJA56DX8vcHExlYp3pjXsCtVqhM/vpo/Uudyh0)
     password: ENC(DnJLR4jkYvyDAfUXa+eZcdAWahAJA56DX8vcHExlYp3pjXsCtVqhM/vpo/Uudyh0)
     hikari:

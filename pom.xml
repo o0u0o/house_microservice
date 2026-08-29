@@ -37,7 +37,8 @@
         <lombok.version>1.18.46</lombok.version>
 
         <druid-spring-boot.version>1.2.28</druid-spring-boot.version>
-        <jasypt-spring-boot.version>3.0.2</jasypt-spring-boot.version>
+        <mybatis-spring-boot.version>3.0.5</mybatis-spring-boot.version>
+        <jasypt-spring-boot.version>3.0.5</jasypt-spring-boot.version>
         <fastjson2.version>2.0.42</fastjson2.version>
     </properties>
 
@@ -95,12 +96,6 @@
                 <version>${druid-spring-boot.version}</version>
             </dependency>
 
-<!--            <dependency>-->
-<!--                <groupId>org.springframework.cloud</groupId>-->
-<!--                <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>-->
-<!--                <version>5.0.2</version>-->
-<!--            </dependency>-->
-
             <dependency>
                 <groupId>com.alibaba.fastjson2</groupId>
                 <artifactId>fastjson2</artifactId>
@@ -112,10 +107,11 @@
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>
                 <artifactId>mybatis-spring-boot-starter</artifactId>
-                <version>3.0.5</version>
+                <version>${mybatis-spring-boot.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

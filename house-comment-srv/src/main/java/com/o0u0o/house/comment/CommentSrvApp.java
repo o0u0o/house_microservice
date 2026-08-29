@@ -11,10 +11,10 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  */
 @SpringBootApplication
 @EnableDiscoveryClient
-public class CommentSrvApplication {
+public class CommentSrvApp {
 
     public static void main(String[] args) {
-        SpringApplication.run(CommentSrvApplication.class, args);
+        SpringApplication.run(CommentSrvApp.class, args);
     }
 
 }
