@@ -2,7 +2,7 @@ package com.o0u0o.house.hsrv.common;
 
 import com.o0u0o.house.hsrv.common.exception.Exception2CodeMap;
 import com.o0u0o.house.hsrv.common.exception.WithTypeException;
-import org.apache.commons.lang.reflect.FieldUtils;
+import org.apache.commons.lang3.reflect.FieldUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 /**
  * <h1>全局异常处理</h1>

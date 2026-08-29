@@ -9,8 +9,6 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.zalando.logbook.httpclient.LogbookHttpRequestInterceptor;
-import org.zalando.logbook.httpclient.LogbookHttpResponseInterceptor;
 
 /**
  * <h1>HttpClient自动配置类</h1>
@@ -28,12 +26,6 @@ public class HttpClientAutoConfiguration {
         this.properties = properties;
     }
 
-    @Autowired
-    private LogbookHttpRequestInterceptor logbookHttpRequestInterceptor;
-
-    @Autowired
-    private LogbookHttpResponseInterceptor logbookHttpResponseInterceptor;
-
     /**
      * httpclient bean 的定义
      * @return
@@ -48,8 +40,8 @@ public class HttpClientAutoConfiguration {
                 .setUserAgent(properties.getAgent())
                 .setMaxConnPerRoute(properties.getMaxConnPerRoute())
                 .setMaxConnTotal(properties.getMaxConnTotaol())
-                .addInterceptorFirst(logbookHttpRequestInterceptor)
-                .addInterceptorFirst(logbookHttpResponseInterceptor)
+//                .addInterceptorFirst(logbookHttpRequestInterceptor)
+//                .addInterceptorFirst(logbookHttpResponseInterceptor)
                 .build();
         return client;
     }

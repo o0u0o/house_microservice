@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- 蓝色房子：好房网品牌图标，适配 16x16~64x64 任意尺寸 -->
+  <path d="M32 6 L8 30 L14 30 L14 58 L50 58 L50 30 L56 30 Z"
+        fill="none" stroke="#2196F3" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <!-- 门洞 -->
+  <path d="M26 58 L26 42 L38 42 L38 58"
+        fill="none" stroke="#2196F3" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>

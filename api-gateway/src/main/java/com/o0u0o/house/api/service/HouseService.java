@@ -91,9 +91,9 @@ public class HouseService {
      * @return List<House> 房产列表
      */
     public List<House> getHotHouse(Integer recomSize) {
-        //List<House> list = houseDao.getHotHouse(recomSize);
-        RestResponse<List<House>> restResponse = houseClient.getHotHouse(recomSize);
-        List<House> list = restResponse.getResult();
+        List<House> list = houseDao.getHotHouse(recomSize);
+        //RestResponse<List<House>> restResponse = houseClient.getHotHouse(recomSize);
+        //List<House> list = restResponse.getResult();
         return list;
     }
 

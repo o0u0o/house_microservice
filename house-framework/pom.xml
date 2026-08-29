@@ -1,0 +1,23 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.o0u0o</groupId>
+        <artifactId>house-service</artifactId>
+        <version>1.2.0</version>
+    </parent>
+    <artifactId>house-framework</artifactId>
+    <name>house-framework</name>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>house-framework-dependencies</module>
+        <module>house-framework-starters</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+
+        </dependencies>
+    </dependencyManagement>
+</project>
