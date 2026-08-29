@@ -18,6 +18,7 @@ import java.util.List;
  * @Author aiuiot
  * @Date 2020/4/2 10:49 下午
  * @Descripton: 房产DAO RestTemplate自定义封装远程调用
+ * 因Spring 5 已标记为 deprecated，推荐用 WebClient
  **/
 
 @Repository
@@ -26,7 +27,7 @@ public class HouseDao {
     @Autowired
     private GenericRest rest;
 
-    @Value("${house.service.name}")
+    @Value("${property.service.name}")
     private String houseServiceName;
 
     /**

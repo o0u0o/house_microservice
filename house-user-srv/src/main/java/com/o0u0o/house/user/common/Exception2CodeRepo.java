@@ -3,8 +3,8 @@ package com.o0u0o.house.user.common;
 import com.google.common.collect.ImmutableMap;
 import com.o0u0o.house.user.exception.IllegalParamsException;
 import com.o0u0o.house.user.exception.WithTypeException;
-import org.apache.commons.lang.exception.ExceptionUtils;
-import org.apache.commons.lang.reflect.FieldUtils;
+import org.apache.commons.lang3.exception.ExceptionUtils;
+import org.apache.commons.lang3.reflect.FieldUtils;
 
 /**
  * @Author aiuiot

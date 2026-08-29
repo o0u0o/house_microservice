@@ -1,11 +1,10 @@
 package com.o0u0o.house.api;
 
-import com.o0u0o.house.api.config.NewRuleConfig;
+import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
@@ -19,17 +18,15 @@ import java.util.List;
  * <h1>ApiGateway启动类</h1>
  * 注解 @EnableFeignClients 使用feign 时
  */
+@Controller
+@EnableFeignClients
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableCircuitBreaker
-@Controller
-//@RibbonClient(name = "user", configuration = NewRuleConfig.class)
-//@RibbonClient(name = "life-base", configuration = NewRuleConfig.class)
-@EnableFeignClients
-public class ApiGatewayApplication {
+@EnableEncryptableProperties   // ← 确保有这个
+public class ApiGatewayApp {
 
     public static void main(String[] args) {
-        SpringApplication.run(ApiGatewayApplication.class, args);
+        SpringApplication.run(ApiGatewayApp.class, args);
     }
 
     @Autowired

@@ -44,9 +44,10 @@ public interface HouseClient {
     public RestResponse<Object> houseMsg(@RequestBody UserMsg userMsg);
 
     /**
-     * 获取热门房产
-     * @param recomSize
-     * @return
+     *
+     * <h2>获取热门房产</h2>
+     * @param recomSize 热门房产数量
+     * @return <List<House>>
      */
     @RequestMapping(value = "house/addUserMsg", method = RequestMethod.GET)
     RestResponse<List<House>> getHotHouse(@RequestParam("recomSize") Integer recomSize);

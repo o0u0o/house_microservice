@@ -250,7 +250,7 @@ public class UserService {
      * @param url
      */
     public void resetNotify(String email,String url) {
-        String randomKey = "reset_" + org.apache.commons.lang.RandomStringUtils.randomAlphabetic(10);
+        String randomKey = "reset_" + org.apache.commons.lang3.RandomStringUtils.randomAlphabetic(10);
         redisTemplate.opsForValue().set(randomKey, email);
         redisTemplate.expire(randomKey, 1,TimeUnit.HOURS);
         String content = url +"?key="+  randomKey;

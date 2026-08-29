@@ -6,13 +6,13 @@
 
     <groupId>com.o0u0o</groupId>
     <artifactId>house-service</artifactId>
-    <version>1.1.2</version>
+    <version>1.2.0</version>
     <packaging>pom</packaging>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.12.RELEASE</version>
+        <version>3.5.7</version>
     </parent>
 
     <!--  子模块  -->
@@ -24,64 +24,27 @@
         <module>house-user-srv</module>
         <module>house-comment-srv</module>
         <module>house-common</module>
+        <module>house-framework</module>
     </modules>
 
 
     <properties>
         <java.version>21</java.version>
-        <spring-cloud.version>Hoxton.SR12</spring-cloud.version>
-        <spring-boot.version>2.3.12.RELEASE</spring-boot.version>
+        <spring-cloud.version>2025.0.3</spring-cloud.version>
+        <spring-boot.version>3.5.7</spring-boot.version>
         <springfox.version>2.9.2</springfox.version>
         <logbook.version>1.13.0</logbook.version>
         <lombok.version>1.18.46</lombok.version>
 
         <druid-spring-boot.version>1.2.28</druid-spring-boot.version>
         <jasypt-spring-boot.version>3.0.2</jasypt-spring-boot.version>
+        <fastjson2.version>2.0.42</fastjson2.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-freemarker</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
-            <version>2.2.10.RELEASE</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-            <version>5.0.3</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
-            <version>2.2.10.RELEASE</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
-            <version>2.2.10.RELEASE</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
         </dependency>
 
         <!-- 引入 Spring-Mail 的起步依赖 -->
@@ -91,41 +54,8 @@
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>23.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.zalando</groupId>
-            <artifactId>logbook-core</artifactId>
-            <version>${logbook.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.zalando</groupId>
-            <artifactId>logbook-servlet</artifactId>
-            <version>${logbook.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.zalando</groupId>
-            <artifactId>logbook-httpclient</artifactId>
-            <version>${logbook.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.zalando</groupId>
-            <artifactId>logbook-spring-boot-starter</artifactId>
-            <version>${logbook.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.2.84</version>
+            <groupId>org.apache.httpcomponents.client5</groupId>
+            <artifactId>httpclient5</artifactId>
         </dependency>
 
         <dependency>
@@ -144,6 +74,15 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- Spring Cloud BOM —— 这个必须有！ -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>2025.0.3</version>   <!-- 对应 Boot 3.5.x -->
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
             <dependency>
                 <groupId>com.github.ulisesbocchio</groupId>
                 <artifactId>jasypt-spring-boot-starter</artifactId>
@@ -156,16 +95,27 @@
                 <version>${druid-spring-boot.version}</version>
             </dependency>
 
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.cloud</groupId>-->
+<!--                <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>-->
+<!--                <version>5.0.2</version>-->
+<!--            </dependency>-->
+
             <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-                <version>5.0.2</version>
+                <groupId>com.alibaba.fastjson2</groupId>
+                <artifactId>fastjson2</artifactId>
+                <version>${fastjson2.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>3.0.5</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
