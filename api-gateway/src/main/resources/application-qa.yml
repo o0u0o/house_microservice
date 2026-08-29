@@ -88,9 +88,9 @@ domain:
 user:
   service:
     name: user
-house:
+property:
   service:
-    name: house
+    name: property-srv
 comment:
     service:
       name: comment

@@ -11,49 +11,25 @@
     <parent>
         <groupId>com.o0u0o</groupId>
         <artifactId>house-service</artifactId>
-        <version>1.1.2</version>
+        <version>1.2.0</version>
     </parent>
-
 
     <dependencies>
         <dependency>
+            <groupId>com.o0u0o</groupId>
+            <artifactId>house-framework-starter-web</artifactId>
+            <version>1.2.0</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-freemarker</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
         <!--   hystrix断路器     -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-hystrix</artifactId>
-            <version>1.4.7.RELEASE</version>
-        </dependency>
-
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-eureka</artifactId>-->
-<!--        </dependency>-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-ribbon</artifactId>
             <version>1.4.7.RELEASE</version>
         </dependency>
 
@@ -67,23 +43,6 @@
                     <artifactId>junit-vintage-engine</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.4</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.9</version>
         </dependency>
 
         <dependency>
@@ -127,7 +86,7 @@
         <dependency>
             <groupId>com.o0u0o</groupId>
             <artifactId>house-common</artifactId>
-            <version>1.1.1</version>
+            <version>1.2.0</version>
         </dependency>
 
     </dependencies>
@@ -159,7 +118,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot.version}</version>
                 <configuration>
-                    <mainClass>com.o0u0o.house.api.ApiGatewayApplication</mainClass>
+                    <mainClass>com.o0u0o.house.api.ApiGatewayApp</mainClass>
                     <layout>ZIP</layout>
                 </configuration>
                 <executions>

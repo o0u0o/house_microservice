@@ -65,7 +65,7 @@
             <aside id="footer-thumbnails" class="footer-thumbnails"></aside><!-- /#footer-thumbnails -->
             <aside id="footer-copyright">
                 <div class="container">
-                    <span>Copyright © 2017 - 2020. All Rights Reserved. | 黔ICP备20002373</span>
+                    <span>Copyright © 2017 - 2026. All Rights Reserved. | 黔ICP备20002373</span>
                     <span class="pull-right"><a href="#page-top" class="roll">回到顶部</a></span>
                 </div>
             </aside>
@@ -130,7 +130,7 @@
 
 <#macro search>
 <aside id="edit-search">
-    <header><h3>Search Properties</h3></header>
+    <header><h3>搜索房产</h3></header>
     <form role="form" id="_searchForm" class="form-search" method="post" action="/house/list">
 
         <div class="form-group">

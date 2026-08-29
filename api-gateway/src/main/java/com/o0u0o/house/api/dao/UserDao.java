@@ -12,7 +12,6 @@ import com.o0u0o.house.api.model.User;
 import com.o0u0o.house.api.utils.Rests;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
@@ -30,7 +29,6 @@ import java.util.List;
         commandProperties={@HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds", value="2000")},
         threadPoolProperties={@HystrixProperty(name="coreSize",value="10"),@HystrixProperty(name="maxQueueSize",value="1000")},
         threadPoolKey="userDao")
-@EnableCircuitBreaker
 public class UserDao {
 
     /**

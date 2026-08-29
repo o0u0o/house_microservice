@@ -1,6 +1,6 @@
 spring:
   application:
-    name: api-gateway-dev
+    name: api-gateway
   freemarker:
     cache: true
     charset: UTF-8
@@ -28,9 +28,9 @@ eureka:
   client:
     # api-gateway服务 false-不需要注册到注册中心
     register-with-eureka: false
+    fetch-registry: true
     service-url:
       defaultZone: http://127.0.0.1:8666/eureka
-
 # hytrix断路器配置
 hytrix:
   command:
@@ -82,9 +82,9 @@ domain:
 user:
   service:
     name: user-srv
-house:
+property:
   service:
-    name: house-srv
+    name: property-srv
 comment:
   service:
     name: comment-srv
